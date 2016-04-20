@@ -1,5 +1,6 @@
-application: frost
-version: 1
+application: frost-1001
+version: v1
+
 runtime: go
 api_version: go1
 
@@ -7,19 +8,5 @@ api_version: go1
 default_expiration: "0d 0h"
 
 handlers:
-
-- url: /css
-  static_dir: resources/css
-
-- url: /js
-  static_dir: resources/js
-
-- url: /fonts
-  static_dir: resources/fonts
-
-- url: /template
-  static_dir: resources/templates
-  application_readable: true
-
 - url: /.*
   script: _go_app
