@@ -1,14 +1,14 @@
 package frost
 
 import (
-    "fmt"
+	"fmt"
 	"net/http"
 )
 
 func init() {
-    http.HandleFunc("/", handler)
+	http.HandleFunc("/", handler)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprint(w, "Hello, world aaab!")
+	fmt.Fprint(w, "Hello, world aaab!")
 }
