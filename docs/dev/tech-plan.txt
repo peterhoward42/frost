@@ -30,11 +30,38 @@
 *  Create intellijproject and get working
 *  Add intellij git ignore and sync
 *  Ensure delete and reclone works as baseline
-o  Create docco folders and rationalise docco from here
-    o  Gradually move over most of project folder by walking
-    o  Left with what?
-    o  Sync
-    o  Make sure get images eg in uxp
-o  Gradually work up by copy bits of gogui across
+*  Create docco folders and rationalise docco from here
 o  Get the web landing page to come up and look the part (links do nothing, 
    and dumb content)
+   *  Copy in template from go gui to right place
+   *  Replace variable content with fixed stuff
+   o  Get it being served as landing page
+        *  Copy in css and template to static folders
+        *  Configure yaml to upload these folders including app being able to
+           read templates
+        *  Does this mean go svr will auto serve css from static? (yes)
+        *  Make sure comes up still with hello world with this yaml and static
+           content
+        o  Get main page handler to extract template from static fs
+        o  Get main page to render page using rendered template
+   o  Sync
+   o  Gradually shape into roughly right structure
+   o  Work thru presentation details using fixed content
+
+-----------------------------------------------------------------------------
+Gui App Template rendering
+-----------------------------------------------------------------------------
+o  ./static/css 
+o  ./static/js 
+o  ./static/fonts 
+o  ./resources/bindata.go // contains package "resources"
+o  ./templates/miangui.html
+
+o  main.go imports the package "github.com/peterhoward42/godesktopgui/resources"
+o  this exposes the file system directories static and templates
+
+o  go parses template by extracting it from virtual file sys in resource assets
+o  go server explicitly intercepts urls with static in to a static file 
+   server that is fooled into thinking it has a file system access, when in
+   fact it only has access to the virtual FS
+
