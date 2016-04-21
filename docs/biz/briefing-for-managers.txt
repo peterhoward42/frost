@@ -1,0 +1,124 @@
+How To Communicate The Big Idea
+-------------------------------
+
+    o  When you're serious about beating your competitors...
+    o  You take a team of 6, to the five-a-side contest
+    o  We just invented a solution called FROST that...
+    o  Converts every 5 of your developers into 6.
+
+    o  So you can either:
+        o  Produce more 20% more apps
+        o  Produce them 20% quicker
+        o  Produce them 20% cheaper
+        o  = Compete better
+
+    o  If you have 30 developers, that's worth somewhere North of £500K year
+       after year.
+
+    o  Roughly 1/5 of your development effort in every project goes into 
+       custom file readers and interpreters.
+
+    o  It has to, because 
+        o  Most of your apps read multiple files (an input deck)
+        o  You use multiple file formats
+        o  You have little or no standardisation
+        o  You rely on in-house naming conventions
+        o  Extracting the structure and meaning of the contents is different 
+           in each case.
+
+    o  With FROST, you can get all the advantages of standardising
+       your file formats, WITHOUT actually having to do so.
+
+        o  Reduce the reading and interpretation of an entire input deck from
+           hundreds, to just 4 lines of code per App
+        o  Remove nearly all of that per-project 20% effort
+        o  All your Apps continue to interoperate just like they always did
+        o  One single solution for Apps written in C++, Java, C# and Python
+        o  And Windows + Linux if you need it
+
+    o  Read on for
+        A) how it works
+        C) FAQ
+        D) the online try-it-now demo you can access right now
+
+    o  Nb. FROST = File Reading One Stop Shop
+
+
+
+How FROST Works - For Non-Coders 
+--------------------------------
+
+    o  Consider the example case of a C#/Windows App.
+    o  Wherever I say C#, you can substitute Java, C++, or Python.
+    o  The App developer copies and pastes a very small chunk of standard C# 
+       source code provided on the FROST website and incorporates it into 
+       their project - as if they'd typed it in themselves.
+    o  Now they can type in just 4 lines of code into their App to read their 
+       entire input deck - simply specifying the folder all the files live in.
+    o  After that they can access the information that was in the files, in
+       perfectly formed, natural C# data structures. E.g. lists, key-value
+       pairs, table rows and columns and so on.
+    o  This, regardless of the mix present in the input deck of CSV files, text
+       files, XML etc.
+
+    o  What is going behind the scenes, is that the input folder is being
+       zipped up and sent to a cloud service to be processed.
+    o  OK - I know - security alarm bells are going off now.  It doesn't mean 
+       it has be public or on the Internet; it can all be safely inside your 
+       private corporate network.
+    o  The software inside the cloud service can then easily deduce what 
+       kinds of files are there (CSV, XML, plain text etc), and has a 
+       specialist analyser module for each type.
+    o  These analysers can deduce the structure implied in the file. It's not
+       as hard as it sounds. A human can make this deduction extremely easily -
+       there aren't many different patterns to spot.
+
+    o  What comes back to the App is a standardised and normalised
+       representation of all the information.
+    o  The standard that is used for what comes back is called JSON - not that 
+       that matters. But we thought you'd like to know.
+    o  JSON has become by far the most prevalent standard for this kind of
+       thing, and because of that, there are nice, simple open-source bit of
+       code to convert it back (automatically) into the C# data structures we
+       want.
+    o  You developer doesn't need to go out and get this converter- it is 
+       included in the small chunk of code they copied and pasted from the web 
+       site at the start.
+
+FAQ
+---
+
+We can't use CLOUD services. They are too insecure.
+    > We have a security analysis / declaration for FROST we can share with you.
+    > If you prefer, we'll help you put it inside your private network.
+
+Deploying web services is too difficult/slow/expensive in our organisation.
+    > Not this one. It's literally one single file you copy on to a server.
+    > A technology pioneered by, and used routinely by Google.
+
+We can't accept projects with open source code in them without consulting the 
+legal department.
+    >  OK. Tell them all the open source bits have BSD (3-clause) or LGPL 
+       licences. (They'll be happy with these).
+
+We don't want our apps to be dependent on a network connection to run.
+    >  Fair point. But it's a trade off for the very large cost savings 
+       available from this solution. This trend is taking on the appearance of
+       unavoidable / inevitable across the whole of IT. Most of your 
+       engineering apps likely require it already for COTS licence servers, 
+       databases, or to access shared drives.
+
+We're satisfied with the security provided by https for the cloud, and actually
+are more concerned with high-availability.
+    >  Then we'll put it on Google App Engine for you. The most highly 
+    >  available and resilient IT and global network infrastructure to be 
+    >  found anywhere. 
+
+Won't it slow our apps right down?
+    > Only if your apps are the sort you run thousands of times a minute. 
+    > It will be to all and intents and purposes instant for most apps.
+    (See for yourself, live, on the website)
+
+How do we know it work with our input decks (they are a bit eccentric).
+    > Try them out right now on the playground section of the website - you'll
+    > have your answer in seconds.

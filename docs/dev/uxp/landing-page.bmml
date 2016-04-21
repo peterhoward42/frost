@@ -1,0 +1,151 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1265" measuredH="845" mockupW="1143" mockupH="806">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="319" y="127" w="-1" h="-1" measuredW="80" measuredH="32" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>24</size>
+        <text>FROST</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="319" y="174" w="-1" h="-1" measuredW="88" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <text>A%20web%20service</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::List" x="513" y="185" w="378" h="52" measuredW="100" measuredH="126" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <text>Get%20the%20data%20back%20in%20a%20single%2C%20standardised%20object%20model%0AIn%20C++%2C%20Java%2C%20Python%2C%20C%23%2C%20or%20Go%20native%20data%20structures</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="485" y="292" w="106" h="27" measuredW="82" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <menuIcon>true</menuIcon>
+        <text>Python</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::VRule" x="561" y="292" w="-1" h="27" measuredW="10" measuredH="100" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="319" y="293" w="-1" h="-1" measuredW="163" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Developer%20Quick%20Start</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="721" y="294" w="-1" h="-1" measuredW="81" measuredH="22" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Playground</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Link" x="932" y="132" w="-1" h="-1" measuredW="100" measuredH="18" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>What%20sort%20of%20files%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Link" x="988" y="163" w="-1" h="-1" measuredW="44" measuredH="18" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Licence</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Link" x="971" y="192" w="-1" h="-1" measuredW="61" measuredH="18" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Community</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="961" y="219" w="-1" h="-1" measuredW="71" measuredH="18" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Source%20Code</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="122" y="39" w="1052" h="806" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Label" x="319" y="68" w="-1" h="-1" measuredW="72" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>foo/bar/baz</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::StickyNote" x="1065" y="521" w="200" h="122" measuredW="109" measuredH="123" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20content%20for%20this%20area%20changes%20according%20to%20what%20you%20select%2C%20while%20the%20rest%20of%20the%20page%20stays%20the%20same.</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Canvas" x="319" y="342" w="713" h="454" measuredW="100" measuredH="70" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>15658734</borderColor>
+        <borderStyle>square</borderStyle>
+        <color>65535</color>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="331" y="366" w="230" h="-1" measuredW="212" measuredH="24" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Read%20your%20input%20files%20like%20this%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::TextArea" x="463" y="405" w="360" h="49" measuredW="200" measuredH="140" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <color>14540253</color>
+        <size>16</size>
+        <text>%20%0Ainput_deck%20%3D%20Frost.Read%28%22my%20input%20directory%22%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Paragraph" x="463" y="472" w="375" h="49" measuredW="275" measuredH="80" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>You%20need%20to%20add%20this%20%5Bcode%20fragment%5D%20to%20your%20code%20to%20make%20it%20work.</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Label" x="331" y="546" w="417" h="-1" measuredW="402" measuredH="24" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Now%20you%20can%20pull%20out%20a%20key-value%20%28for%20example%29%20like%20this%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::TextArea" x="457" y="586" w="345" h="49" measuredW="200" measuredH="140" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <color>14540253</color>
+        <size>16</size>
+        <text>%20%0Avalue%20%3D%20input_deck.filename_a%5B%22some%20key%22%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Link" x="331" y="674" w="-1" h="-1" measuredW="111" measuredH="22" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>More%20examples</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::VCurly" x="1047" y="342" w="29" h="454" measuredW="180" measuredH="140" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="629" y="293" w="-1" h="-1" measuredW="83" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Experiment</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::HRule" x="319" y="264" w="713" h="-1" measuredW="100" measuredH="10" zOrder="23" locked="false" isInGroup="-1"/>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::List" x="513" y="127" w="289" h="65" measuredW="100" measuredH="126" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <borderStyle>none</borderStyle>
+        <size>16</size>
+        <text>Read%20a%20mixed-format%20set%20of%20input%0Afiles%2C%20with%20just%20one%20line%20of%20code.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

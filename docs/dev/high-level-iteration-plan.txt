@@ -1,0 +1,88 @@
+High Level Iteration Starter Plan
+---------------------------------
+
+
+Architecture + Baseline Focus
+-----------------------------
+o  Start new github project
+o  Put in readme and suitable .gitignore
+o  Create folders / packages etc from original package design
+o  Init as goapp hello world and get working
+o  Gradually work up by copy bits of gogui across
+o  Put in documentation directories and shift this doc and others into it
+o  Get the web landing page to come up and look the part (links do nothing, 
+   and dumb content)
+
+Theme - Bringing up the Playground Features to aid Development
+--------------------------------------------------------------
+o  Get the tab-like navigation mechanism working
+o  Use the playground page as a driving use case...
+o  Focus first on space-delimitted format
+o  Make example button show  a small fragment of example space-delim content 
+   on the left hand side, launches the converter, and shows the JSON on 
+   the right. Start with a converter that creates just {} for result. 
+o  Gradually evolve the space delim conversion to do the real job - using 
+   unit-test-driven steps (uTDD). The GUI will keep up without any separate
+   work because it will already be plumbed-in.
+
+Creating the mixed-file architecture
+---------------------------------------
+o  Expand out the conversion to handle the CONTENT of multiple 
+   files (***), including delegating out to a variety of converters and
+   then reassembling the json produced into a single aggregate json.
+   Only the space-delim converter will be real at this stage. The others
+   will return placeholder JSON. The objective of this is to make sure we
+   tackle the details in a way that is supportive of our divide and 
+   reassemble architecture for the JSON.
+o  Drive this from the "try our example input folder" button. With TDD in
+   parallel.
+
+Filling Out Converters for Each File Type
+-----------------------------------------
+o  Do CSV next as small ish evolution of space delimitted. Including
+   refactoring as the opportunities identify themselves. Of course with unit
+   tests.
+o  Add the CSV example fragment to the GUI
+o  Add the full example to the sample input deck
+
+
+Web Service API
+---------------
+
+o  Create a url handler for the programmatic access web service that does
+   nothing other than recognise the arrival of the http request.
+o  Get the handler to unpack the zipped-bytes payload into the form
+   required by ***
+o  Get the handler to trigger the bulk conversion and send back the JSON.
+
+Upgrade GUI to do upload your own deck
+--------------------------------------
+o  self evident (ish)
+
+Client Side Hardening
+---------------------
+o  Objective is to work out how best to parse and navigate the JSON that comes
+   back in a real use case or three. Inevitably will show up changes needed in
+   JSON modelling and drive changes in the conversion logic we've made.
+
+    <Note to self - is this too late? Maybe we should hypothesise the JSON we
+    will create and make some by hand to test in app land first? I'm not sure I
+    can imagine clearly enough what it will be without trying to make it
+    automatically first?>
+
+o  Try out using the client in just one language (C# maybe)
+o  Decide what changes needed in conversion and go back to TDD those changes.
+
+Filling out the UXP
+-------------------
+o  Work out for each language the cutest way to
+    o  zip up and POST the input folder
+    o  parse and navigate the returned JSON (maybe without structure of last
+       resort yet)
+o  Populate the web site with source (library) fragments for each language.
+o  Populate the web site with parsing examples for each language.
+
+The Rest
+--------
+Mostly turning the handle to finish everything. No major surprises now I think.
+

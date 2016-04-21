@@ -1,0 +1,53 @@
+// Indentation implies package hierachy.
+
+// Which is same as directory hierachy.
+
+// Some directories contain files that are not part of the source nor compiled.
+// like html/css etc.
+
+// Packages have single word, lower-case names.
+// Types (think classes) are Pascal-case.
+
+frost
+    contract
+        KeyValue
+        RowOfValues
+        Table
+        ValueAlone
+    docs
+        dev
+        user
+    json
+        Assembler
+    parse
+        Field
+        OriginalContent
+    processors
+        Csv
+        Whitespace
+        Xml
+        Yaml
+        Json
+        Ini
+    server
+        api
+            Request
+            Response
+        Config
+        Handlers
+        resources
+            examples
+            css
+            js
+            templates
+        pages
+            ViewModel
+            view
+    synthesis
+        CrossRefs
+        KeyValue
+        RowOfValues
+        Table
+        SingleValue
+    tag
+        Tag

@@ -1,0 +1,34 @@
+Structure
+---------
+
+Consider
+
+    src/github.com/peterhoward42/reponame/.git
+    src/github.com/peterhoward42/reponame/foo/bar/somesource.go
+
+    - src is local machine workspace
+        o  go global
+        o  pan project
+    - location of .git indicates where repo hooks in
+    - 'bar' is a package by definition (it contains *.go)
+    - 'foo' may or not be (does it contain *.go?)
+    - import statements are relative to 'src'
+
+Package Structure
+
+    See crc.txt
+
+What must we model?
+-------------------
+*  Package hierachy
+*  Resources (css / template / html)
+    *  Keep with view classes
+*  Generated (compiled resources)
+    * in resources package directory
+*  Location and org of tests
+    *  keep with packages being tested
+*  Data for tests
+    *  keep with packages being tested
+*  Devs docs - top level docs dir
+*  Consumer docs
+*  Web serving resources

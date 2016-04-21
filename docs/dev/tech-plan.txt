@@ -1,0 +1,40 @@
+*  Mock up public pages
+*  Make demands for outputs in various formats
+    *  Rule in and out various format coping, or at least min SLA
+    *  Maybe extended SLA where possible
+*  Write this up as a contract
+*  Define error handling contract
+*  CRC
+*  Consider hosting - stick it on personal webfaction, and also maintaining
+   a windows 64 bit version too
+*  Consider baking in resources = yes - gives config man and version
+*  Conclude if should copy post = yes
+*  Consider IPR = keep it all mine for now
+*  Consider source hosting and privacy
+*  Design
+    *  git folder structure
+    *  package structure
+*  Timeout Azure
+    *  Read and note
+    *  Something good for this?
+*  Share with Paul and Marc
+*  High Level Iteration Plan
+*  Start new github project
+*  Put in readme and suitable .gitignore
+*  Create skeleton dir structure with yaml and server.go
+*  Get helloworld local serving in vi
+*  Sync with github
+*  Define project in app engine console
+*  Deploy and test app to server
+*  Sync
+*  Create intellijproject and get working
+*  Add intellij git ignore and sync
+*  Ensure delete and reclone works as baseline
+o  Create docco folders and rationalise docco from here
+    o  Gradually move over most of project folder by walking
+    o  Left with what?
+    o  Sync
+    o  Make sure get images eg in uxp
+o  Gradually work up by copy bits of gogui across
+o  Get the web landing page to come up and look the part (links do nothing, 
+   and dumb content)
