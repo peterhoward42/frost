@@ -1,72 +1,29 @@
-*  Mock up public pages
-*  Make demands for outputs in various formats
-    *  Rule in and out various format coping, or at least min SLA
-    *  Maybe extended SLA where possible
-*  Write this up as a contract
-*  Define error handling contract
-*  CRC
-*  Consider hosting - stick it on personal webfaction, and also maintaining
-   a windows 64 bit version too
-*  Consider baking in resources = yes - gives config man and version
-*  Conclude if should copy post = yes
-*  Consider IPR = keep it all mine for now
-*  Consider source hosting and privacy
-*  Design
-    *  git folder structure
-    *  package structure
-*  Timeout Azure
-    *  Read and note
-    *  Something good for this?
-*  Share with Paul and Marc
-*  High Level Iteration Plan
-*  Start new github project
-*  Put in readme and suitable .gitignore
-*  Create skeleton dir structure with yaml and server.go
-*  Get helloworld local serving in vi
-*  Sync with github
-*  Define project in app engine console
-*  Deploy and test app to server
-*  Sync
-*  Create intellijproject and get working
-*  Add intellij git ignore and sync
-*  Ensure delete and reclone works as baseline
-*  Create docco folders and rationalise docco from here
-o  Get the web landing page to come up and look the part (links do nothing, 
+o  Get the web landing page to come up and look the part (links do nothing,
    and dumb content)
-   *  Copy in template from go gui to right place
-   *  Replace variable content with fixed stuff
-   o  Get it being served as landing page
-        *  Copy in css and template to static folders
-        *  Configure yaml to upload these folders including app being able to
-           read templates
-        *  Does this mean go svr will auto serve css from static? (yes)
-        *  Make sure comes up still with hello world with this yaml and static
-           content
-        *  Sync
-        *  Add in the js css and fonts and make sure static handler serves them
-        *  Get main page handler to extract template from static fs
-            *  Remind template api wrt filesystem
-            *  Read how gae can navigate readable file system
-            *  Some debug - how see output?
-        *  Get main page to render page using rendered template
-   o  Sync
+   *  Skeleton serving of landing page using a template
    o  Gradually shape into roughly right structure
+        *  Consider new form and migration
+        *  Rm nav bar
+        *  Reduce content to rows columns with placeholders
+        *  split first row into the 3 bits
+        o  fmt left bit into two vertical bits with large / small headings
    o  Work thru presentation details using fixed content
 
 -----------------------------------------------------------------------------
-Gui App Template rendering
+structure
 -----------------------------------------------------------------------------
-o  ./static/css 
-o  ./static/js 
-o  ./static/fonts 
-o  ./resources/bindata.go // contains package "resources"
-o  ./templates/miangui.html
+o  12 md cols
+o  first row for title block
+    o  3 cols for frost a web service
+    o  6 cols for narrative
+    o  3 cols for what sort etc links
+o second 12 col row for hline
+o third 12 col row for nav links
+o principal row 12 cols for body
+o final row for footer
 
-o  main.go imports the package "github.com/peterhoward42/godesktopgui/resources"
-o  this exposes the file system directories static and templates
-
-o  go parses template by extracting it from virtual file sys in resource assets
-o  go server explicitly intercepts urls with static in to a static file 
-   server that is fooled into thinking it has a file system access, when in
-   fact it only has access to the virtual FS
-
+-----------------------------------------------------------------------------
+migration
+-----------------------------------------------------------------------------
+o  nav bar come out
+o  cut down to almost nothing other than row structure
