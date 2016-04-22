@@ -42,8 +42,13 @@ o  Get the web landing page to come up and look the part (links do nothing,
         *  Does this mean go svr will auto serve css from static? (yes)
         *  Make sure comes up still with hello world with this yaml and static
            content
-        o  Get main page handler to extract template from static fs
-        o  Get main page to render page using rendered template
+        *  Sync
+        *  Add in the js css and fonts and make sure static handler serves them
+        *  Get main page handler to extract template from static fs
+            *  Remind template api wrt filesystem
+            *  Read how gae can navigate readable file system
+            *  Some debug - how see output?
+        *  Get main page to render page using rendered template
    o  Sync
    o  Gradually shape into roughly right structure
    o  Work thru presentation details using fixed content
