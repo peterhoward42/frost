@@ -2,28 +2,18 @@ o  Get the web landing page to come up and look the part (links do nothing,
    and dumb content)
    *  Skeleton serving of landing page using a template
    o  Gradually shape into roughly right structure
-        *  Consider new form and migration
-        *  Rm nav bar
-        *  Reduce content to rows columns with placeholders
-        *  split first row into the 3 bits
-        o  fmt left bit into two vertical bits with large / small headings
-   o  Work thru presentation details using fixed content
+        *  navbar
+            *  see how much can deplete example
+            *  get left to right order correct
+            *  upgrade python drop down to split button or attach label
+            *  make playground look like a button
+            *  make diff between labels and controls more conspicuous
+            *  improve h spacing
+            *  is state right?
+        o  play with a non default theme
+        o  tune header
 
 -----------------------------------------------------------------------------
 structure
 -----------------------------------------------------------------------------
-o  12 md cols
-o  first row for title block
-    o  3 cols for frost a web service
-    o  6 cols for narrative
-    o  3 cols for what sort etc links
-o second 12 col row for hline
-o third 12 col row for nav links
-o principal row 12 cols for body
-o final row for footer
 
------------------------------------------------------------------------------
-migration
------------------------------------------------------------------------------
-o  nav bar come out
-o  cut down to almost nothing other than row structure
