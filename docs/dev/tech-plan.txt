@@ -1,30 +1,27 @@
-o  Get the web landing page to come up and look the part (links do nothing,
-   and dumb content)
-   *  Skeleton serving of landing page using a template
-   o  Gradually shape into roughly right structure
-        *  navbar
-            *  see how much can deplete example
-            *  get left to right order correct
-            *  upgrade python drop down to split button or attach label
-            *  make playground look like a button
-            *  make diff between labels and controls more conspicuous
-            *  improve h spacing
-            *  is state right?
-        *  play with a non default theme
-        *  tune header
-        *  play around with main content quick start page
-            *  drop back to pills?
-        *  why fetching google fonts?
-        *  note to say what is file name
-        *  you have to add this utility frag...
-        o  word frost emphasised
-        o  more examples link
+*  Anticipate urls for landing page and for playground landing
+*  code the current html thus
+*  Update handlers so both produce same page but indi
+*  Make default handler also go to quickstart/python
+*  Refactor template parsing to in common
+o  Make active nav show if in quickstart or playground
+o  Decide how to split off and delegate rendering of these two pages
+
+
+o  Get the tab-like navigation mechanism working
+o  Use the playground page as a driving use case...
+o  Focus first on space-delimitted format
+o  Make example button show  a small fragment of example space-delim content
+   on the left hand side, launches the converter, and shows the JSON on
+   the right. Start with a converter that creates just {} for result.
+o  Gradually evolve the space delim conversion to do the real job - using
+   unit-test-driven steps (uTDD). The GUI will keep up without any separate
+   work because it will already be plumbed-in.
 
 -----------------------------------------------------------------------------
-new offer prop
+urls
 -----------------------------------------------------------------------------
-
-
+o  landing
+o  playground
 
 
 

@@ -4,13 +4,13 @@ High Level Iteration Starter Plan
 
 Architecture + Baseline Focus
 -----------------------------
-o  Start new github project
-o  Put in readme and suitable .gitignore
-o  Create folders / packages etc from original package design
-o  Init as goapp hello world and get working
-o  Gradually work up by copy bits of gogui across
-o  Put in documentation directories and shift this doc and others into it
-o  Get the web landing page to come up and look the part (links do nothing, 
+*  Start new github project
+*  Put in readme and suitable .gitignore
+*  Create folders / packages etc from original package design
+*  Init as goapp hello world and get working
+*  Gradually work up by copy bits of gogui across
+*  Put in documentation directories and shift this doc and others into it
+*  Get the web landing page to come up and look the part (links do nothing,
    and dumb content)
 
 Theme - Bringing up the Playground Features to aid Development

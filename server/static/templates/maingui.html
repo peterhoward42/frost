@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Frost</title>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -17,7 +17,7 @@
             <p></p>
             <ul>
                 <li>Use less code to read your input files.</li>
-                <li>Delegate it to <em>FROST</em> over the Internet instead.</li>
+                <li>Delegate it to <em>FROST</em>, securely, over the Internet instead.</li>
                 <li>Handles mixed &amp; custom file formats.</li>
             </ul>
         </div>
@@ -33,8 +33,12 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-pills">
-                <li class="active"><a href="#">Quick Start</a></li>
-                <li><a href="#">Playground</a></li>
+                <li {{if .QuickStartActive}}class="active"{{end}}>
+                    <a href="/quickstarts/python/">Quick Start</a>
+                </li>
+                <li {{if .PlayGroundActive}}class="active"{{end}}>
+                    <a href="/playground/">Playground</a>
+                </li>
             </ul>
             <hr>
         </div>
@@ -48,11 +52,11 @@
                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="/quickstarts/python/">Python</a></li>
+                    <li><a href="#">Java</a></li>
+                    <li><a href="#">C++</a></li>
+                    <li><a href="#">C#</a></li>
+                    <li><a href="#">Go</a></li>
                 </ul>
             </div>
         </div>
@@ -85,6 +89,7 @@
         </div>
     </div>
     <div class="row"><p>
+
         <div class="col-md-2">
         </div>
         <div class="col-md-2">
@@ -94,7 +99,7 @@
 </div>
 
 </div class="container">
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>
