@@ -10,10 +10,23 @@ o  Get the web landing page to come up and look the part (links do nothing,
             *  make diff between labels and controls more conspicuous
             *  improve h spacing
             *  is state right?
-        o  play with a non default theme
-        o  tune header
+        *  play with a non default theme
+        *  tune header
+        *  play around with main content quick start page
+            *  drop back to pills?
+        *  why fetching google fonts?
+        *  note to say what is file name
+        *  you have to add this utility frag...
+        o  word frost emphasised
+        o  more examples link
 
 -----------------------------------------------------------------------------
-structure
+new offer prop
 -----------------------------------------------------------------------------
+
+
+
+
+
+
 
