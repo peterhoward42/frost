@@ -3,8 +3,18 @@
 *  Update handlers so both produce same page but indi
 *  Make default handler also go to quickstart/python
 *  Refactor template parsing to in common
-o  Make active nav show if in quickstart or playground
+*  Make active nav show if in quickstart or playground
 o  Decide how to split off and delegate rendering of these two pages
+    *  Design model for quickstart and model for playground, and give
+       main model ptr to each
+    *  Use non null of these to flag which to show as active in main page
+    o  so now how to separate out code and template for each sub view
+        *  We have dedicated models
+        o  So how organise the template rendering delegation and separation?
+            o  Have templates execute other ones conditionally with sub models
+            o  Experiment putting quick start into separate template and calling that
+                o  Write template file
+                o  How give it an addressable name during parsing?
 
 
 o  Get the tab-like navigation mechanism working
@@ -18,10 +28,9 @@ o  Gradually evolve the space delim conversion to do the real job - using
    work because it will already be plumbed-in.
 
 -----------------------------------------------------------------------------
-urls
+scratch
 -----------------------------------------------------------------------------
-o  landing
-o  playground
+{{template "name" pipeline}}
 
 
 

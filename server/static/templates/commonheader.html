@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frost</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h1>FROST</h1>
+        </div>
+        <div class="col-md-6 lead">
+            <p></p>
+            <ul>
+                <li>Use less code to read your input files.</li>
+                <li>Delegate it to <em>FROST</em>, securely, over the Internet instead.</li>
+                <li>Handles mixed &amp; custom file formats.</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked text-right">
+                <li><a href="#">What sort of files?</a></li>
+                <li><a href="#">Licence</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Source Code</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li {{if .QuickStart}}class="active" {{end}}>
+                    <a href="/quickstarts/python/">Quick Start</a>
+                </li>
+                <li {{if .Playground}}class="active" {{end}}>
+                    <a href="/playground/">Playground</a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </div>
