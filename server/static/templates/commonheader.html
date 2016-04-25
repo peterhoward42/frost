@@ -10,6 +10,11 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-3">
             <h1>FROST</h1>
         </div>
@@ -34,10 +39,12 @@
         <div class="col-md-12">
             <ul class="nav nav-pills">
                 <li {{if .QuickStart}}class="active" {{end}}>
-                    <a href="/quickstarts/python/">Quick Start</a>
+                    <a href="/quickstarts/python/"><span
+                            class="glyphicon glyphicon-flash"></span> Quick Start</a>
                 </li>
                 <li {{if .Playground}}class="active" {{end}}>
-                    <a href="/playground/">Playground</a>
+                    <a href="/playground/">
+                        <span class="glyphicon glyphicon-cutlery"></span>&ensp; Playground</a>
                 </li>
             </ul>
             <hr>
