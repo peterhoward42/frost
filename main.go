@@ -13,7 +13,7 @@ func init() {
 	// Todo, not sure yet if these two URLs should continue to use a handler in common.
 	http.HandleFunc("/playground", playground)
 	http.HandleFunc("/playground-refresh", playground)
-
+	http.HandleFunc("/play-space-separated", playground_space_sep)
 
 	http.HandleFunc("/quickstart", quickstart)
 
@@ -38,6 +38,17 @@ func playground(w http.ResponseWriter, r *http.Request) {
 	input_text := r.PostFormValue("input-text")
 	output_text := input_text + "plus some extra stuff"
 	err = gui_template.ExecuteTemplate(w, "maingui.html",
+		models.NewTopLevel("make playground active", input_text, output_text))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func playground_space_sep(w http.ResponseWriter, r *http.Request) {
+
+	input_text := "this will be the space separated input content"
+	output_text := input_text + "...IS CONVERTED"
+	err := gui_template.ExecuteTemplate(w, "maingui.html",
 		models.NewTopLevel("make playground active", input_text, output_text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
