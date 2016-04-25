@@ -9,25 +9,28 @@
     *  The header blocks
     *  Some icons
     *  Text Editor in left half
-o  Sync
+*  Sync
 
-o  Make space delim the default button
-o  Make it so when you press it you get some content and auto show some
-   response
 
-o  CSS the text areas same as pre class
-o  Make default entry into playground is same as pressing space delim example
-o  Make converter produce just {} as result hard coded
-o  Gradually evolve the space delim conversion to do the real job - using
-   unit-test-driven steps (uTDD). The GUI will keep up without any separate
-   work because it will already be plumbed-in.
-   o  Remind stories what to leave out
-   o  Remind arch components involved
+*  Make rendering from model populate both text areas from model using fixed
+   models
+*  Have refresh post content of lhs
+*  Make only chosen urls work others barf
+*  Have refresh handler copy input back to input and something based thereon
+*  Refactor main / handlers in common?
+
+o  Have refresh handler launch chain to build new display model that echos
+   input text and includes some trivial output text
+o  Should now have enter-refresh-render cycle
+o  Add in the example button providing some example text and wiring up
+o  Change default button to show space delim txt
+o  Cause playground landing to stimulate same paths with default content
+
+o  Next iter - start to design tdd of conversion
 
 -----------------------------------------------------------------------------
-scratch
+subsid
 -----------------------------------------------------------------------------
-{{template "name" pipeline}}
 
 
 

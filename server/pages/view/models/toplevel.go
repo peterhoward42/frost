@@ -3,8 +3,8 @@
 package models
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 // The TopLevel struct provides state information for rendering the top level application view.
@@ -18,14 +18,15 @@ type TopLevel struct {
 
 // The NewTopLevel function is a factory that makes TopLevel view models.
 // You inject a string fragment to indicate the currently selected page required.
-func NewTopLevel(activePageHint string) *TopLevel {
+func NewTopLevel(activePageHint string, playground_input_txt string,
+	playground_output_txt string) *TopLevel {
 	model := &TopLevel{}
 
 	switch {
 	case strings.Contains(activePageHint, "uick"):
-		model.QuickStart = &QuickStart{}
+		model.QuickStart = NewQuickStart()
 	case strings.Contains(activePageHint, "ground"):
-		model.Playground = &Playground{}
+		model.Playground = NewPlayground(playground_input_txt, playground_output_txt)
 	default:
 		panic(fmt.Sprintf("Active page hint not recognized: %v", activePageHint))
 	}

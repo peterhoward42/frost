@@ -10,24 +10,35 @@ func init() {
 	gui_template, _ = template.ParseGlob("server/static/templates/*.html")
 	// todo what if template read fails during init?
 
-	http.HandleFunc("/playground/", playground_handler)
-	http.HandleFunc("/quickstart/", quickstart_handler)
+	// Todo, not sure yet if these two URLs should continue to use a handler in common.
+	http.HandleFunc("/playground", playground)
+	http.HandleFunc("/playground-refresh", playground)
 
-	http.HandleFunc("/", quickstart_handler) // default landing page
+
+	http.HandleFunc("/quickstart", quickstart)
+
+	http.HandleFunc("/home", quickstart) // We use quickstart for the landing page.
 }
 
-func quickstart_handler(w http.ResponseWriter, r *http.Request) {
+func quickstart(w http.ResponseWriter, r *http.Request) {
 	// todo or panic?
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make quickstart active"))
+		models.NewTopLevel("make quickstart active", "", ""))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 
-func playground_handler(w http.ResponseWriter, r *http.Request) {
-	err := gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make playground active"))
+func playground(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	input_text := r.PostFormValue("input-text")
+	output_text := input_text + "plus some extra stuff"
+	err = gui_template.ExecuteTemplate(w, "maingui.html",
+		models.NewTopLevel("make playground active", input_text, output_text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
