@@ -22,18 +22,27 @@
    input text and includes some trivial output text
 *  Should now have enter-refresh-render cycle
 
-o  Cause the example button selections to stimulate a refresh, parameterised
+*  Cause the example button selections to stimulate a refresh, parameterised
    with the type of example required.
    *  Link works and handler puts in foo bar with spaces and does refresh
    *  How make default btn send href uri?
-   o  How organise differentiation of example type required?
-   o  Where to put resources
-   o  How organise code cf original design
+   *  How organise differentiation of example type required?
+    *  Make space sep handler get content from resource
+    *  Add another to refactor commonality in handler
 
 o  Next iter - start to design tdd of conversion
+    o  Design input example file
+        o  Got any in mail?
+
 
 -----------------------------------------------------------------------------
-subsid
+Futures
+-----------------------------------------------------------------------------
+o  Cache examples if makes significantly quicker
+o  Some CSS transitions?
+
+-----------------------------------------------------------------------------
+How organise differentiation of example type required?
 -----------------------------------------------------------------------------
 
 
