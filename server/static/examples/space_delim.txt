@@ -1,3 +1,5 @@
-mary had a little lamb
-its fleece was white as snow
-and everywhere etc
+#item   code    length
+table   003     2300
+char    026     500
+fish    099     60
+

@@ -30,6 +30,16 @@
     *  Make space sep handler get content from resource
     *  Add another to refactor commonality in handler
 
+o  Stuff to Paul
+    *  Sensible looking example content
+    *  Conversion at front
+    *  Styled text areas
+    *  Make / work but not /anything
+    o  Sync
+    o  Deploy
+    o  How incl Paul to project
+    o  Note to him incl appspot and github
+
 o  Next iter - start to design tdd of conversion
     o  Design input example file
         o  Got any in mail?
@@ -44,8 +54,4 @@ o  Some CSS transitions?
 -----------------------------------------------------------------------------
 How organise differentiation of example type required?
 -----------------------------------------------------------------------------
-
-
-
-
 
