@@ -10,7 +10,7 @@ import (
 // shingle-shot to avoid the complexity of reinitialising state.
 type Whitespace struct {
 	inputText string
-	context *parse.Context	// Holds the original input line for error reporting needs.
+	parsingContext *parse.Context	// Holds the original input line for error reporting needs.
 }
 
 // The function NewWhitespace is the way to instantiate a Whitespace structure and binds the
@@ -26,8 +26,7 @@ func NewWhitespace(inputText string) *Whitespace {
 func (ws *Whitespace) Convert() []byte {
 	// Delegate to a sub function for each separate line of input.
 	for idx, lineTxt := range(strings.Split(ws.inputText, "\n")) {
-		lineNumber := idx + 1
-		ws.context = parse.NewContext(lineNumber, lineTxt)
+		ws.parsingContext = parse.NewContext(idx + 1, lineTxt)
 		trimmed := strings.TrimSpace(lineTxt);
 		if strings.HasPrefix(trimmed, "#") {
 			ws.processCommentLine(trimmed)
@@ -42,4 +41,18 @@ func (ws *Whitespace) processCommentLine(line string) {
 }
 
 func (ws *Whitespace) processNonCommentLine(line string) {
+	if len(line) == 0 {
+		return
+	}
+	fields := isolateFields(line);
+	processFields(fields);
+}
+
+func (ws *Whitespace) isolateFields(line string) []string {
+	line = parse.MaskDoubleQuotes(line)
+	fields := strings.Fields(line)
+	for idx, field := range(fields) {
+		fields[idx] = parse.UnMaskDoubleQuotes(field);
+	}
+	return fields
 }
