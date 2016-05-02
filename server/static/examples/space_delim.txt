@@ -1,5 +1,36 @@
-#item   code    length
-table   003     2300
-char    026     500
-fish    099     60
+# Couple of tables
+
+# Urban
+# name      gamma   idn lki     tki     lko     lko     phi     mode    dyn
+01_B_INN    0.00    42  0.0015  0.0001  0.0045  0.0001  3.1231  fu      0
+02_B_OUT    0.00    43  0.0014  0.0002  0.0045  0.0031  3.1001  pa      1
+03_B_INN    0.05    44  0.0013  0.0001  0.0045  0.0001  3.1201  fu      0
+04_B_OUT    0.05    45  0.0012  0.0002  0.0045  0.0031  3.0802  pa      1
+05_B_INN    0.10    46  0.0011  0.0001  0.0045  0.0001  3.1201  fu      0
+05_B_OUT    0.10    47  0.0010  0.0002  0.0045  0.0031  3.0802  pa      1
+
+# Rural
+# name      gamma   idn lki     tki     lko     lko     phi     mode    dyn
+01_B_INN    1.00    42  0.0015  0.0001  0.0045  0.0001  3.1231  fu      0
+02_B_OUT    1.00    43  0.0014  0.0002  0.0045  0.0031  3.1001  pa      1
+03_B_INN    1.05    44  0.0013  0.0001  0.0045  0.0001  3.1201  fu      0
+04_B_OUT    1.05    45  0.0012  0.0002  0.0045  0.0031  3.0802  pa      1
+05_B_INN    1.10    46  0.0011  0.0001  0.0045  0.0001  3.1201  fu      0
+05_B_OUT    1.10    47  0.0010  0.0002  0.0045  0.0031  3.0802  pa      1
+
+# Some Key Values
+
+overall_grad    :   43.01
+min_grad        :   1.6e-6
+include_rig     :   true
+
+# some single rows of values
+
+ford cortina 4 3 2 1
+99.6    apple   false
+
+# Some single values
+
+fibble
+101
 

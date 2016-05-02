@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"server/pages/view/models"
 	"io/ioutil"
+	"filereaders"
 )
 
 func init() {
@@ -50,10 +51,9 @@ func playground(w http.ResponseWriter, r *http.Request) {
 }
 
 func playground_space_sep(w http.ResponseWriter, r *http.Request) {
-
 	buf, _ := ioutil.ReadFile("server/static/examples/space_delim.txt")
 	input_text := string(buf)
-	output_text := "CONVERTED TO JSON of this" + input_text
+	output_text := string(filereaders.NewWhitespace(input_text).Convert())
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
 		models.NewTopLevel("make playground active", input_text, output_text))
 	if err != nil {

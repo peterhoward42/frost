@@ -8,8 +8,8 @@ type Playground struct {
 }
 
 // The NewPlayground function is a factory that makes Playground view models.
-func NewPlayground(input_txt string,
-	output_txt string) *Playground {
-	model := &Playground{input_txt, output_txt}
+func NewPlayground(inputTxt string,
+	outputTxt string) *Playground {
+	model := &Playground{inputTxt, outputTxt}
 	return model
 }

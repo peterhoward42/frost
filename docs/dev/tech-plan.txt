@@ -30,28 +30,22 @@
     *  Make space sep handler get content from resource
     *  Add another to refactor commonality in handler
 
-o  Stuff to Paul
-    *  Sensible looking example content
-    *  Conversion at front
-    *  Styled text areas
-    *  Make / work but not /anything
-    o  Sync
-    o  Deploy
-    o  How incl Paul to project
-    o  Note to him incl appspot and github
+*  Stuff to Paul
 
 o  Next iter - start to design tdd of conversion
-    o  Design input example file
-        o  Got any in mail?
+    *  Put in more realistic input file
+    *  Satisfy up conversion interface
+    *  Refactor processors to filereaders
+    o  Put the first bit of processing into the whitespace converter
+        o  Split into lines sequence attached line numbers
+        o  Trim
+        o  Separate into comment or non comment parsing
 
 
 -----------------------------------------------------------------------------
 Futures
 -----------------------------------------------------------------------------
-o  Cache examples if makes significantly quicker
-o  Some CSS transitions?
-
------------------------------------------------------------------------------
-How organise differentiation of example type required?
------------------------------------------------------------------------------
+o  Make input panes side by side or tabs or choice?
+o  Cache examples if makes significantly quicker?
+o  Some CSS transitions??
 
