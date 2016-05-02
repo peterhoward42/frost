@@ -3,12 +3,14 @@ package filereaders
 import (
 	"strings"
 	"parse"
+	"contract"
 )
 
 // The type Whitespace is a file reader for whitespace delimited files that can convert the
 // content discovered into a JSON representation, using FROSTS conversion rules. It is
 // shingle-shot to avoid the complexity of reinitialising state.
 type Whitespace struct {
+	Json []byte
 	inputText string
 	parsingContext *parse.Context	// Holds the original input line for error reporting needs.
 }
@@ -17,7 +19,9 @@ type Whitespace struct {
 // instance to particular file contents.
 func NewWhitespace(inputText string) *Whitespace {
 	return &Whitespace {
+		Json: []byte{},
 		inputText: inputText,
+		parsingContext: nil,
 	}
 }
 
@@ -34,7 +38,7 @@ func (ws *Whitespace) Convert() []byte {
 			ws.processNonCommentLine(trimmed)
 		}
 	}
-	return []byte("will be whitespace content")
+	return ws.Json
 }
 
 func (ws *Whitespace) processCommentLine(line string) {
@@ -44,8 +48,8 @@ func (ws *Whitespace) processNonCommentLine(line string) {
 	if len(line) == 0 {
 		return
 	}
-	fields := isolateFields(line);
-	processFields(fields);
+	fields := ws.isolateFields(line);
+	ws.processFields(fields);
 }
 
 func (ws *Whitespace) isolateFields(line string) []string {
@@ -55,4 +59,11 @@ func (ws *Whitespace) isolateFields(line string) []string {
 		fields[idx] = parse.UnMaskDoubleQuotes(field);
 	}
 	return fields
+}
+
+func (ws *Whitespace) processFields(fields []string) {
+	for _, field := range(fields) {
+		valueAlone := contract.NewValueAlone(field)
+		ws.Json = append(ws.Json, valueAlone.Json...);
+	}
 }

@@ -37,9 +37,16 @@ o  Next iter - start to design tdd of conversion
     *  Satisfy up conversion interface
     *  Refactor processors to filereaders
     o  Put the first bit of processing into the whitespace converter
-        o  Split into lines sequence attached line numbers
-        o  Trim
-        o  Separate into comment or non comment parsing
+        *  Split into lines sequence attached line numbers
+        *  Trim
+        *  Separate into comment or non comment parsing
+        *  Have I got go docs offline?
+        *  Parse out fields
+        *  Write fields out in json as strings
+        o  Expected each field to come out as obj in braces?
+            o  Gen up more on using json encoding in go
+        o  Type convert them
+        o  Add in comments
 
 
 -----------------------------------------------------------------------------
