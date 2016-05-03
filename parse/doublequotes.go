@@ -6,6 +6,7 @@ import (
 )
 
 var doubleQuoteRe = regexp.MustCompile(`"[^"]*"`)
+
 const almostSentinelString = `9975^-)zz#~foo` // Improbable to encounter by chance.
 
 // The MaskDoubleQuotes() function returns a modified version of the given string, in which

@@ -43,10 +43,21 @@ o  Next iter - start to design tdd of conversion
         *  Have I got go docs offline?
         *  Parse out fields
         *  Write fields out in json as strings
-        o  Expected each field to come out as obj in braces?
-            o  Gen up more on using json encoding in go
-        o  Type convert them
-        o  Add in comments
+        *  Fix so each field comes out as obj in braces?
+        o  Type convert the fields in value alone
+            *  provide request context down low
+            o  type conversion is duff
+                o  find better way
+                o  need unit tests for this stuff to be efficient
+        o  Add in comments objects
+    o  Work the precedence bottom up
+        o  How architect?
+
+
+-----------------------------------------------------------------------------
+Scratch
+-----------------------------------------------------------------------------
+
 
 
 -----------------------------------------------------------------------------

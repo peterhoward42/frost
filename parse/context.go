@@ -1,13 +1,13 @@
 package parse
 
 type Context struct {
-	LineNumber int
+	LineNumber   int
 	OriginalLine string
 }
 
 func NewContext(lineNumber int, originalLine string) *Context {
 	return &Context{
-		LineNumber: lineNumber,
+		LineNumber:   lineNumber,
 		OriginalLine: originalLine,
 	}
 }

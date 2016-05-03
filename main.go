@@ -1,11 +1,12 @@
 package frost
 
 import (
-	"net/http"
-	"html/template"
-	"server/pages/view/models"
-	"io/ioutil"
 	"filereaders"
+	"html/template"
+	"io/ioutil"
+	"net/http"
+	"server/pages/view/models"
+	"appengine"
 )
 
 func init() {
@@ -53,7 +54,8 @@ func playground(w http.ResponseWriter, r *http.Request) {
 func playground_space_sep(w http.ResponseWriter, r *http.Request) {
 	buf, _ := ioutil.ReadFile("server/static/examples/space_delim.txt")
 	input_text := string(buf)
-	output_text := string(filereaders.NewWhitespace(input_text).Convert())
+	output_text := string(filereaders.NewWhitespace(
+		input_text, appengine.NewContext(r)).Convert())
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
 		models.NewTopLevel("make playground active", input_text, output_text))
 	if err != nil {
