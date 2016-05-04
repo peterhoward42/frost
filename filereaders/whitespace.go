@@ -12,7 +12,7 @@ import (
 // content discovered into a JSON representation, using FROSTS conversion rules. It is
 // shingle-shot to avoid the complexity of reinitialising state.
 type Whitespace struct {
-	JsonData       []contract.JsonType
+	JsonData       []interface{}
 	inputText      string
 	requestContext appengine.Context
 	parsingContext *parse.Context // Holds the original input line for error reporting needs.
@@ -22,7 +22,7 @@ type Whitespace struct {
 // instance to particular file contents.
 func NewWhitespace(inputText string, ctx appengine.Context) *Whitespace {
 	return &Whitespace{
-		JsonData:       []contract.JsonType{},
+		JsonData:       []interface{}{},
 		inputText:      inputText,
 		requestContext: ctx,
 		parsingContext: nil,
@@ -60,17 +60,17 @@ func (ws *Whitespace) processNonCommentLine(line string) {
 	ws.processFields(fields)
 }
 
-func (ws *Whitespace) isolateFields(line string) (fields []contract.JsonType) {
+func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
 	masked := parse.MaskDoubleQuotes(line)
 	for _, fieldStr := range strings.Fields(masked) {
 		fieldStr = parse.UnMaskDoubleQuotes(fieldStr)
 		ws.requestContext.Infof("XXX dFrag is: %v", fieldStr)
-		fields = append(fields, contract.NewValueAlone(fieldStr))
+		fields = append(fields, contract.NewXXXValue(fieldStr))
 	}
 	return
 }
 
-func (ws *Whitespace) processFields(fields []contract.JsonType) {
+func (ws *Whitespace) processFields(fields []interface{}) {
 	// Temporarily treat all fields as isolated values.
 	ws.JsonData = append(ws.JsonData, fields...)
 }
