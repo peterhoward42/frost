@@ -1,39 +1,48 @@
 package contract
 
 import (
-	"reflect"
-	"strconv"
+	"parse"
 )
 
+// The IntegerValue structure wraps a native integer value, so as to elaborate it with properties
+// that are required in the context of the frost contract package.
 type IntegerValue struct {
-	Value int64
+	IntValue int
 }
 
 type FloatValue struct {
-	Value float64
+	FloatValue float64
 }
 
 type StringValue struct {
-	Value string
+	StringValue string
 }
 
 type BoolValue struct {
-	Value bool
+	BoolValue bool
 }
 
-func NewValueType(field *Field) JsonType {
-	switch {
-	case field.fieldType == reflect.Int:
-		value, _ := strconv.ParseInt(field.stringValue, 0, 64)
-		return IntegerValue{Value: value}
-	case field.fieldType == reflect.Float64:
-		value, _ := strconv.ParseFloat(field.stringValue, 64)
-		return FloatValue{Value: value}
-	case field.fieldType == reflect.Bool:
-		value, _ := strconv.ParseBool(field.stringValue)
-		return BoolValue{Value: value}
-	case field.fieldType == reflect.String:
-		return StringValue{Value: field.stringValue}
+// The NewValueAlone() function is a factory that makes an instance of one of the XXXValue type
+// objects above, depending the type implied by the incoming string representation. It
+// then returns a JsonType interface which points to the newly created structure.
+func NewValueAlone(inputString string) JsonType {
+	var matched bool;
+
+	matched, iVal := parse.LooksLikeAnInteger(inputString)
+	if matched {
+		return IntegerValue{IntValue: iVal}
 	}
-	return nil
+
+	matched, fVal := parse.LooksLikeAFloat(inputString)
+	if matched {
+		return FloatValue{FloatValue: fVal}
+	}
+
+	matched, bVal := parse.LooksLikeABool(inputString)
+	if matched {
+		return BoolValue{BoolValue: bVal}
+	}
+
+	// Catch all is to return a string value
+	return StringValue{StringValue: inputString}
 }

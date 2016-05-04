@@ -1,11 +1,11 @@
 package filereaders
 
 import (
+	"appengine"
 	"contract"
 	"encoding/json"
 	"parse"
 	"strings"
-	"appengine"
 )
 
 // The type Whitespace is a file reader for whitespace delimited files that can convert the
@@ -42,6 +42,8 @@ func (ws *Whitespace) Convert() []byte {
 			ws.processNonCommentLine(trimmed)
 		}
 	}
+	// Automated generation of JSON
+	// Todo use a constant for the indent string
 	theJson, _ := json.MarshalIndent(ws.JsonData, "", "  ")
 	return theJson
 }
@@ -58,19 +60,17 @@ func (ws *Whitespace) processNonCommentLine(line string) {
 	ws.processFields(fields)
 }
 
-func (ws *Whitespace) isolateFields(line string) (fields []*contract.Field) {
-	for _, delimitedFragment := range strings.Fields(parse.MaskDoubleQuotes(line)) {
-		delimitedFragment := parse.UnMaskDoubleQuotes(delimitedFragment)
-		ws.requestContext.Infof("XXX dFrag is: %v", delimitedFragment)
-		fields = append(fields, contract.NewField(delimitedFragment, ws.requestContext))
+func (ws *Whitespace) isolateFields(line string) (fields []contract.JsonType) {
+	masked := parse.MaskDoubleQuotes(line)
+	for _, fieldStr := range strings.Fields(masked) {
+		fieldStr = parse.UnMaskDoubleQuotes(fieldStr)
+		ws.requestContext.Infof("XXX dFrag is: %v", fieldStr)
+		fields = append(fields, contract.NewValueAlone(fieldStr))
 	}
 	return
 }
 
-func (ws *Whitespace) processFields(fields []*contract.Field) {
+func (ws *Whitespace) processFields(fields []contract.JsonType) {
 	// Temporarily treat all fields as isolated values.
-	for _, field := range fields {
-		valueAlone := contract.NewValueType(field)
-		ws.JsonData = append(ws.JsonData, valueAlone)
-	}
+	ws.JsonData = append(ws.JsonData, fields...)
 }

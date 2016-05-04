@@ -48,7 +48,13 @@ o  Next iter - start to design tdd of conversion
             *  provide request context down low
             o  type conversion is duff
                 o  find better way
+                    o  make whitespace parsing of fields clearer
+                    o  restructure fields content to use fixed set of types
+                       and to look nicer
                 o  need unit tests for this stuff to be efficient
+                    o  do unit test for type interence
+            o  add in tags
+            o  consider unit tests for makingvaluealones
         o  Add in comments objects
     o  Work the precedence bottom up
         o  How architect?
