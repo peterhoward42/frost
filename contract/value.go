@@ -1,7 +1,7 @@
 package contract
 
 import (
-	"parse"
+	"github.com/peterhoward42/frost/parse"
 	"encoding/json"
 )
 

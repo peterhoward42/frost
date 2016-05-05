@@ -47,17 +47,19 @@ o  Next iter - start to design tdd of conversion
         o  Type convert the fields in value alone
             *  provide request context down low
             o  type conversion is duff
-                o  find better way
+                *  find better way
                     *  make whitespace parsing of fields clearer
                     *  restructure fields content to use fixed set of types
                        and to look nicer
                 o  need unit tests for this stuff to be efficient
-                    o  do unit test for type interence
+                    *  do unit test for type interence
+                    *  double quotes
+                    *  new value
             o  add in tags
-            o  consider unit tests for makingvaluealones
         o  Add in comments objects
     o  Work the precedence bottom up
         o  How architect?
+    o  unit test for splitting at whitespace conv level?
 
 
 -----------------------------------------------------------------------------

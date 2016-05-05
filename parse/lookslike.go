@@ -3,11 +3,12 @@ package parse
 import (
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 var floatRe = regexp.MustCompile(`^[+-]?[\d]*\.[\d]+$`)
 var intRe = regexp.MustCompile(`^[+-]*[\d]+$`)
-var boolRe = regexp.MustCompile(`^(true|false)$`)
+var boolRe = regexp.MustCompile(`(?i)^(true|false)$`) // (i) means case-insensitive
 
 // The LooksLikeAnInteger() function assesses if the input string in its entirety looks like
 // a well formed integer, and when so, also provides the converted value.
@@ -38,7 +39,7 @@ func LooksLikeABool(inputStr string) (matched bool, value bool) {
 	if matched {
 		// strconv.ParseBool() is too willing for our needs, but we only let it loose
 		// once our own Regexp condition is met.
-		value, _ = strconv.ParseBool(inputStr)
+		value, _ = strconv.ParseBool(strings.ToLower(inputStr))
 		return true, value
 	}
 	return

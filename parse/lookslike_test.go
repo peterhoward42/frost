@@ -44,3 +44,37 @@ func TestLooksLikeAFloatWithValidInputs(t *testing.T) {
 		}
 	}
 }
+
+func TestLooksLikeAFloatRejectsMalformedInputs(t *testing.T) {
+	malformed := []string{" 4.2", "4.2 ", "a4.2", "4.2a42", "4.2a", "42"}
+	for _, s := range malformed {
+		matched, _ := LooksLikeAFloat(s)
+		if matched == true {
+			t.Errorf("Spuriously recognized: %v", s)
+		}
+	}
+}
+
+func TestLooksLikeABoolWithValidInputs(t *testing.T) {
+	legitInputs := []string{"true", "tRuE", "false", "fAlSe"}
+	expected := []bool{true, true, false, false}
+	for idx, s := range legitInputs {
+		matched, v := LooksLikeABool(s)
+		if matched != true {
+			t.Errorf("Failed to recognize: %v", s)
+		}
+		if v != expected[idx] {
+			t.Errorf("Failed to extract value from: %v", s)
+		}
+	}
+}
+
+func TestLooksLikeABoolRejectsMalformedInputs(t *testing.T) {
+	malformed := []string{" true", "false "}
+	for _, s := range malformed {
+		matched, _ := LooksLikeABool(s)
+		if matched == true {
+			t.Errorf("Spuriously recognized: %v", s)
+		}
+	}
+}

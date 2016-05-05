@@ -61,9 +61,9 @@ func (ws *Whitespace) processNonCommentLine(line string) {
 }
 
 func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
-	masked := parse.MaskDoubleQuotes(line)
+	masked := parse.DisguiseDoubleQuotedSegments(line)
 	for _, fieldStr := range strings.Fields(masked) {
-		fieldStr = parse.UnMaskDoubleQuotes(fieldStr)
+		fieldStr = parse.UnDisguise(fieldStr)
 		ws.requestContext.Infof("XXX dFrag is: %v", fieldStr)
 		fields = append(fields, contract.NewXXXValue(fieldStr))
 	}
