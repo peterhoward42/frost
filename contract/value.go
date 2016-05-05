@@ -1,8 +1,8 @@
 package contract
 
 import (
-	"github.com/peterhoward42/frost/parse"
 	"encoding/json"
+	"github.com/peterhoward42/frost/parse"
 )
 
 // This set of XXXValue structures wrap a native integer value, so as to elaborate it with
@@ -17,6 +17,7 @@ type FloatValue struct {
 
 type StringValue struct {
 	StringValue string
+	Tags []string
 }
 
 type BoolValue struct {
@@ -27,7 +28,7 @@ type BoolValue struct {
 // objects above, depending the type implied by the incoming string representation. It
 // then returns a JsonType interface which points to the newly created structure.
 func NewXXXValue(inputString string) interface{} {
-	var matched bool;
+	var matched bool
 
 	matched, iVal := parse.LooksLikeAnInteger(inputString)
 	if matched {
@@ -45,22 +46,18 @@ func NewXXXValue(inputString string) interface{} {
 	}
 
 	// Catch all is to return a string value
-	return StringValue{StringValue: inputString}
+	return StringValue{StringValue:inputString, Tags: NewStringTags(inputString)}
 }
 
-// This set of MarshalJSON() methods implement the json.Marshaler interface, and we use them
-// to downgrade what is output as JSON to the JSON that would be output for underlying native
-// value held within, rather than wrapping it inside an object.
+// We override this interface for the numeric variants to downgrade the JSON created from
+// that of an object to that of a raw type. We don't do it for the string variant because we
+// want that one to also include the tags.
 func (v FloatValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.FloatValue)
 }
 
 func (v IntegerValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.IntValue)
-}
-
-func (v StringValue) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.StringValue)
 }
 
 func (v BoolValue) MarshalJSON() ([]byte, error) {

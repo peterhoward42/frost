@@ -10,7 +10,7 @@ default_expiration: "0d 0h"
 handlers:
 
 - url: /static
-  static_dir: server/static
+  static_dir: ../../server/static
   application_readable: true # So the app can read and parse templates at runtime
 
 - url: /.*

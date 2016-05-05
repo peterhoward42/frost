@@ -1,19 +1,19 @@
 package contract
 
 import (
-	"testing"
 	"encoding/json"
-	"reflect"
 	"fmt"
+	"reflect"
+	"testing"
 )
 
-func TestValueCreationWithJsonOutputForAllTypes(t *testing.T) {
-	inputStrings := []string{"42", "3.14", "true", "hello"}
+func TestValueCreationWithJsonOutputForNonStringTypes(t *testing.T) {
+	inputStrings := []string{"42", "3.14", "true"}
 	typesExpected := []string{"contract.IntegerValue", "contract.FloatValue",
-		"contract.BoolValue", "contract.StringValue"}
-	jsonExpected := []string{"42", "3.14", "true", `"hello"`}
+		"contract.BoolValue"}
+	jsonExpected := []string{"42", "3.14", "true"}
 
-	for index, inputString := range (inputStrings) {
+	for index, inputString := range inputStrings {
 		v := NewXXXValue(inputString)
 		typeCreated := fmt.Sprintf("%v", reflect.TypeOf(v))
 		typeExpected := typesExpected[index]
@@ -28,5 +28,28 @@ func TestValueCreationWithJsonOutputForAllTypes(t *testing.T) {
 			t.Errorf("json output wrong. Got: <%v>, expected: <%v>", jsonProduced,
 				jsonExpected)
 		}
+	}
+}
+
+func TestValueCreationForString(t *testing.T) {
+	inputString := "ABB_1_OFF"
+
+	// Ensure correct type created.
+	v := NewXXXValue(inputString)
+	typeCreated := fmt.Sprintf("%v", reflect.TypeOf(v))
+	typeExpected := "contract.StringValue"
+	if typeCreated != typeExpected {
+		t.Errorf("Type inferred wrong. Got: %v, but expected: %v", typeCreated,
+			typeExpected)
+	}
+
+	// Ensure there are some tags captured - but leave detailed tag testing to a separate
+	// unit test.
+	stringValue := v.(StringValue)
+	numTagsFound := len(stringValue.Tags)
+	numTagsExpected := 3;
+	if numTagsFound != numTagsExpected {
+		t.Errorf("Number of tags wrong. Got: %v, but expected: %v", numTagsFound,
+			numTagsExpected)
 	}
 }

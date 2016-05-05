@@ -1,8 +1,8 @@
 package parse
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestLooksLikeAnIntegerWithValidInputs(t *testing.T) {

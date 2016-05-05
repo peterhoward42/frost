@@ -2,16 +2,20 @@ package frost
 
 import (
 	"appengine"
-	"filereaders"
+	"github.com/peterhoward42/frost/filereaders"
+	"github.com/peterhoward42/frost/server/pages/view/models"
 	"html/template"
 	"io/ioutil"
 	"net/http"
-	"server/pages/view/models"
+	"fmt"
 )
 
 func init() {
-	gui_template, _ = template.ParseGlob("server/static/templates/*.html")
-	// todo what if template read fails during init?
+	var err error
+	gui_template, err = template.ParseGlob("../../server/static/templates/*.html")
+    	if err != nil {
+        	panic(fmt.Sprintf("template parsing failed with %v", err.Error()))
+	}
 
 	// Todo, not sure yet if these two URLs should continue to use a handler in common.
 	http.HandleFunc("/playground", playground)
@@ -52,7 +56,7 @@ func playground(w http.ResponseWriter, r *http.Request) {
 }
 
 func playground_space_sep(w http.ResponseWriter, r *http.Request) {
-	buf, _ := ioutil.ReadFile("server/static/examples/space_delim.txt")
+	buf, _ := ioutil.ReadFile("../../server/static/examples/space_delim.txt")
 	input_text := string(buf)
 	output_text := string(filereaders.NewWhitespace(
 		input_text, appengine.NewContext(r)).Convert())
@@ -65,7 +69,7 @@ func playground_space_sep(w http.ResponseWriter, r *http.Request) {
 
 func playground_csv(w http.ResponseWriter, r *http.Request) {
 
-	buf, _ := ioutil.ReadFile("server/static/examples/csv.csv")
+	buf, _ := ioutil.ReadFile("../../server/static/examples/csv.csv")
 	input_text := string(buf)
 	output_text := "CONVERTED TO JSON of this" + input_text
 	err := gui_template.ExecuteTemplate(w, "maingui.html",

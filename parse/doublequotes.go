@@ -10,7 +10,7 @@ var doubleQuoteRe = regexp.MustCompile(`"[^"]*"`)
 const almostSentinelString = `*($&x12#a~` // Improbable to encounter by chance.
 
 // The DisguiseDoubleQuotedSegments() function returns a modified version of the given string, in
-// which any internal double quoted strings are replaced with non-quoted variants in which any 
+// which any internal double quoted strings are replaced with non-quoted variants in which any
 // internal spaces have been replaced with the almost-sentinel string above.
 func DisguiseDoubleQuotedSegments(inputString string) string {
 	return doubleQuoteRe.ReplaceAllStringFunc(inputString, replacer)
