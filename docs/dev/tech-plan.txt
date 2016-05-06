@@ -67,7 +67,13 @@ o  Next iter - start to design tdd of conversion
                     *  fix up
                         *  advice is to have no subdirs of app.yaml and main.go
                            that have code in
-            o  check integration
+                    *  design tags contract
+                    *  design tags impl
+                    o  tdd up
+                        o  std delims
+                        o  seg transitions
+                        o  empty and singular exceptions
+                        o  leading or trailing spaces
         o  Add in comments objects
     o  Work the precedence bottom up
         o  How architect?

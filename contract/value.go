@@ -5,8 +5,8 @@ import (
 	"github.com/peterhoward42/frost/parse"
 )
 
-// This set of XXXValue structures wrap a native integer value, so as to elaborate it with
-// properties that are required in the context of the frost contract package.
+// This set of XXXValue structures wrap a native typed primitive value, so as to elaborate them with
+// properties and behaviour that are required in the context of the frost contract package.
 type IntegerValue struct {
 	IntValue int
 }
@@ -24,9 +24,9 @@ type BoolValue struct {
 	BoolValue bool
 }
 
-// The NewXXXValue() function is a factory that makes an instance of one of the XXXValue type
-// objects above, depending the type implied by the incoming string representation. It
-// then returns a JsonType interface which points to the newly created structure.
+// The NewXXXValue() function is a polymorphic factory function that makes an instance of one
+// of the XXXValue types above, depending on the type implied by the incoming string
+// representation. It returns an empty interface object that points to the concrete type created.
 func NewXXXValue(inputString string) interface{} {
 	var matched bool
 
@@ -46,7 +46,7 @@ func NewXXXValue(inputString string) interface{} {
 	}
 
 	// Catch all is to return a string value
-	return StringValue{StringValue:inputString, Tags: NewStringTags(inputString)}
+	return StringValue{StringValue:inputString, Tags: CaptureTagsFromString(inputString)}
 }
 
 // We override this interface for the numeric variants to downgrade the JSON created from
