@@ -56,9 +56,9 @@ o  Next iter - start to design tdd of conversion
                     *  double quotes
                     *  new value
         *  add in tags
-        o  Add in comments objects
+        *  Add in comments objects
     o  Work the precedence bottom up
-        o  How architect?
+        o  Add in Row as higher precedence
     o  unit test for splitting at whitespace conv level?
 
 
