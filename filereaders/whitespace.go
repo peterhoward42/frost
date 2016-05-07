@@ -64,23 +64,25 @@ func (ws *Whitespace) consumeNonCommentLine(line string) {
 	if len(line) == 0 {
 		return
 	}
-	fields := ws.isolateFields(line)
-	ws.consumeFieldsFromLine(fields)
+	fieldStrings := ws.isolateFields(line)
+	ws.consumeFieldsFromLine(fieldStrings)
 }
 
-func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
-	masked := parse.DisguiseDoubleQuotedSegments(line)
-	for _, fieldStr := range strings.Fields(masked) {
-		fieldStr = parse.UnDisguise(fieldStr)
-		fields = append(fields, contract.NewXXXValue(fieldStr))
+func (ws *Whitespace) isolateFields(line string) (fields []string) {
+	lineWithMaskedQuotedStrings := parse.DisguiseDoubleQuotedSegments(line)
+	for _, delimitedString := range strings.Fields(lineWithMaskedQuotedStrings) {
+		undisguisedString := parse.UnDisguise(delimitedString)
+		fields = append(fields, undisguisedString)
 	}
 	return
 }
 
-func (ws *Whitespace) consumeFieldsFromLine(fields []interface{}) {
+func (ws *Whitespace) consumeFieldsFromLine(fields []string) {
 	// The order here represents the precedence we declared for recognizing things in
 	// the FROST contract for whitespace delimited files.
 	switch {
+	case ws.consumeAsKeyValuePair(fields):
+		return
 	case ws.consumeAsStandaloneRowOfValues(fields):
 		return
 	case ws.consumeAsAsAStandaloneValue(fields):
@@ -90,19 +92,43 @@ func (ws *Whitespace) consumeFieldsFromLine(fields []interface{}) {
 	}
 }
 
-func (ws *Whitespace) consumeAsStandaloneRowOfValues(fields []interface{}) (succeeded bool) {
-	if len(fields) < 3 {
+func (ws *Whitespace) consumeAsKeyValuePair(fieldStrings []string) (succeeded bool) {
+	// The first field must look like a sensible key
+	if parse.LooksLikeAKeyString(fieldStrings[0]) == false {
 		return false
 	}
-	ws.jsonData = append(ws.jsonData, contract.NewRowOfValues(fields))
+	keyString := fieldStrings[0]
+	// When there are only two fields, we take the second one to be the value.
+	if len(fieldStrings) == 2 {
+		ws.jsonData = append(ws.jsonData, contract.NewKeyValuePair(
+			keyString, fieldStrings[1]))
+		return true
+	}
+	// We will take the first and third, when there are three, if the middle one is
+	// an equals sign or a colon.
+	if len(fieldStrings) == 3 {
+		if strings.Contains(":=", fieldStrings[1]) {
+			ws.jsonData = append(ws.jsonData,
+				contract.NewKeyValuePair(keyString, fieldStrings[2]))
+			return true
+		}
+	}
+	return false
+}
+
+func (ws *Whitespace) consumeAsStandaloneRowOfValues(fieldStrings []string) (succeeded bool) {
+	if len(fieldStrings) < 3 {
+		return false
+	}
+	ws.jsonData = append(ws.jsonData, contract.NewRowOfValues(fieldStrings))
 	return true
 }
 
-func (ws *Whitespace) consumeAsAsAStandaloneValue(fields []interface{}) (succeeded bool) {
-	if len(fields) > 1 {
+func (ws *Whitespace) consumeAsAsAStandaloneValue(fieldStrings []string) (succeeded bool) {
+	if len(fieldStrings) > 1 {
 		panic("We should only reach here for rows with a single field in.")
 	}
-	theOnlyField := fields[0]
-	ws.jsonData = append(ws.jsonData, theOnlyField)
+	theOnlyFieldString := fieldStrings[0]
+	ws.jsonData = append(ws.jsonData, contract.NewXXXValue(theOnlyFieldString))
 	return true
 }

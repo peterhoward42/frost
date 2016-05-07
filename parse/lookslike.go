@@ -9,6 +9,7 @@ import (
 var floatRe = regexp.MustCompile(`^[+-]?[\d]*\.[\d]+$`)
 var intRe = regexp.MustCompile(`^[+-]*[\d]+$`)
 var boolRe = regexp.MustCompile(`(?i)^(true|false)$`) // (i) means case-insensitive
+var keyStringRe = regexp.MustCompile(`^[a-zA-Z][a-zA-Z0-9_-]*$`)
 
 // The LooksLikeAnInteger() function assesses if the input string in its entirety looks like
 // a well formed integer, and when so, also provides the converted value.
@@ -43,4 +44,11 @@ func LooksLikeABool(inputStr string) (matched bool, value bool) {
 		return true, value
 	}
 	return
+}
+
+// The LooksLikeAKeyString() function assesses if the input string in its entirety looks like
+// a string that is suitable to use as a key. I.e. rather like the rules for an identifier func init() {
+// a programming language.
+func LooksLikeAKeyString(inputStr string) (matched bool) {
+	return keyStringRe.MatchString(inputStr)
 }

@@ -58,7 +58,9 @@ o  Next iter - start to design tdd of conversion
         *  add in tags
         *  Add in comments objects
     o  Work the precedence bottom up
-        o  Add in Row as higher precedence
+        *  Add in Row as higher precedence
+        o  KeyValue
+            o  Unit test for looks like a key string
     o  unit test for splitting at whitespace conv level?
 
 
@@ -66,7 +68,14 @@ o  Next iter - start to design tdd of conversion
 Scratch
 -----------------------------------------------------------------------------
 
-	ws.requestContext.Infof("XXX Line is: %v", line)
+func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
+	masked := parse.DisguiseDoubleQuotedSegments(line)
+	for _, fieldStr := range strings.Fields(masked) {
+		fieldStr = parse.UnDisguise(fieldStr)
+		fields = append(fields, contract.NewXXXValue(fieldStr))
+	}
+	return
+}
 
 
 -----------------------------------------------------------------------------

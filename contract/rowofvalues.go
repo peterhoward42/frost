@@ -5,9 +5,13 @@ type RowOfValues struct {
 	Values []interface{} // E.g. FloatValue
 }
 
-func NewRowOfValues(values []interface{}) *RowOfValues {
-	return &RowOfValues {
+func NewRowOfValues(valueStrings []string) *RowOfValues {
+	rowOfValues := RowOfValues{
 		Type: "RowOfValues",
-		Values: values,
+		Values: []interface{}{},
 	}
+	for _, valueString := range(valueStrings) {
+		rowOfValues.Values = append(rowOfValues.Values, NewXXXValue(valueString))
+	}
+	return &rowOfValues
 }
