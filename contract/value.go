@@ -16,8 +16,9 @@ type FloatValue struct {
 }
 
 type StringValue struct {
-	StringValue string
-	Tags []string
+	Type  string
+	Value string
+	Tags  []string
 }
 
 type BoolValue struct {
@@ -46,12 +47,14 @@ func NewXXXValue(inputString string) interface{} {
 	}
 
 	// Catch all is to return a string value
-	return StringValue{StringValue:inputString, Tags: CaptureTagsFromString(inputString)}
+	return StringValue{
+		Type:  "String",
+		Value: inputString,
+		Tags:  CaptureTagsFromString(inputString)}
 }
 
-// We override this interface for the numeric variants to downgrade the JSON created from
-// that of an object to that of a raw type. We don't do it for the string variant because we
-// want that one to also include the tags.
+// We override these interface functions to customize the JSON produced
+
 func (v FloatValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.FloatValue)
 }

@@ -21,12 +21,13 @@ func TestStringTagsSplitCopesWithEmptyString(t *testing.T) {
 	}
 }
 
-func TestStringTagsSplitCopesWithDelimiterAlone(t *testing.T) {
-	segments := CaptureTagsFromString(`-`)
+func TestStringTagsSplitDoesNothingWithSingleCharacterInput(t *testing.T) {
+	segments := CaptureTagsFromString(`a`)
 	if len(segments) != 0 {
-		t.Errorf("Failed to cope with delimiter alone.")
+		t.Errorf("Failed to ignore single character string.")
 	}
 }
+
 func TestStringTagsSplitAbandonsDelimiterSchemeIfProducesEmptySegments(t *testing.T) {
 	segments := CaptureTagsFromString(`foo-bar-`)
 	if len(segments) != 0 {
@@ -44,7 +45,7 @@ func TestStringTagsSplitCopesWithDelimitersWithNothingBetween(t *testing.T) {
 // Now the mainstream tests.
 
 func TestStringTagsSplitOnCustomaryDelimiters(t *testing.T) {
-	// Repeat the same test for each expected delimiter
+	// Repeat the same test for each delimiter in the FROST tagging contract.
 	for _, delim := range []string{`_`, `-`, `.`, `/`, `\`} {
 		segments := CaptureTagsFromString(`foo` + delim + `bar` + delim + `baz`)
 		expected := []string{`foo`, `bar`, `baz`}
@@ -65,3 +66,26 @@ func TestStringTagsSplitOnCustomaryDelimiters(t *testing.T) {
 	}
 }
 
+func TestStringTagsSplitOnWellFormedAlternativesDigitsFirst(t *testing.T) {
+	input := "42foo9bar"
+	tagsExpected := []string{"42", "foo", "9", "bar"}
+	tagsFound := CaptureTagsFromString(input)
+	for idx, tagFound := range(tagsFound) {
+		expected := tagsExpected[idx]
+		if tagFound != expected {
+			t.Errorf("Unexpected tag. Got: %v, expected %v", tagFound, expected)
+		}
+	}
+}
+
+func TestStringTagsSplitOnWellFormedAlternativesNonDigitsFirst(t *testing.T) {
+	input := "foo9bar42"
+	tagsExpected := []string{"foo", "9", "bar", "42"}
+	tagsFound := CaptureTagsFromString(input)
+	for idx, tagFound := range(tagsFound) {
+		expected := tagsExpected[idx]
+		if tagFound != expected {
+			t.Errorf("Unexpected tag. Got: %v, expected %v", tagFound, expected)
+		}
+	}
+}

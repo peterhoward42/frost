@@ -55,25 +55,7 @@ o  Next iter - start to design tdd of conversion
                     *  do unit test for type interence
                     *  double quotes
                     *  new value
-        o  add in tags
-            *  express need at point of demand
-            o  test up
-                o  need to fix conflict import prob
-                    *  uninstall old go
-                    *  uninstall old gae sdk
-                    *  check path is benign
-                    *  upgrade go to latest
-                    *  upgrade gae to latest
-                    *  fix up
-                        *  advice is to have no subdirs of app.yaml and main.go
-                           that have code in
-                    *  design tags contract
-                    *  design tags impl
-                    o  tdd up
-                        o  std delims
-                        o  seg transitions
-                        o  empty and singular exceptions
-                        o  leading or trailing spaces
+        *  add in tags
         o  Add in comments objects
     o  Work the precedence bottom up
         o  How architect?
