@@ -78,3 +78,29 @@ func TestLooksLikeABoolRejectsMalformedInputs(t *testing.T) {
 		}
 	}
 }
+
+func TestLooksLikeAKeyStringWithWellFormedInput(t *testing.T) {
+	if LooksLikeAKeyString("Front_99") == false {
+		t.Errorf("Failed to regognize properly formed key string")
+	}
+}
+
+func TestLooksLikeAKeyStringAcceptsFullCharacterRanges(t *testing.T) {
+	if LooksLikeAKeyString("aA9_-") == false {
+		t.Errorf("Failed to regognize properly formed key string")
+	}
+}
+
+func TestLooksLikeAKeyStringAInsistsFirstCharIsAlpha(t *testing.T) {
+	if LooksLikeAKeyString("9abc") == true {
+		t.Errorf("Spuriously recognized string with number at start")
+	}
+}
+
+func TestLooksLikeAKeyStringRejectsWrongSortsOfChars(t *testing.T) {
+	if LooksLikeAKeyString("a#") == true {
+		t.Errorf("Spuriously recognized string with illegal character in.")
+	}
+}
+
+

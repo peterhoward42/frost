@@ -47,7 +47,7 @@ func LooksLikeABool(inputStr string) (matched bool, value bool) {
 }
 
 // The LooksLikeAKeyString() function assesses if the input string in its entirety looks like
-// a string that is suitable to use as a key. I.e. rather like the rules for an identifier func init() {
+// a string that is suitable to use as a key. I.e. rather like the rules for an identifier in
 // a programming language.
 func LooksLikeAKeyString(inputStr string) (matched bool) {
 	return keyStringRe.MatchString(inputStr)
