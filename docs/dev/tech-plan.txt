@@ -61,6 +61,13 @@ o  Next iter - start to design tdd of conversion
         *  Add in Row as higher precedence
         *  KeyValue
         o  Why not working on gae?
+            *  Is it wise to have panics - can ever see in gae?
+                *  Yes - from dev console if you look real hard
+            o  Think probably doesn't like static files being in higher dir
+               than yaml
+                o  Try refactoring local copy to work thus
+                o  Does it now work on real gae?
+            o  If it works - seed github issue log thus
     o  unit test for splitting at whitespace conv level?
 
 
