@@ -102,5 +102,3 @@ func TestLooksLikeAKeyStringRejectsWrongSortsOfChars(t *testing.T) {
 		t.Errorf("Spuriously recognized string with illegal character in.")
 	}
 }
-
-

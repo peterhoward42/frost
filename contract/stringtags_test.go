@@ -70,7 +70,7 @@ func TestStringTagsSplitOnWellFormedAlternativesDigitsFirst(t *testing.T) {
 	input := "42foo9bar"
 	tagsExpected := []string{"42", "foo", "9", "bar"}
 	tagsFound := CaptureTagsFromString(input)
-	for idx, tagFound := range(tagsFound) {
+	for idx, tagFound := range tagsFound {
 		expected := tagsExpected[idx]
 		if tagFound != expected {
 			t.Errorf("Unexpected tag. Got: %v, expected %v", tagFound, expected)
@@ -82,7 +82,7 @@ func TestStringTagsSplitOnWellFormedAlternativesNonDigitsFirst(t *testing.T) {
 	input := "foo9bar42"
 	tagsExpected := []string{"foo", "9", "bar", "42"}
 	tagsFound := CaptureTagsFromString(input)
-	for idx, tagFound := range(tagsFound) {
+	for idx, tagFound := range tagsFound {
 		expected := tagsExpected[idx]
 		if tagFound != expected {
 			t.Errorf("Unexpected tag. Got: %v, expected %v", tagFound, expected)

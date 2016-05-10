@@ -47,7 +47,7 @@ func TestValueCreationForString(t *testing.T) {
 	// unit test.
 	stringValue := v.(StringValue)
 	numTagsFound := len(stringValue.Tags)
-	numTagsExpected := 3;
+	numTagsExpected := 3
 	if numTagsFound != numTagsExpected {
 		t.Errorf("Number of tags wrong. Got: %v, but expected: %v", numTagsFound,
 			numTagsExpected)

@@ -61,11 +61,9 @@ o  Next iter - start to design tdd of conversion
         *  Add in Row as higher precedence
         *  KeyValue
         o  Tables
-            o  Consider search ahead and how organise outer nav so to do
-            o  Repurpose id of row for native type and inspection
-            o  Consider how to put into json and make types
-            o  Consider current table statefulness
-            o  Try to build
+            *  Consider search ahead and how organise outer nav so to do
+            o  Design table state machine
+            o  Have a play and explore to see how it works out
             o  Add in column headings recognition
             o  Add in table name recognition
     o  unit test for splitting at whitespace conv level?
@@ -74,15 +72,24 @@ o  Next iter - start to design tdd of conversion
 -----------------------------------------------------------------------------
 Scratch
 -----------------------------------------------------------------------------
+Table FSM
 
-func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
-	masked := parse.DisguiseDoubleQuotedSegments(line)
-	for _, fieldStr := range strings.Fields(masked) {
-		fieldStr = parse.UnDisguise(fieldStr)
-		fields = append(fields, contract.NewXXXValue(fieldStr))
-	}
-	return
+bool inTable init to false
+
+if tableUnderConstruction 
+    addedToExistingTable = consumeAsNextLineInTable {
+    if addedToExistingTable
+        return       
+    } else {
+        # We found a non-table line
+        finalize tableUnderConstruction
+        tableUnderConstruction = false
+    }
 }
+# Drop thru
+
+
+
 
 
 -----------------------------------------------------------------------------
