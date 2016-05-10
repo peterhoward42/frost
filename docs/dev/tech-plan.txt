@@ -60,14 +60,14 @@ o  Next iter - start to design tdd of conversion
     o  Work the precedence bottom up
         *  Add in Row as higher precedence
         *  KeyValue
-        o  Why not working on gae?
-            *  Is it wise to have panics - can ever see in gae?
-                *  Yes - from dev console if you look real hard
-            o  Think probably doesn't like static files being in higher dir
-               than yaml
-                o  Try refactoring local copy to work thus
-                o  Does it now work on real gae?
-            o  If it works - seed github issue log thus
+        o  Tables
+            o  Consider search ahead and how organise outer nav so to do
+            o  Repurpose id of row for native type and inspection
+            o  Consider how to put into json and make types
+            o  Consider current table statefulness
+            o  Try to build
+            o  Add in column headings recognition
+            o  Add in table name recognition
     o  unit test for splitting at whitespace conv level?
 
 
@@ -88,7 +88,4 @@ func (ws *Whitespace) isolateFields(line string) (fields []interface{}) {
 -----------------------------------------------------------------------------
 Futures
 -----------------------------------------------------------------------------
-o  Make input panes side by side or tabs or choice?
-o  Cache examples if makes significantly quicker?
-o  Some CSS transitions??
 

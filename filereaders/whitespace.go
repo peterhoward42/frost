@@ -22,6 +22,7 @@ type Whitespace struct {
 	*/
 	jsonData  []interface{}
 	inputText string
+	lines     []string
 
 	// We capture the context of the http request that launched this calling stack to make it
 	// possible to do logging and diagnostics in the app engine world.
@@ -32,23 +33,20 @@ type Whitespace struct {
 // instance permanently to a particular file contents, and a single http request instance.
 func NewWhitespace(inputText string, ctx appengine.Context) *Whitespace {
 	return &Whitespace{
-		jsonData:       []interface{}{},
 		inputText:      inputText,
+		lines:          nil,
 		requestContext: ctx,
 	}
 }
 
 // The Convert() method is the mandate to launch the file contents conversion into JSON.
 func (ws *Whitespace) Convert() []byte {
-	// In the case of whitespace delimited files, we delegate to a sub function for each
-	// separate line of input.
-	for _, lineTxt := range strings.Split(ws.inputText, "\n") {
-		trimmed := strings.TrimSpace(lineTxt)
-		if strings.HasPrefix(trimmed, "#") {
-			ws.consumeComment(trimmed)
-		} else {
-			ws.consumeNonCommentLine(trimmed)
-		}
+	ws.lines = []string{}
+	for _, line := range(strings.Split(ws.inputText, "\n")) {
+		ws.lines = append(ws.lines, strings.TrimSpace(line))
+	}
+	for i := 0; i < len(ws.lines); i++ {
+		ws.processLine(i)
 	}
 	// Generate the JSON using the json library's ability to traverse automatically the data
 	// structure topology we made underneath ws.jsonData.
@@ -56,30 +54,17 @@ func (ws *Whitespace) Convert() []byte {
 	return theJson
 }
 
-func (ws *Whitespace) consumeComment(line string) {
-	ws.jsonData = append(ws.jsonData, contract.NewComment(line))
-}
-
-func (ws *Whitespace) consumeNonCommentLine(line string) {
+func (ws *Whitespace) processLine(currentLineIndex int) {
+	line := ws.lines[currentLineIndex]
+	// This method implements a highly significant order of precedence.
 	if len(line) == 0 {
 		return
 	}
-	fieldStrings := ws.isolateFields(line)
-	ws.consumeFieldsFromLine(fieldStrings)
-}
-
-func (ws *Whitespace) isolateFields(line string) (fields []string) {
-	lineWithMaskedQuotedStrings := parse.DisguiseDoubleQuotedSegments(line)
-	for _, delimitedString := range strings.Fields(lineWithMaskedQuotedStrings) {
-		undisguisedString := parse.UnDisguise(delimitedString)
-		fields = append(fields, undisguisedString)
+	if strings.HasPrefix(line, "#") {
+		ws.consumeComment(line)
+		return
 	}
-	return
-}
-
-func (ws *Whitespace) consumeFieldsFromLine(fields []string) {
-	// The order here represents the precedence we declared for recognizing things in
-	// the FROST contract for whitespace delimited files.
+	fields := ws.isolateFields(line)
 	switch {
 	case ws.consumeAsKeyValuePair(fields):
 		return
@@ -90,6 +75,19 @@ func (ws *Whitespace) consumeFieldsFromLine(fields []string) {
 	default:
 		panic("Something has gone wrong. Nothing accepted this input line.")
 	}
+}
+
+func (ws *Whitespace) consumeComment(line string) {
+	ws.jsonData = append(ws.jsonData, contract.NewComment(line))
+}
+
+func (ws *Whitespace) isolateFields(line string) (fields []string) {
+	lineWithMaskedQuotedStrings := parse.DisguiseDoubleQuotedSegments(line)
+	for _, delimitedString := range strings.Fields(lineWithMaskedQuotedStrings) {
+		undisguisedString := parse.UnDisguise(delimitedString)
+		fields = append(fields, undisguisedString)
+	}
+	return
 }
 
 func (ws *Whitespace) consumeAsKeyValuePair(fieldStrings []string) (succeeded bool) {
