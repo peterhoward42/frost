@@ -7,6 +7,7 @@ import (
 
 // This set of XXXValue structures wrap a native typed primitive value, so as to elaborate them with
 // properties and behaviour that are required in the context of the frost contract package.
+
 type IntegerValue struct {
 	IntValue int
 }
@@ -15,14 +16,13 @@ type FloatValue struct {
 	FloatValue float64
 }
 
-type StringValue struct {
-	Type  string
-	Value string
-	Tags  []string
-}
-
 type BoolValue struct {
 	BoolValue bool
+}
+
+type StringValue struct {
+	Value string
+	Tags  []string
 }
 
 // The NewXXXValue() function is a polymorphic factory function that makes an instance of one
@@ -48,21 +48,42 @@ func NewXXXValue(inputString string) interface{} {
 
 	// Catch all is to return a string value
 	return StringValue{
-		Type:  "String",
 		Value: inputString,
-		Tags:  CaptureTagsFromString(inputString)}
+		Tags:  CaptureTagsFromString(inputString),
+	}
 }
 
-// We override these interface functions to customize the JSON produced
+// We implement the HasFrostType interface for each type of value
 
-func (v FloatValue) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.FloatValue)
-}
+func (v IntegerValue) GetFrostType() FrostType { return FrostInt }
+func (v FloatValue) GetFrostType() FrostType   { return FrostFloat }
+func (v BoolValue) GetFrostType() FrostType    { return FrostBool }
+func (v StringValue) GetFrostType() FrostType  { return FrostString }
+
+// We implement the MarshalJSON interface to customise the JSON produced.
 
 func (v IntegerValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.IntValue)
 }
 
+func (v FloatValue) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.FloatValue)
+}
+
 func (v BoolValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.BoolValue)
+}
+
+func (v StringValue) MarshalJSON() ([]byte, error) {
+	type template struct {
+		Type  string
+		Value string
+		Tags  []string
+	}
+	toMarshal := template{
+		Type:  "string",
+		Value: v.Value,
+		Tags:  v.Tags,
+	}
+	return json.Marshal(toMarshal)
 }

@@ -15,3 +15,17 @@ func NewRowOfValues(valueStrings []string) *RowOfValues {
 	}
 	return &rowOfValues
 }
+
+func (row *RowOfValues) HasSameSignatureAs(otherRow *RowOfValues) bool {
+	if len(row.Values) != len(otherRow.Values) {
+		return false
+	}
+	for i := 0; i < len(row.Values); i++ {
+		rowSig := row.Values[i].(HasFrostType).GetFrostType();
+		otherRowSig := otherRow.Values[i].(HasFrostType).GetFrostType();
+		if rowSig != otherRowSig {
+			return false
+		}
+	}
+	return true
+}

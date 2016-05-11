@@ -2,25 +2,30 @@ package contract
 
 import (
 	"encoding/json"
-	"fmt"
-	"reflect"
 	"testing"
 )
 
+func TestGetFrostTypeWorks(t *testing.T) {
+	if NewXXXValue("42").(HasFrostType).GetFrostType() != FrostInt {
+		t.Errorf("Wrong type")
+	}
+	if NewXXXValue("42.3").(HasFrostType).GetFrostType() != FrostFloat {
+		t.Errorf("Wrong type")
+	}
+	if NewXXXValue("true").(HasFrostType).GetFrostType() != FrostBool {
+		t.Errorf("Wrong type")
+	}
+	if NewXXXValue("foo").(HasFrostType).GetFrostType() != FrostString {
+		t.Errorf("Wrong type")
+	}
+}
+
 func TestValueCreationWithJsonOutputForNonStringTypes(t *testing.T) {
 	inputStrings := []string{"42", "3.14", "true"}
-	typesExpected := []string{"contract.IntegerValue", "contract.FloatValue",
-		"contract.BoolValue"}
 	jsonExpected := []string{"42", "3.14", "true"}
 
 	for index, inputString := range inputStrings {
 		v := NewXXXValue(inputString)
-		typeCreated := fmt.Sprintf("%v", reflect.TypeOf(v))
-		typeExpected := typesExpected[index]
-		if typeCreated != typeExpected {
-			t.Errorf("Type inferred wrong. Got: %v, but expected: %v", typeCreated,
-				typeExpected)
-		}
 		json, _ := v.(json.Marshaler).MarshalJSON()
 		jsonProduced := string(json)
 		jsonExpected := jsonExpected[index]
@@ -33,16 +38,7 @@ func TestValueCreationWithJsonOutputForNonStringTypes(t *testing.T) {
 
 func TestValueCreationForString(t *testing.T) {
 	inputString := "ABB_1_OFF"
-
-	// Ensure correct type created.
 	v := NewXXXValue(inputString)
-	typeCreated := fmt.Sprintf("%v", reflect.TypeOf(v))
-	typeExpected := "contract.StringValue"
-	if typeCreated != typeExpected {
-		t.Errorf("Type inferred wrong. Got: %v, but expected: %v", typeCreated,
-			typeExpected)
-	}
-
 	// Ensure there are some tags captured - but leave detailed tag testing to a separate
 	// unit test.
 	stringValue := v.(StringValue)

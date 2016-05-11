@@ -9,16 +9,13 @@ import (
 )
 
 // The type Whitespace is a file reader for whitespace delimited files that can convert the
-// content discovered into a JSON representation, using FROSTS conversion rules. It is
-// bound to a constant chunk of input text to avoid the complexity of reinitialising state.
+// content into a JSON representation, using FROSTS conversion rules. It is bound to a constant
+// chunk of input text to avoid the complexity of reinitialising state.
 type Whitespace struct {
-	/* As we parse the file contents, we build a data structure topology that will eventually
-	be converted to JSON automatically. The jsonData field below is the slice that forms the
-	root of this data structure and defines the sequence of objects. We define the types held
-	by the slice to be objects that implement the empty interface, because that is what the
-	json library will want when it comes to the automatic conversion. The concrete types we
-	populate it live in the "contract" package, and have their own native way of expressing
-	the data structure topology to be traversed.
+	/* The jsonData field is the root node container for a sequence of tree-like data
+	structure, which is suitable to be converted to json automatically by go's json package. We
+	populate it as we parse and convert the input file, using object types like RowOfValues,
+	(and others) from frost's contract package.
 	*/
 	jsonData []interface{}
 
@@ -32,6 +29,10 @@ type Whitespace struct {
 	// possible to do logging and diagnostics in the app engine world.
 	requestContext appengine.Context
 
+	// The parsing process is statefull, insofar as it knows when we are part way through
+	// consuming a table. When so, the liveTableSignature holds a non-nil pointer to a
+	// RowOfValues object. This defines the type-signature required of all rows in
+	// the table.
 	liveTableSignature *contract.RowOfValues
 }
 
@@ -46,30 +47,33 @@ func NewWhitespace(inputText string, ctx appengine.Context) *Whitespace {
 	}
 }
 
-// The Convert() method is the mandate to launch the file contents conversion into JSON.
+// The Convert() method is the mandate to launch the file contents conversion into JSON. It
+// returns the json text produced.
 func (ws *Whitespace) Convert() []byte {
 	ws.lines = []string{}
+	// Read all the lines in first, so the parsing can seek forwards and backwards in the
+	// contents to aid analysis.
 	for _, line := range strings.Split(ws.inputText, "\n") {
 		ws.lines = append(ws.lines, strings.TrimSpace(line))
 	}
+	// Then simply consume each line in turn, using line-number indexing. (Zero based).
 	for i := 0; i < len(ws.lines); i++ {
 		ws.processLine(i)
 	}
-	// Generate the JSON using the json library's ability to traverse automatically the data
-	// structure topology we made underneath ws.jsonData.
+	// Generate and return the JSON.
 	theJson, _ := json.MarshalIndent(ws.jsonData, "", "  ")
 	return theJson
 }
 
 func (ws *Whitespace) processLine(lineIndex int) {
-	// This method implements a highly significant order of precedence.
-	line := ws.lines[lineIndex]
-	fields := ws.isolateFields(line)
+	// This method implements an order of precedence, which is of central significance.
+	line := ws.lines[lineIndex]      // Just shorthand
+	fields := ws.isolateFields(line) // Includes quoted string magic.
 
 	// We choose not to use the brevity of a switch statement, because we want to use some
 	// inline returns, and drop-through behaviour.
 
-	tableSignature, consumed := ws.consumeAsFirstLineInATable(fields, lineIndex)
+	consumed, tableSignature := ws.consumeAsFirstLineInATable(line, fields, lineIndex)
 	if consumed {
 		ws.liveTableSignature = tableSignature
 		return
@@ -77,14 +81,12 @@ func (ws *Whitespace) processLine(lineIndex int) {
 	if ws.consumeAsTableContinuation(fields) {
 		return
 	}
-	// Single point at which to observe implicitly that we have fallen off the end of a
-	// table under construction.
-	if ws.liveTableSignature != nil {
-		ws.liveTableSignature = nil
-	}
+	// Single point chosen for when we may assert that we cannot be in the middle of a
+	// table.
+	ws.liveTableSignature = nil
+
 	if ws.consumeAsEmptyLine(line) {
 		return
-
 	}
 	if ws.consumeAsCommentLine(line) {
 		return
@@ -101,18 +103,6 @@ func (ws *Whitespace) processLine(lineIndex int) {
 	panic("Something has gone wrong. Nothing accepted this input line.")
 }
 
-func (ws *Whitespace) consumeAsCommentLine(line string) bool {
-	if strings.HasPrefix(line, "#") {
-		ws.jsonData = append(ws.jsonData, contract.NewComment(line))
-		return true
-	}
-	return false
-}
-
-func (ws *Whitespace) consumeAsEmptyLine(line string) bool {
-	return len(line) == 0
-}
-
 func (ws *Whitespace) isolateFields(line string) (fields []string) {
 	lineWithMaskedQuotedStrings := parse.DisguiseDoubleQuotedSegments(line)
 	for _, delimitedString := range strings.Fields(lineWithMaskedQuotedStrings) {
@@ -123,13 +113,52 @@ func (ws *Whitespace) isolateFields(line string) (fields []string) {
 }
 
 func (ws *Whitespace) consumeAsFirstLineInATable(
-	fields []string, currentLineIndex int) (
-	tableSignature *contract.RowOfValues, consumed bool) {
-	return nil, false
+	line string, fields []string, currentLineIndex int) (
+	consumed bool, tableSignature *contract.RowOfValues) {
+	// Cannot be so if we are already in a table
+	if ws.liveTableSignature == nil {
+		return false, nil
+	}
+	// todo, centralise looks like a comment
+	// Cannot be so if the line is a comment line
+	if strings.HasPrefix(line, "#") {
+		return false, nil
+	}
+	// Cannot be so if the line has fewer than two fields.
+	if len(fields) < 2 {
+		return false, nil
+	}
+	// It seems that this line in isolation might be the first row of a table
+	tableFirstRow := contract.NewRowOfValues(fields)
+
+	// FROST defines a necessary condition for a table to be that it has at least two rows, and
+	// that all rows have matching signatures.
+	nextLineIndex := currentLineIndex + 1
+	if nextLineIndex >= len(ws.lines) {
+		return false, nil
+	}
+	nextRow := contract.NewRowOfValues(ws.isolateFields(ws.lines[nextLineIndex]))
+	if tableFirstRow.HasSameSignatureAs(nextRow) == false {
+		return false, nil
+	}
+	// We conclude the line is the first of a new table.
+	return true, tableFirstRow
 }
 
 func (ws *Whitespace) consumeAsTableContinuation(fields []string) bool {
 	return false
+}
+
+func (ws *Whitespace) consumeAsCommentLine(line string) bool {
+	if strings.HasPrefix(line, "#") {
+		ws.jsonData = append(ws.jsonData, contract.NewComment(line))
+		return true
+	}
+	return false
+}
+
+func (ws *Whitespace) consumeAsEmptyLine(line string) bool {
+	return len(line) == 0
 }
 
 func (ws *Whitespace) consumeAsKeyValuePair(fields []string) (succeeded bool) {
