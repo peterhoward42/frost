@@ -21,8 +21,8 @@ func (row *RowOfValues) HasSameSignatureAs(otherRow *RowOfValues) bool {
 		return false
 	}
 	for i := 0; i < len(row.Values); i++ {
-		rowSig := row.Values[i].(HasFrostType).GetFrostType();
-		otherRowSig := otherRow.Values[i].(HasFrostType).GetFrostType();
+		rowSig := row.Values[i].(HasFrostType).GetFrostType()
+		otherRowSig := otherRow.Values[i].(HasFrostType).GetFrostType()
 		if rowSig != otherRowSig {
 			return false
 		}

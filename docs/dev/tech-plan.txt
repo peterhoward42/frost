@@ -63,46 +63,32 @@ o  Next iter - start to design tdd of conversion
         o  Tables
             *  Consider search ahead and how organise outer nav so to do
             o  Design table state machine
-            o  Have a play and explore to see how it works out
+            o  Do basics of tables
                 *  Timeout to get what have not to compile
                 *  Make type enumeration
                 *  Give all XXXTypes a type member
                 *  Suppress type in current json output except for string
                 *  Define a hastype interface
-                o  Value test upgrade to make sure gettypes discriminate
+                *  Value test upgrade to make sure gettypes discriminate
                     *  Regression baseline
                     *  Upgrade what is there to use type mech.
-                    o  Add new tests that demands types are what expected
-                o  Unit test for sigs match
-                o  Now reenter matching row sig code to exploit this new type
+                    *  Add new tests that demands types are what expected
+                *  Unit test for sigs match
+                *  Now reenter matching row sig code to exploit this new type
                    interface
-            o  Add in column headings recognition
-            o  Add in table name recognition
-    o  unit test for splitting at whitespace conv level?
+                *  Do looks like a comment in whitespace
+
+    o  note these to come back to in whitespace
+        o  table headings
+        o  table names
+        o  structure of last resort
+
+    o  tidy up web gui to show paul and carl etc
 
 
 -----------------------------------------------------------------------------
 Scratch
 -----------------------------------------------------------------------------
-Table FSM
-
-bool inTable init to false
-
-if tableUnderConstruction 
-    addedToExistingTable = consumeAsNextLineInTable {
-    if addedToExistingTable
-        return       
-    } else {
-        # We found a non-table line
-        finalize tableUnderConstruction
-        tableUnderConstruction = false
-    }
-}
-# Drop thru
-
-
-
-
 
 -----------------------------------------------------------------------------
 Futures

@@ -29,21 +29,19 @@ type Whitespace struct {
 	// possible to do logging and diagnostics in the app engine world.
 	requestContext appengine.Context
 
-	// The parsing process is statefull, insofar as it knows when we are part way through
-	// consuming a table. When so, the liveTableSignature holds a non-nil pointer to a
-	// RowOfValues object. This defines the type-signature required of all rows in
-	// the table.
-	liveTableSignature *contract.RowOfValues
+	// When our parsing reaches a table, this field is both a handle to the table being
+	// augmented, and a signal when non null of this state existing.
+	tableUnderConstruction *contract.Table
 }
 
 // The function NewWhitespace() is the way to instantiate a Whitespace structure and binds this
 // instance permanently to a particular file contents, and a single http request instance.
 func NewWhitespace(inputText string, ctx appengine.Context) *Whitespace {
 	return &Whitespace{
-		inputText:          inputText,
-		lines:              nil,
-		requestContext:     ctx,
-		liveTableSignature: nil,
+		inputText:              inputText,
+		lines:                  nil,
+		requestContext:         ctx,
+		tableUnderConstruction: nil,
 	}
 }
 
@@ -66,41 +64,30 @@ func (ws *Whitespace) Convert() []byte {
 }
 
 func (ws *Whitespace) processLine(lineIndex int) {
-	// This method implements an order of precedence, which is of central significance.
 	line := ws.lines[lineIndex]      // Just shorthand
 	fields := ws.isolateFields(line) // Includes quoted string magic.
 
-	// We choose not to use the brevity of a switch statement, because we want to use some
-	// inline returns, and drop-through behaviour.
+	// This expresses our wish to accept the first of these that succeeds, and then to
+	// stop.
 
-	consumed, tableSignature := ws.consumeAsFirstLineInATable(line, fields, lineIndex)
-	if consumed {
-		ws.liveTableSignature = tableSignature
-		return
+	// The first two cases are about detecting the start, the continuation and falling off
+	// the end of a table. They come first in the order that they do, as part of managing and
+	// holding this state.
+	switch {
+	case ws.consumeAsFirstLineInATable(line, fields, lineIndex):
+	case ws.consumeAsTableContinuation(line, fields):
+	case ws.consumeAsEmptyLine(line):
+	case ws.consumeAsCommentLine(line):
+	case ws.consumeAsKeyValuePair(fields):
+	case ws.consumeAsStandaloneRowOfValues(fields):
+	case ws.consumeAsAsAStandaloneValue(fields):
+	default:
+		panic("Something has gone wrong. Nothing accepted this input line.")
 	}
-	if ws.consumeAsTableContinuation(fields) {
-		return
-	}
-	// Single point chosen for when we may assert that we cannot be in the middle of a
-	// table.
-	ws.liveTableSignature = nil
+}
 
-	if ws.consumeAsEmptyLine(line) {
-		return
-	}
-	if ws.consumeAsCommentLine(line) {
-		return
-	}
-	if ws.consumeAsKeyValuePair(fields) {
-		return
-	}
-	if ws.consumeAsStandaloneRowOfValues(fields) {
-		return
-	}
-	if ws.consumeAsAsAStandaloneValue(fields) {
-		return
-	}
-	panic("Something has gone wrong. Nothing accepted this input line.")
+func (ws *Whitespace) isAComment(line string) bool {
+	return strings.HasPrefix(line, "#")
 }
 
 func (ws *Whitespace) isolateFields(line string) (fields []string) {
@@ -113,20 +100,17 @@ func (ws *Whitespace) isolateFields(line string) (fields []string) {
 }
 
 func (ws *Whitespace) consumeAsFirstLineInATable(
-	line string, fields []string, currentLineIndex int) (
-	consumed bool, tableSignature *contract.RowOfValues) {
+	line string, fields []string, currentLineIndex int) (consumed bool) {
 	// Cannot be so if we are already in a table
-	if ws.liveTableSignature == nil {
-		return false, nil
+	if ws.tableUnderConstruction != nil {
+		return false
 	}
-	// todo, centralise looks like a comment
-	// Cannot be so if the line is a comment line
-	if strings.HasPrefix(line, "#") {
-		return false, nil
+	if ws.isAComment(line) {
+		return false
 	}
 	// Cannot be so if the line has fewer than two fields.
 	if len(fields) < 2 {
-		return false, nil
+		return false
 	}
 	// It seems that this line in isolation might be the first row of a table
 	tableFirstRow := contract.NewRowOfValues(fields)
@@ -135,22 +119,37 @@ func (ws *Whitespace) consumeAsFirstLineInATable(
 	// that all rows have matching signatures.
 	nextLineIndex := currentLineIndex + 1
 	if nextLineIndex >= len(ws.lines) {
-		return false, nil
+		return false
 	}
 	nextRow := contract.NewRowOfValues(ws.isolateFields(ws.lines[nextLineIndex]))
 	if tableFirstRow.HasSameSignatureAs(nextRow) == false {
-		return false, nil
+		return false
 	}
 	// We conclude the line is the first of a new table.
-	return true, tableFirstRow
+	ws.tableUnderConstruction = contract.NewTable(tableFirstRow)
+	ws.jsonData = append(ws.jsonData, ws.tableUnderConstruction)
+	return true
 }
 
-func (ws *Whitespace) consumeAsTableContinuation(fields []string) bool {
+func (ws *Whitespace) consumeAsTableContinuation(line string, fields []string) bool {
+	if ws.tableUnderConstruction == nil {
+		return false
+	}
+	if ws.isAComment(line) {
+		ws.tableUnderConstruction = nil
+		return false
+	}
+	tableRow := contract.NewRowOfValues(fields)
+	if tableRow.HasSameSignatureAs(ws.tableUnderConstruction.Signature) {
+		ws.tableUnderConstruction.AddRow(tableRow)
+		return true
+	}
+	ws.tableUnderConstruction = nil
 	return false
 }
 
 func (ws *Whitespace) consumeAsCommentLine(line string) bool {
-	if strings.HasPrefix(line, "#") {
+	if ws.isAComment(line) {
 		ws.jsonData = append(ws.jsonData, contract.NewComment(line))
 		return true
 	}
