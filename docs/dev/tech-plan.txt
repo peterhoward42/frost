@@ -36,54 +36,30 @@ o  Next iter - start to design tdd of conversion
     *  Put in more realistic input file
     *  Satisfy up conversion interface
     *  Refactor processors to filereaders
-    o  Put the first bit of processing into the whitespace converter
-        *  Split into lines sequence attached line numbers
-        *  Trim
-        *  Separate into comment or non comment parsing
-        *  Have I got go docs offline?
-        *  Parse out fields
-        *  Write fields out in json as strings
-        *  Fix so each field comes out as obj in braces?
-        *  Type convert the fields in value alone
-            *  provide request context down low
-            *  type conversion is duff
-                *  find better way
-                    *  make whitespace parsing of fields clearer
-                    *  restructure fields content to use fixed set of types
-                       and to look nicer
-                *  need unit tests for this stuff to be efficient
-                    *  do unit test for type interence
-                    *  double quotes
-                    *  new value
-        *  add in tags
-        *  Add in comments objects
-    o  Work the precedence bottom up
-        *  Add in Row as higher precedence
-        *  KeyValue
-        o  Tables
-            *  Consider search ahead and how organise outer nav so to do
-            o  Design table state machine
-            o  Do basics of tables
-                *  Timeout to get what have not to compile
-                *  Make type enumeration
-                *  Give all XXXTypes a type member
-                *  Suppress type in current json output except for string
-                *  Define a hastype interface
-                *  Value test upgrade to make sure gettypes discriminate
-                    *  Regression baseline
-                    *  Upgrade what is there to use type mech.
-                    *  Add new tests that demands types are what expected
-                *  Unit test for sigs match
-                *  Now reenter matching row sig code to exploit this new type
-                   interface
-                *  Do looks like a comment in whitespace
-
-    o  note these to come back to in whitespace
-        o  table headings
-        o  table names
-        o  structure of last resort
+    *  Put the first bit of processing into the whitespace converter
+    *  Work the precedence bottom up
 
     o  tidy up web gui to show paul and carl etc
+        *  not happy with playground button layout
+        *  make textareas have h scrollbars
+        o  entry point to playground should stimulate space sep example and sim
+        o  layout of panels and wrapping
+            o  add option to flip to tabbed view
+                o  have model state for tabbed or side by side
+                o  init to side by side by default
+                o  make playground render pick diff sub template depending
+                   on model state for side by side
+                o  add link in to sub template for side by side that offers
+                   switch to tab and calls new handler similar to refresh,
+                   except offers switch to side by side
+                o  side by side handling follows suit
+                o  add hidden field to master form that holds if side by side
+                   or not
+                o  upgrade no-args refresh handler to consult hidden field for
+                   side by side or tabbed
+        o  unfinished links do something more sensible
+        o  edit/refresh cycle should work
+        o  try something should work
 
 
 -----------------------------------------------------------------------------

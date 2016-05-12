@@ -1,22 +1,25 @@
 <!-- Whole thing is in a form so we can capture the input text area contents. -->
 <form action="playground-refresh" method="post">
+
+
+
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2">
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-2">
             <p><span class="glyphicon glyphicon-list-alt"></span>&ensp;Example Content</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <p><span class="glyphicon glyphicon-folder-open"></span>&ensp;Whole Directory</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2">
             <button class="btn btn-default">
                 <span class="glyphicon glyphicon-pencil"></span>&ensp;Type Something
             </button>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-2">
             <div class="btn-group">
                 <a class="btn btn-default active" href="play-space-separated">Space Separated</a>
                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle active">
@@ -31,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-2">
             <div class="btn-group">
                 <button class="btn btn-default">Try Our Example</button>
                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
@@ -42,35 +45,35 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2 ">
+        <div class="col-lg-2 ">
             <button class="btn btn-default" type="submit" name="refresh">
                 <span class="glyphicon glyphicon-refresh"></span> Refresh
             </button>
         </div>
     </div>
+
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <hr>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <p>Input</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <p><em>Frost</em></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <textarea class="form-control textarea-code" name="input-text"
-                      rows="20">{{.InputText}}</textarea>
+        <div class="col-lg-6">
+            <textarea class="form-control textarea-code" wrap="off" name="input-text"
+                      rows="35">{{.InputText}}</textarea>
         </div>
-        <div class="col-md-6">
-            <textarea class="form-control textarea-code"
-                      rows="20">{{.OutputText}}</textarea>
+        <div class="col-lg-6">
+            <textarea class="form-control textarea-code" wrap="off"
+                      rows="35">{{.OutputText}}</textarea>
         </div>
     </div>
 </form>
