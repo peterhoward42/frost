@@ -20,6 +20,8 @@ func init() {
 	// Todo, not sure yet if these two URLs should continue to use a handler in common.
 	http.HandleFunc("/playground", playground)
 	http.HandleFunc("/playground-refresh", playground)
+	http.HandleFunc("/playground-refresh-tabbed", playground_tabbed)
+	http.HandleFunc("/playground-refresh-side-by-side", playground_side_by_side)
 
 	http.HandleFunc("/play-space-separated", playground_space_sep)
 	http.HandleFunc("/play-csv", playground_csv)
@@ -34,7 +36,7 @@ func init() {
 func quickstart(w http.ResponseWriter, r *http.Request) {
 	// todo or panic?
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make quickstart active", "", ""))
+		models.NewTopLevel("QUICKSTART", "", ""))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -49,7 +51,37 @@ func playground(w http.ResponseWriter, r *http.Request) {
 	input_text := r.PostFormValue("input-text")
 	output_text := input_text + "plus some extra stuff"
 	err = gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make playground active", input_text, output_text))
+		models.NewTopLevel("PLAYGROUND SIDES_BY_SIDE_VIEW", input_text, output_text))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func playground_tabbed(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	input_text := r.PostFormValue("input-text")
+	output_text := input_text + "plus some extra stuff"
+	err = gui_template.ExecuteTemplate(w, "maingui.html",
+		models.NewTopLevel("PLAYGROUND TABBED_VIEW", input_text, output_text))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func playground_side_by_side(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	input_text := r.PostFormValue("input-text")
+	output_text := input_text + "plus some extra stuff"
+	err = gui_template.ExecuteTemplate(w, "maingui.html",
+		models.NewTopLevel("PLAYGROUND SIDES_BY_SIDE_VIEW", input_text, output_text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -61,7 +93,7 @@ func playground_space_sep(w http.ResponseWriter, r *http.Request) {
 	output_text := string(filereaders.NewWhitespace(
 		input_text, appengine.NewContext(r)).Convert())
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make playground active", input_text, output_text))
+		models.NewTopLevel("PLAYGROUND SIDES_BY_SIDE_VIEW", input_text, output_text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -73,7 +105,7 @@ func playground_csv(w http.ResponseWriter, r *http.Request) {
 	input_text := string(buf)
 	output_text := "CONVERTED TO JSON of this" + input_text
 	err := gui_template.ExecuteTemplate(w, "maingui.html",
-		models.NewTopLevel("make playground active", input_text, output_text))
+		models.NewTopLevel("PLAYGROUND SIDES_BY_SIDE_VIEW", input_text, output_text))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

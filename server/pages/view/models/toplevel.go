@@ -17,18 +17,19 @@ type TopLevel struct {
 }
 
 // The NewTopLevel function is a factory that makes TopLevel view models.
-// You inject a string fragment to indicate the currently selected page required.
-func NewTopLevel(activePageHint string, playground_input_txt string,
-	playground_output_txt string) *TopLevel {
+// You inject a string fragment to indicate options.
+func NewTopLevel(hintsString string, playgroundInputText string,
+	playgroundOutputText string) *TopLevel {
 	model := &TopLevel{}
 
 	switch {
-	case strings.Contains(activePageHint, "uick"):
+	case strings.Contains(hintsString, "QUICKSTART"):
 		model.QuickStart = NewQuickStart()
-	case strings.Contains(activePageHint, "ground"):
-		model.Playground = NewPlayground(playground_input_txt, playground_output_txt)
+	case strings.Contains(hintsString, "PLAYGROUND"):
+		model.Playground = NewPlayground(playgroundInputText, playgroundOutputText,
+			hintsString)
 	default:
-		panic(fmt.Sprintf("Active page hint not recognized: %v", activePageHint))
+		panic(fmt.Sprintf("Hints string not recognized: %v", hintsString))
 	}
 
 	return model

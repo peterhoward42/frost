@@ -42,26 +42,19 @@ o  Next iter - start to design tdd of conversion
     o  tidy up web gui to show paul and carl etc
         *  not happy with playground button layout
         *  make textareas have h scrollbars
-        o  entry point to playground should stimulate space sep example and sim
         o  layout of panels and wrapping
             o  add option to flip to tabbed view
-                *  work up tabbed
-                *  how make input or frost to show up as the active one
-                *  how to show either the input or frost field but with both
-                   present
-                *  show switch to tabbed or switch to side by side link
-                   based on model setting, with null href
-                o  make switch hrefs point to variants of refresh
-                    o  make new variants of refresh server side as identical
-                       entry points
-                    o  make switch links go to one or the other
-                        o  make the show tabs variant behave
-                        o  make the show side by side variant behave
-                o  make std refresh button have variable handler depending on
-                   which type of view is prevalent
-                o  make sure both the switch links and the std refresh button
-                   go to the new variants
-                o  deprecate the old variant
+                *  Restart...
+                    *  Design cleaner paradigm
+                    o  Upgrade templating both visual and hidden to anticipate
+                       needs of model.
+                    o  Upgrade the model fields to match demands.
+                    o  Work out how to construct models in handlers from data
+                       available in input fields
+
+            o  make sure no unused handlers left behind
+            o  does this mean the other playground choices should follow?
+
         o  unfinished links do something more sensible
         o  edit/refresh cycle should work
         o  try something should work
@@ -69,7 +62,24 @@ o  Next iter - start to design tdd of conversion
 
 -----------------------------------------------------------------------------
 Scratch
------------------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+We need only a single refresh handler
+
+The view model contains mandate: 
+    {sides, tabbed_input_in_front, tabbed_output_in_front}
+The rendering adapts thus:
+    o  Switch to view label
+    o  Switch view submit btn value (opposite of that being shown)
+    o  Switch tab submit btn values
+    o  Choice of content layout template
+    o  Choice of front tab
+
+The handler respects the input form when available for:
+    o  Input content of course
+    o  Mandate to switch view types
+    o  Mandate to switch currently selected tab
+    o  Continuity of view style from hidden field
 
 -----------------------------------------------------------------------------
 Futures
