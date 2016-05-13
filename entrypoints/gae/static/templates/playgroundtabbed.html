@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs">
+    <li {{if .ShowInputTab}}class="active" {{end}}><a href="#">Input</a></li>
+    <li {{if .ShowFrostTab}}class="active" {{end}}><a href="#">Frost</a></li>
+</ul>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div {{if .ShowFrostTab}}class="hidden" {{end}}>
+            <textarea class="form-control textarea-code" wrap="off" name="input-text"
+                      rows="35">{{.InputText}}</textarea>
+        </div>
+        <div {{if .ShowInputTab}}class="hidden" {{end}}>
+            <textarea class="form-control textarea-code" wrap="off"
+                      rows="35">{{.OutputText}}</textarea>
+        </div>
+    </div>
+</div>

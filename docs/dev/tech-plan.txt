@@ -45,18 +45,23 @@ o  Next iter - start to design tdd of conversion
         o  entry point to playground should stimulate space sep example and sim
         o  layout of panels and wrapping
             o  add option to flip to tabbed view
-                o  have model state for tabbed or side by side
-                o  init to side by side by default
-                o  make playground render pick diff sub template depending
-                   on model state for side by side
-                o  add link in to sub template for side by side that offers
-                   switch to tab and calls new handler similar to refresh,
-                   except offers switch to side by side
-                o  side by side handling follows suit
-                o  add hidden field to master form that holds if side by side
-                   or not
-                o  upgrade no-args refresh handler to consult hidden field for
-                   side by side or tabbed
+                *  work up tabbed
+                *  how make input or frost to show up as the active one
+                *  how to show either the input or frost field but with both
+                   present
+                *  show switch to tabbed or switch to side by side link
+                   based on model setting, with null href
+                o  make switch hrefs point to variants of refresh
+                    o  make new variants of refresh server side as identical
+                       entry points
+                    o  make switch links go to one or the other
+                        o  make the show tabs variant behave
+                        o  make the show side by side variant behave
+                o  make std refresh button have variable handler depending on
+                   which type of view is prevalent
+                o  make sure both the switch links and the std refresh button
+                   go to the new variants
+                o  deprecate the old variant
         o  unfinished links do something more sensible
         o  edit/refresh cycle should work
         o  try something should work
