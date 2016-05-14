@@ -46,12 +46,32 @@ o  Next iter - start to design tdd of conversion
             o  add option to flip to tabbed view
                 *  Restart...
                     *  Design cleaner paradigm
-                    o  Upgrade templating both visual and hidden to anticipate
+                    *  Upgrade templating both visual and hidden to anticipate
                        needs of model.
-                    o  Upgrade the model fields to match demands.
-                    o  Work out how to construct models in handlers from data
-                       available in input fields
+                    *  Upgrade the model fields to match demands.
+                    *  Work out how to route urls and capture variants
+                    o  Introduce routing class
+                    o  Try providing template to handlers constructor or init?
+                    o  Before get burned, replace strings with consts
+                    o  Do model builder but shifted into model class
+                        *  Change args to hints string (url)
+                        *  Change names to NewXXX
+                        *  Move to models package
+                        o  Populate model builders
+                        o  Change field names to constants
+                            o  Like input-text
+                        o  Work up
+                    o  Get example entry point working with refresh and edit
+                       cycle
+                    o  Make sure can switch view and persists on refresh or
+                       edit
+                    o  Make sure can change current tab and persists on refresh
+                       or edit
+                    o  Make sure link from landing to playground works
+                    o  What unit tests should there be
 
+            o  strings in main should be constants
+            o  model builders in main should go into models
             o  make sure no unused handlers left behind
             o  does this mean the other playground choices should follow?
 
@@ -64,22 +84,23 @@ o  Next iter - start to design tdd of conversion
 Scratch
 -------------------------------------------------------------------------
 
-We need only a single refresh handler
+-----------------------------------------------------------------------------
+URL alternative
+-----------------------------------------------------------------------------
+URLs
+    playground/refresh/side-by-side
+    playground/refresh/input-tab
+    playground/refresh/output-tab
 
-The view model contains mandate: 
-    {sides, tabbed_input_in_front, tabbed_output_in_front}
-The rendering adapts thus:
-    o  Switch to view label
-    o  Switch view submit btn value (opposite of that being shown)
-    o  Switch tab submit btn values
-    o  Choice of content layout template
-    o  Choice of front tab
+    playground/example/space
+    playbround/example/csv
+    playbround/example/etc...
 
-The handler respects the input form when available for:
-    o  Input content of course
-    o  Mandate to switch view types
-    o  Mandate to switch currently selected tab
-    o  Continuity of view style from hidden field
+o  Form action will be one of these depending on what sent the page, and
+   handles vanilla refresh
+o  Switch view button has custom action using one of the urls above
+o  Can all be routed to handler in common because handler can look in url for
+   hints
 
 -----------------------------------------------------------------------------
 Futures

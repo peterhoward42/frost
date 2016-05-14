@@ -1,17 +1,16 @@
 package filereaders
 
 import (
-	"appengine"
 	"encoding/json"
 	"github.com/peterhoward42/frost/contract"
 	"github.com/peterhoward42/frost/parse"
 	"strings"
 )
 
-// The type Whitespace is a file reader for whitespace delimited files that can convert the
+// The type WhitespaceConverter is a file reader for whitespace delimited files that can convert the
 // content into a JSON representation, using FROSTS conversion rules. It is bound to a constant
 // chunk of input text to avoid the complexity of reinitialising state.
-type Whitespace struct {
+type WhitespaceConverter struct {
 	/* The jsonData field is the root node container for a sequence of tree-like data
 	structure, which is suitable to be converted to json automatically by go's json package. We
 	populate it as we parse and convert the input file, using object types like RowOfValues,
@@ -25,29 +24,24 @@ type Whitespace struct {
 	// The input text split into lines and trimmed of leading and trailing whitespace.
 	lines []string
 
-	// We capture the context of the http request that launched this calling stack to make it
-	// possible to do logging and diagnostics in the app engine world.
-	requestContext appengine.Context
-
 	// When our parsing reaches a table, this field is both a handle to the table being
 	// augmented, and a signal when non null of this state existing.
 	tableUnderConstruction *contract.Table
 }
 
-// The function NewWhitespace() is the way to instantiate a Whitespace structure and binds this
+// The function NewWhitespaceConverter() is the way to instantiate a Whitespace structure and binds this
 // instance permanently to a particular file contents, and a single http request instance.
-func NewWhitespace(inputText string, ctx appengine.Context) *Whitespace {
-	return &Whitespace{
-		inputText:              inputText,
-		lines:                  nil,
-		requestContext:         ctx,
+func NewWhitespaceConverter(inputText string) *WhitespaceConverter {
+	return &WhitespaceConverter{
+		inputText: inputText,
+		lines:     nil,
 		tableUnderConstruction: nil,
 	}
 }
 
 // The Convert() method is the mandate to launch the file contents conversion into JSON. It
 // returns the json text produced.
-func (ws *Whitespace) Convert() []byte {
+func (ws *WhitespaceConverter) Convert() []byte {
 	ws.lines = []string{}
 	// Read all the lines in first, so the parsing can seek forwards and backwards in the
 	// contents to aid analysis.
@@ -63,7 +57,7 @@ func (ws *Whitespace) Convert() []byte {
 	return theJson
 }
 
-func (ws *Whitespace) processLine(lineIndex int) {
+func (ws *WhitespaceConverter) processLine(lineIndex int) {
 	line := ws.lines[lineIndex]      // Just shorthand
 	fields := ws.isolateFields(line) // Includes quoted string magic.
 
@@ -86,11 +80,11 @@ func (ws *Whitespace) processLine(lineIndex int) {
 	}
 }
 
-func (ws *Whitespace) isAComment(line string) bool {
+func (ws *WhitespaceConverter) isAComment(line string) bool {
 	return strings.HasPrefix(line, "#")
 }
 
-func (ws *Whitespace) isolateFields(line string) (fields []string) {
+func (ws *WhitespaceConverter) isolateFields(line string) (fields []string) {
 	lineWithMaskedQuotedStrings := parse.DisguiseDoubleQuotedSegments(line)
 	for _, delimitedString := range strings.Fields(lineWithMaskedQuotedStrings) {
 		undisguisedString := parse.UnDisguise(delimitedString)
@@ -99,7 +93,7 @@ func (ws *Whitespace) isolateFields(line string) (fields []string) {
 	return
 }
 
-func (ws *Whitespace) consumeAsFirstLineInATable(
+func (ws *WhitespaceConverter) consumeAsFirstLineInATable(
 	line string, fields []string, currentLineIndex int) (consumed bool) {
 	// Cannot be so if we are already in a table
 	if ws.tableUnderConstruction != nil {
@@ -131,7 +125,7 @@ func (ws *Whitespace) consumeAsFirstLineInATable(
 	return true
 }
 
-func (ws *Whitespace) consumeAsTableContinuation(line string, fields []string) bool {
+func (ws *WhitespaceConverter) consumeAsTableContinuation(line string, fields []string) bool {
 	if ws.tableUnderConstruction == nil {
 		return false
 	}
@@ -148,7 +142,7 @@ func (ws *Whitespace) consumeAsTableContinuation(line string, fields []string) b
 	return false
 }
 
-func (ws *Whitespace) consumeAsCommentLine(line string) bool {
+func (ws *WhitespaceConverter) consumeAsCommentLine(line string) bool {
 	if ws.isAComment(line) {
 		ws.jsonData = append(ws.jsonData, contract.NewComment(line))
 		return true
@@ -156,11 +150,11 @@ func (ws *Whitespace) consumeAsCommentLine(line string) bool {
 	return false
 }
 
-func (ws *Whitespace) consumeAsEmptyLine(line string) bool {
+func (ws *WhitespaceConverter) consumeAsEmptyLine(line string) bool {
 	return len(line) == 0
 }
 
-func (ws *Whitespace) consumeAsKeyValuePair(fields []string) (succeeded bool) {
+func (ws *WhitespaceConverter) consumeAsKeyValuePair(fields []string) (succeeded bool) {
 	// The first field must look like a sensible key
 	if parse.LooksLikeAKeyString(fields[0]) == false {
 		return false
@@ -184,7 +178,7 @@ func (ws *Whitespace) consumeAsKeyValuePair(fields []string) (succeeded bool) {
 	return false
 }
 
-func (ws *Whitespace) consumeAsStandaloneRowOfValues(fields []string) (succeeded bool) {
+func (ws *WhitespaceConverter) consumeAsStandaloneRowOfValues(fields []string) (succeeded bool) {
 	if len(fields) < 3 {
 		return false
 	}
@@ -192,7 +186,7 @@ func (ws *Whitespace) consumeAsStandaloneRowOfValues(fields []string) (succeeded
 	return true
 }
 
-func (ws *Whitespace) consumeAsAsAStandaloneValue(fields []string) (succeeded bool) {
+func (ws *WhitespaceConverter) consumeAsAsAStandaloneValue(fields []string) (succeeded bool) {
 	if len(fields) > 1 {
 		panic("We should only reach here for rows with a single field in.")
 	}
