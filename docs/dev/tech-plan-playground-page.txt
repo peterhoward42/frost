@@ -61,12 +61,17 @@ o  Next iter - start to design tdd of conversion
                         *  Change field names to constants
                         o  Unit tests for model view interaction?
                             o  Start with playground view model tests
-                                o  How DI example content so can work in test
+                                *  How DI example content so can work in test
                                    env?,
-                                   o  Cache existing file read code
-                                   o  Make model creator take input txt as arg
+                                   *  Cache existing file read code
+                                   *  Make model creator take input txt as arg
                                       and work up
-                                o  Templating unit tests
+                                o  Render unit tests
+                                    o  Time out (sep iter to go bindata route
+                                    o  Test render tests machinery using mock
+                                       model and template
+                                    o  But need a test for integ of real model
+                                       and real template
                                    
                     o  Fix up real app to provide input text thru to model
                        builders

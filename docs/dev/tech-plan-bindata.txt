@@ -1,0 +1,17 @@
+o  Remind how bindata and bindatafs work
+o  Survey changes needed in app and note them
+o  Automate build?
+
+
+
+------------------------------------------------------------------------------
+Changes needed
+------------------------------------------------------------------------------
+o  Deprecate gae entry point
+o  New entry point for conventional app
+o  Place for all static content to live
+o  Package to represent bindata converted resources
+o  Readme for bindata build instructions
+o  Changes to url routing to deal with static content like prev example
+o  Main capture handle to virtual fs
+o  How to handle template and examples...

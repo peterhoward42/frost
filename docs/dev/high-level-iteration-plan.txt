@@ -15,15 +15,19 @@ Architecture + Baseline Focus
 
 Theme - Bringing up the Playground Features to aid Development
 --------------------------------------------------------------
-o  Get the tab-like navigation mechanism working
-o  Use the playground page as a driving use case...
-o  Focus first on space-delimitted format
-o  Make example button show  a small fragment of example space-delim content 
+*  Get the tab-like navigation mechanism working
+*  Use the playground page as a driving use case...
+*  Focus first on space-delimitted format
+*  Make example button show  a small fragment of example space-delim content 
    on the left hand side, launches the converter, and shows the JSON on 
    the right. Start with a converter that creates just {} for result. 
-o  Gradually evolve the space delim conversion to do the real job - using 
+*  Gradually evolve the space delim conversion to do the real job - using 
    unit-test-driven steps (uTDD). The GUI will keep up without any separate
    work because it will already be plumbed-in.
+
+Theme - Bringing up the Playground Features to aid Development
+--------------------------------------------------------------
+o  Switching from gae style app to bindata style app
 
 Creating the mixed-file architecture
 ---------------------------------------

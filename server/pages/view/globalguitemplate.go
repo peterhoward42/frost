@@ -5,6 +5,7 @@ import (
 	"html/template"
 )
 
+
 var GlobalGuiTemplate *template.Template = nil
 
 func InitialiseGlobalGuiTemplate() {
