@@ -2,7 +2,7 @@
 *  Assess if bindata is still the one
 *  Move all static files to where want them in nice place wrt where bindata
    will go
-o  Create bin data module and readme for process
+*  Create bin data module and readme for process
 o  Start coding new conventional entry point to see how things work out
 o  Raise issue to switch bindata config to use real embedded files
 o  Revert to unit testing and playground dev
