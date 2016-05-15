@@ -1,10 +1,9 @@
-package models
+package viewmodels
 
 import (
 	"fmt"
 	"github.com/peterhoward42/frost/filereaders"
 	"io/ioutil"
-	"net/http"
 	"net/url"
 	"strings"
 )
@@ -16,7 +15,7 @@ const PlaygroundInputTextField = "input-text"
 const PlaygroundSideBySideUrlFragment = "side-by-side"
 const PlaygroundInputTabUrlFragment = "input-tab"
 const PlaygroundOutputTabUrlFragment = "output-tab"
-const PlaygroundRefreshTabUrlSubStr = "_tab"
+const PlaygroundRefreshTabUrlSubStr = "-tab"
 
 // Full URLs
 const PlaygroundRefreshSides = "/playground/refresh/" + PlaygroundSideBySideUrlFragment
@@ -29,8 +28,6 @@ const PlaygroundExamplePath = "static/examples/space_delim.txt"
 // Labels for humans
 const PlaygroundRefreshSwitchToTabsLabel = "Tabbed view"
 const PlaygroundRefreshSideBySideLabel = "Side by side view"
-
-
 
 // The PlaygroundViewModel type provides state information for rendering the playground view.
 type PlaygroundViewModel struct {
@@ -59,7 +56,6 @@ type PlaygroundViewModel struct {
 // in the sister pane alongside or in a tabbed view. A family of URLs are routed here, which encode
 // the viewing style requested in the URL.
 func NewPlaygroundViewModelForRefresh(
-	w http.ResponseWriter,
 	submittedForm url.Values,
 	urlPath string) *PlaygroundViewModel {
 
@@ -106,8 +102,7 @@ func NewPlaygroundViewModelForRefresh(
 // The NewPlaygroundViewModelForExamples function creates a new PlaygroundViewModel instance that
 // is suitable for rendering the playground page pre-populated with input text taken from a canned
 // example.
-func NewPlaygroundViewModelForExamples(
-	w http.ResponseWriter) *PlaygroundViewModel {
+func NewPlaygroundViewModelForExamples() *PlaygroundViewModel {
 
 	pg := &PlaygroundViewModel{}
 
@@ -126,7 +121,7 @@ func NewPlaygroundViewModelForExamples(
 }
 
 func (pg *PlaygroundViewModel) doWhiteSpaceConversionForNow(inputText string) string {
-	return filereaders.NewWhitespaceConverter(inputText).Convert()
+	return string(filereaders.NewWhitespaceConverter(inputText).Convert())
 }
 
 func (pg *PlaygroundViewModel) panicCannotDecodeUrl(urlPath string) {

@@ -57,10 +57,13 @@ o  Next iter - start to design tdd of conversion
                         *  Change args to hints string (url)
                         *  Change names to NewXXX
                         *  Move to models package
-                        o  Populate model builders
-                        o  Change field names to constants
-                            o  Like input-text
-                        o  Work up
+                        *  Populate model builders
+                        *  Change field names to constants
+                        o  Unit tests for model view interaction?
+                            o  Start with playground view model tests
+                                o  How DI example content so can work in test
+                                   env?,
+                                   
                     o  Get example entry point working with refresh and edit
                        cycle
                     o  Make sure can switch view and persists on refresh or
