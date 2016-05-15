@@ -3,7 +3,6 @@ package viewmodels
 import (
 	"fmt"
 	"github.com/peterhoward42/frost/filereaders"
-	"io/ioutil"
 	"net/url"
 	"strings"
 )
@@ -99,16 +98,13 @@ func NewPlaygroundViewModelForRefresh(
 	return pg
 }
 
-// The NewPlaygroundViewModelForExamples function creates a new PlaygroundViewModel instance that
-// is suitable for rendering the playground page pre-populated with input text taken from a canned
-// example.
-func NewPlaygroundViewModelForExamples() *PlaygroundViewModel {
+// The NewPlaygroundViewModelForExample function creates a new PlaygroundViewModel instance that
+// is suitable for rendering the playground page pre-populated with the given input text.
+func NewPlaygroundViewModelForExample(exampleInputText string) *PlaygroundViewModel {
 
 	pg := &PlaygroundViewModel{}
 
-	// Get the example input text from a file.
-	buf, _ := ioutil.ReadFile(PlaygroundExamplePath)
-	pg.InputText = string(buf)
+	pg.InputText = exampleInputText
 	pg.OutputText = pg.doWhiteSpaceConversionForNow(pg.InputText)
 
 	// Show the example initially in side by side view

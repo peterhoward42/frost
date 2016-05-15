@@ -63,7 +63,13 @@ o  Next iter - start to design tdd of conversion
                             o  Start with playground view model tests
                                 o  How DI example content so can work in test
                                    env?,
+                                   o  Cache existing file read code
+                                   o  Make model creator take input txt as arg
+                                      and work up
+                                o  Templating unit tests
                                    
+                    o  Fix up real app to provide input text thru to model
+                       builders
                     o  Get example entry point working with refresh and edit
                        cycle
                     o  Make sure can switch view and persists on refresh or
@@ -86,6 +92,10 @@ o  Next iter - start to design tdd of conversion
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
+
+	// Get the example input text from a file.
+	buf, _ := ioutil.ReadFile(PlaygroundExamplePath)
+	pg.InputText = string(buf)
 
 -----------------------------------------------------------------------------
 URL alternative

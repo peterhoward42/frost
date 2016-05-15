@@ -6,11 +6,10 @@ import (
 	"strings"
 )
 
-// First tests for the refresh URL
+// First a series of tests for the refresh URL
 
 
-
-func TestNewPlaygroundViewModelForRefreshProducesOutputPanelContents(t *testing.T) {
+func TestRefreshProducesOutputPanelContents(t *testing.T) {
 	urlPath := "/playground/refresh/side-by-side"
 	form := url.Values{}
 	form.Set("input-text", "hello\ngoodbye")
@@ -21,7 +20,7 @@ func TestNewPlaygroundViewModelForRefreshProducesOutputPanelContents(t *testing.
 	}
 }
 
-func TestNewPlaygroundViewModelForRefreshReflectsUrl(t *testing.T) {
+func TestRefreshReflectsUrl(t *testing.T) {
 	urlPath := "/playground/refresh/side-by-side"
 	form := url.Values{}
 	form.Set("input-text", "hello\ngoodbye")
@@ -31,7 +30,7 @@ func TestNewPlaygroundViewModelForRefreshReflectsUrl(t *testing.T) {
 	}
 }
 
-func TestNewPlaygroundViewModelForRefreshSetsStateRightForSideBySideMode(t *testing.T) {
+func TestRefreshSetsStateRightForSideBySideMode(t *testing.T) {
 	urlPath := "anything with side-by-side in it"
 	form := url.Values{}
 	mdl := NewPlaygroundViewModelForRefresh(form, urlPath)
@@ -46,7 +45,7 @@ func TestNewPlaygroundViewModelForRefreshSetsStateRightForSideBySideMode(t *test
 	}
 }
 
-func TestNewPlaygroundViewModelForRefreshSetsStateRightForInputTabbedMode(t *testing.T) {
+func TestRefreshSetsStateRightForInputTabbedMode(t *testing.T) {
 	urlPath := "anything with input-tab in it"
 	form := url.Values{}
 	mdl := NewPlaygroundViewModelForRefresh(form, urlPath)
@@ -61,7 +60,7 @@ func TestNewPlaygroundViewModelForRefreshSetsStateRightForInputTabbedMode(t *tes
 	}
 }
 
-func TestNewPlaygroundViewModelForRefreshSetsStateRightForOutputTabbedMode(t *testing.T) {
+func TestRefreshSetsStateRightForOutputTabbedMode(t *testing.T) {
 	urlPath := "anything with output-tab in it"
 	form := url.Values{}
 	mdl := NewPlaygroundViewModelForRefresh(form, urlPath)
@@ -77,14 +76,38 @@ func TestNewPlaygroundViewModelForRefreshSetsStateRightForOutputTabbedMode(t *te
 }
 
 
-// Now tests for the example URL
+// Now a series of tests for the set of example button action URLs
 
-
-
-func TestNewPlaygroundViewModelForExampleProducesCorrectPanelContents(t *testing.T) {
-	mdl := NewPlaygroundViewModelForExamples()
-	expected := "fibble"
-	if mdl.InputText != expected {
+func TestExamplePrePopulatesInputPanel(t *testing.T) {
+	inputText := "foo\nbar"
+	mdl := NewPlaygroundViewModelForExample(inputText)
+	if mdl.InputText != inputText {
 		t.Errorf("Unexpected input panel text: %v", mdl.InputText)
+	}
+}
+
+func TestExamplePopulatesOutputPanel(t *testing.T) {
+	inputText := "foo\nbar"
+	mdl := NewPlaygroundViewModelForExample(inputText)
+	expected := `"Value": "foo"`
+	if strings.Contains(mdl.OutputText, expected) == false {
+		t.Errorf("Unexpected output panel text: %v", mdl.OutputText)
+	}
+}
+
+func TestExampleSetsUpSideBySideViewOptions(t *testing.T) {
+	inputText := "irrelevant"
+	mdl := NewPlaygroundViewModelForExample(inputText)
+	if mdl.FormAction != "/playground/refresh/side-by-side" {
+		t.Errorf("Unexpected form action: %v", mdl.FormAction)
+	}
+	if mdl.SwitchViewAction != "/playground/refresh/input-tab" {
+		t.Errorf("Unexpected switch view action: %v", mdl.SwitchViewAction)
+	}
+	if mdl.SwitchViewLabel != "Tabbed view" {
+		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
+	}
+	if mdl.ShowSideBySide != true{
+		t.Errorf("Unexpected show side by side: %v", mdl.ShowSideBySide)
 	}
 }

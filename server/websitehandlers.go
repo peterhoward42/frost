@@ -26,7 +26,7 @@ func HandlePlayground(w http.ResponseWriter, r *http.Request) {
 		viewModel = viewmodels.NewPlaygroundViewModelForRefresh(
 			w, submittedForm, r.URL.Path)
 	case strings.Contains(r.URL.Path, "example"):
-		viewModel = viewmodels.NewPlaygroundViewModelForExamples(w)
+		viewModel = viewmodels.NewPlaygroundViewModelForExample(w)
 	}
 	view.Render(w, viewModel)
 }
