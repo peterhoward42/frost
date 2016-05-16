@@ -23,14 +23,14 @@
 // staticfiles/templates/quickstart.html
 // DO NOT EDIT!
 
-package main
+package resources
 
 import (
 	"fmt"
 	"io/ioutil"
-	"strings"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // bindataRead reads the given file from disk. It returns an error on failure.
@@ -444,7 +444,7 @@ func Asset(name string) ([]byte, error) {
 // It simplifies safe initialization of global variables.
 func MustAsset(name string) []byte {
 	a, err := Asset(name)
-	if (err != nil) {
+	if err != nil {
 		panic("asset: Asset(" + name + "): " + err.Error())
 	}
 
@@ -477,27 +477,27 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"staticfiles/css/bootstrap.min-orig.css": staticfilesCssBootstrapMinOrigCss,
-	"staticfiles/css/bootstrap.min.css": staticfilesCssBootstrapMinCss,
-	"staticfiles/css/bootstrap.min.cyborg.css": staticfilesCssBootstrapMinCyborgCss,
-	"staticfiles/css/bootstrap.min.flatly.css": staticfilesCssBootstrapMinFlatlyCss,
-	"staticfiles/css/frost.css": staticfilesCssFrostCss,
-	"staticfiles/examples/csv.csv": staticfilesExamplesCsvCsv,
-	"staticfiles/examples/space_delim.txt": staticfilesExamplesSpace_delimTxt,
-	"staticfiles/fonts/glyphicons-halflings-regular.eot": staticfilesFontsGlyphiconsHalflingsRegularEot,
-	"staticfiles/fonts/glyphicons-halflings-regular.svg": staticfilesFontsGlyphiconsHalflingsRegularSvg,
-	"staticfiles/fonts/glyphicons-halflings-regular.ttf": staticfilesFontsGlyphiconsHalflingsRegularTtf,
-	"staticfiles/fonts/glyphicons-halflings-regular.woff": staticfilesFontsGlyphiconsHalflingsRegularWoff,
+	"staticfiles/css/bootstrap.min-orig.css":               staticfilesCssBootstrapMinOrigCss,
+	"staticfiles/css/bootstrap.min.css":                    staticfilesCssBootstrapMinCss,
+	"staticfiles/css/bootstrap.min.cyborg.css":             staticfilesCssBootstrapMinCyborgCss,
+	"staticfiles/css/bootstrap.min.flatly.css":             staticfilesCssBootstrapMinFlatlyCss,
+	"staticfiles/css/frost.css":                            staticfilesCssFrostCss,
+	"staticfiles/examples/csv.csv":                         staticfilesExamplesCsvCsv,
+	"staticfiles/examples/space_delim.txt":                 staticfilesExamplesSpace_delimTxt,
+	"staticfiles/fonts/glyphicons-halflings-regular.eot":   staticfilesFontsGlyphiconsHalflingsRegularEot,
+	"staticfiles/fonts/glyphicons-halflings-regular.svg":   staticfilesFontsGlyphiconsHalflingsRegularSvg,
+	"staticfiles/fonts/glyphicons-halflings-regular.ttf":   staticfilesFontsGlyphiconsHalflingsRegularTtf,
+	"staticfiles/fonts/glyphicons-halflings-regular.woff":  staticfilesFontsGlyphiconsHalflingsRegularWoff,
 	"staticfiles/fonts/glyphicons-halflings-regular.woff2": staticfilesFontsGlyphiconsHalflingsRegularWoff2,
-	"staticfiles/js/bootstrap.min.js": staticfilesJsBootstrapMinJs,
-	"staticfiles/js/jquery.min.js": staticfilesJsJqueryMinJs,
-	"staticfiles/templates/commonfooter.html": staticfilesTemplatesCommonfooterHtml,
-	"staticfiles/templates/commonheader.html": staticfilesTemplatesCommonheaderHtml,
-	"staticfiles/templates/maingui.html": staticfilesTemplatesMainguiHtml,
-	"staticfiles/templates/playground.html": staticfilesTemplatesPlaygroundHtml,
-	"staticfiles/templates/playgroundsidebyside.html": staticfilesTemplatesPlaygroundsidebysideHtml,
-	"staticfiles/templates/playgroundtabbed.html": staticfilesTemplatesPlaygroundtabbedHtml,
-	"staticfiles/templates/quickstart.html": staticfilesTemplatesQuickstartHtml,
+	"staticfiles/js/bootstrap.min.js":                      staticfilesJsBootstrapMinJs,
+	"staticfiles/js/jquery.min.js":                         staticfilesJsJqueryMinJs,
+	"staticfiles/templates/commonfooter.html":              staticfilesTemplatesCommonfooterHtml,
+	"staticfiles/templates/commonheader.html":              staticfilesTemplatesCommonheaderHtml,
+	"staticfiles/templates/maingui.html":                   staticfilesTemplatesMainguiHtml,
+	"staticfiles/templates/playground.html":                staticfilesTemplatesPlaygroundHtml,
+	"staticfiles/templates/playgroundsidebyside.html":      staticfilesTemplatesPlaygroundsidebysideHtml,
+	"staticfiles/templates/playgroundtabbed.html":          staticfilesTemplatesPlaygroundtabbedHtml,
+	"staticfiles/templates/quickstart.html":                staticfilesTemplatesQuickstartHtml,
 }
 
 // AssetDir returns the file names below a certain
@@ -536,110 +536,89 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type bintree struct {
-	Func func() (*asset, error)
+	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"staticfiles": &bintree{nil, map[string]*bintree{
 		"css": &bintree{nil, map[string]*bintree{
-			"bootstrap.min-orig.css": &bintree{staticfilesCssBootstrapMinOrigCss, map[string]*bintree{
-			}},
-			"bootstrap.min.css": &bintree{staticfilesCssBootstrapMinCss, map[string]*bintree{
-			}},
-			"bootstrap.min.cyborg.css": &bintree{staticfilesCssBootstrapMinCyborgCss, map[string]*bintree{
-			}},
-			"bootstrap.min.flatly.css": &bintree{staticfilesCssBootstrapMinFlatlyCss, map[string]*bintree{
-			}},
-			"frost.css": &bintree{staticfilesCssFrostCss, map[string]*bintree{
-			}},
+			"bootstrap.min-orig.css":   &bintree{staticfilesCssBootstrapMinOrigCss, map[string]*bintree{}},
+			"bootstrap.min.css":        &bintree{staticfilesCssBootstrapMinCss, map[string]*bintree{}},
+			"bootstrap.min.cyborg.css": &bintree{staticfilesCssBootstrapMinCyborgCss, map[string]*bintree{}},
+			"bootstrap.min.flatly.css": &bintree{staticfilesCssBootstrapMinFlatlyCss, map[string]*bintree{}},
+			"frost.css":                &bintree{staticfilesCssFrostCss, map[string]*bintree{}},
 		}},
 		"examples": &bintree{nil, map[string]*bintree{
-			"csv.csv": &bintree{staticfilesExamplesCsvCsv, map[string]*bintree{
-			}},
-			"space_delim.txt": &bintree{staticfilesExamplesSpace_delimTxt, map[string]*bintree{
-			}},
+			"csv.csv":         &bintree{staticfilesExamplesCsvCsv, map[string]*bintree{}},
+			"space_delim.txt": &bintree{staticfilesExamplesSpace_delimTxt, map[string]*bintree{}},
 		}},
 		"fonts": &bintree{nil, map[string]*bintree{
-			"glyphicons-halflings-regular.eot": &bintree{staticfilesFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.svg": &bintree{staticfilesFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.ttf": &bintree{staticfilesFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.woff": &bintree{staticfilesFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.woff2": &bintree{staticfilesFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{
-			}},
+			"glyphicons-halflings-regular.eot":   &bintree{staticfilesFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{}},
+			"glyphicons-halflings-regular.svg":   &bintree{staticfilesFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{}},
+			"glyphicons-halflings-regular.ttf":   &bintree{staticfilesFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{}},
+			"glyphicons-halflings-regular.woff":  &bintree{staticfilesFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{}},
+			"glyphicons-halflings-regular.woff2": &bintree{staticfilesFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{}},
 		}},
 		"js": &bintree{nil, map[string]*bintree{
-			"bootstrap.min.js": &bintree{staticfilesJsBootstrapMinJs, map[string]*bintree{
-			}},
-			"jquery.min.js": &bintree{staticfilesJsJqueryMinJs, map[string]*bintree{
-			}},
+			"bootstrap.min.js": &bintree{staticfilesJsBootstrapMinJs, map[string]*bintree{}},
+			"jquery.min.js":    &bintree{staticfilesJsJqueryMinJs, map[string]*bintree{}},
 		}},
 		"templates": &bintree{nil, map[string]*bintree{
-			"commonfooter.html": &bintree{staticfilesTemplatesCommonfooterHtml, map[string]*bintree{
-			}},
-			"commonheader.html": &bintree{staticfilesTemplatesCommonheaderHtml, map[string]*bintree{
-			}},
-			"maingui.html": &bintree{staticfilesTemplatesMainguiHtml, map[string]*bintree{
-			}},
-			"playground.html": &bintree{staticfilesTemplatesPlaygroundHtml, map[string]*bintree{
-			}},
-			"playgroundsidebyside.html": &bintree{staticfilesTemplatesPlaygroundsidebysideHtml, map[string]*bintree{
-			}},
-			"playgroundtabbed.html": &bintree{staticfilesTemplatesPlaygroundtabbedHtml, map[string]*bintree{
-			}},
-			"quickstart.html": &bintree{staticfilesTemplatesQuickstartHtml, map[string]*bintree{
-			}},
+			"commonfooter.html":         &bintree{staticfilesTemplatesCommonfooterHtml, map[string]*bintree{}},
+			"commonheader.html":         &bintree{staticfilesTemplatesCommonheaderHtml, map[string]*bintree{}},
+			"maingui.html":              &bintree{staticfilesTemplatesMainguiHtml, map[string]*bintree{}},
+			"playground.html":           &bintree{staticfilesTemplatesPlaygroundHtml, map[string]*bintree{}},
+			"playgroundsidebyside.html": &bintree{staticfilesTemplatesPlaygroundsidebysideHtml, map[string]*bintree{}},
+			"playgroundtabbed.html":     &bintree{staticfilesTemplatesPlaygroundtabbedHtml, map[string]*bintree{}},
+			"quickstart.html":           &bintree{staticfilesTemplatesQuickstartHtml, map[string]*bintree{}},
 		}},
 	}},
 }}
 
 // RestoreAsset restores an asset under the given directory
 func RestoreAsset(dir, name string) error {
-        data, err := Asset(name)
-        if err != nil {
-                return err
-        }
-        info, err := AssetInfo(name)
-        if err != nil {
-                return err
-        }
-        err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
-        if err != nil {
-                return err
-        }
-        err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
-        if err != nil {
-                return err
-        }
-        err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
-        if err != nil {
-                return err
-        }
-        return nil
+	data, err := Asset(name)
+	if err != nil {
+		return err
+	}
+	info, err := AssetInfo(name)
+	if err != nil {
+		return err
+	}
+	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
+	if err != nil {
+		return err
+	}
+	err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // RestoreAssets restores an asset under the given directory recursively
 func RestoreAssets(dir, name string) error {
-        children, err := AssetDir(name)
-        // File
-        if err != nil {
-                return RestoreAsset(dir, name)
-        }
-        // Dir
-        for _, child := range children {
-                err = RestoreAssets(dir, filepath.Join(name, child))
-                if err != nil {
-                        return err
-                }
-        }
-        return nil
+	children, err := AssetDir(name)
+	// File
+	if err != nil {
+		return RestoreAsset(dir, name)
+	}
+	// Dir
+	for _, child := range children {
+		err = RestoreAssets(dir, filepath.Join(name, child))
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func _filePath(dir, name string) string {
-        cannonicalName := strings.Replace(name, "\\", "/", -1)
-        return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
+	cannonicalName := strings.Replace(name, "\\", "/", -1)
+	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

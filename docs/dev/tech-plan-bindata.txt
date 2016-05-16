@@ -4,8 +4,13 @@
    will go
 *  Create bin data module and readme for process
 o  Start coding new conventional entry point to see how things work out
-o  Raise issue to switch bindata config to use real embedded files
+    *  Create and test compiledtemplate module
+    *  Create and test compiledfilesystem module
+    o  Copy across gae init to exe main and get to compile
+    o  Unit test run?
+    o  Server run and work?
 o  Revert to unit testing and playground dev
+o  Raise issue to switch bindata config to use real embedded files
 o  When stable again - resurrect gae version
 
 

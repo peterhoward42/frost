@@ -9,6 +9,7 @@ Build instructions
     go-ws/bin/go-bindata -debug staticfiles/...
 
 This produces the bindata.go file - which declares itself to be in package main.
+I manually edit this to be package resources.
 
 You can then use it like this:
 

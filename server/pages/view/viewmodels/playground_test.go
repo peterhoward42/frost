@@ -2,12 +2,11 @@ package viewmodels
 
 import (
 	"net/url"
-	"testing"
 	"strings"
+	"testing"
 )
 
 // First a series of tests for the refresh URL
-
 
 func TestRefreshProducesOutputPanelContents(t *testing.T) {
 	urlPath := "/playground/refresh/side-by-side"
@@ -55,7 +54,7 @@ func TestRefreshSetsStateRightForInputTabbedMode(t *testing.T) {
 	if mdl.SwitchViewLabel != "Side by side view" {
 		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
 	}
-	if mdl.ShowInputTab!= true {
+	if mdl.ShowInputTab != true {
 		t.Errorf("Failed to mandate showing input tab")
 	}
 }
@@ -70,11 +69,10 @@ func TestRefreshSetsStateRightForOutputTabbedMode(t *testing.T) {
 	if mdl.SwitchViewLabel != "Side by side view" {
 		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
 	}
-	if mdl.ShowOutputTab!= true {
+	if mdl.ShowOutputTab != true {
 		t.Errorf("Failed to mandate showing output tab")
 	}
 }
-
 
 // Now a series of tests for the set of example button action URLs
 
@@ -107,7 +105,7 @@ func TestExampleSetsUpSideBySideViewOptions(t *testing.T) {
 	if mdl.SwitchViewLabel != "Tabbed view" {
 		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
 	}
-	if mdl.ShowSideBySide != true{
+	if mdl.ShowSideBySide != true {
 		t.Errorf("Unexpected show side by side: %v", mdl.ShowSideBySide)
 	}
 }
