@@ -5,6 +5,5 @@ import (
 )
 
 func init() {
-	server.InitialiseGlobalGuiTemplate()
 	server.SetUpRouting()
 }

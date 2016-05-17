@@ -6,10 +6,15 @@
 o  Start coding new conventional entry point to see how things work out
     *  Create and test compiledtemplate module
     *  Create and test compiledfilesystem module
-    o  Copy across gae init to exe main and get to compile
-    o  Unit test run?
+    *  Copy across gae init to exe main and get to compile
+    o  All unit tests run and pass?
+        o  Dwell on view package tests
+            *  Need URL attributes in models e.g. QuickStartURL et al
+            o  Fix circular dependency problem
+    o  Shorten entry point file path lengths and regression up
     o  Server run and work?
-o  Revert to unit testing and playground dev
+o  Purge all magic numbers
+o  Revert to unit testing and playground dev:w:
 o  Raise issue to switch bindata config to use real embedded files
 o  When stable again - resurrect gae version
 

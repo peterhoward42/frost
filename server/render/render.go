@@ -2,9 +2,9 @@ package view
 
 import (
 	"fmt"
-	"github.com/peterhoward42/frost/server/pages/view/viewmodels"
 	"html/template"
 	"io"
+	"github.com/peterhoward42/frost/server/viewmodels"
 )
 
 // The GuiRenderer type combines a template and a corresponding view model to generate the html
