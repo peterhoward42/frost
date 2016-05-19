@@ -2,17 +2,17 @@ package handlers
 
 import (
 	"fmt"
+	"github.com/peterhoward42/frost/resources"
+	"github.com/peterhoward42/frost/server/render"
+	"github.com/peterhoward42/frost/server/viewmodels"
 	"net/http"
 	"strings"
-	"github.com/peterhoward42/frost/resources"
-	"github.com/peterhoward42/frost/server/viewmodels"
-	"github.com/peterhoward42/frost/server/render"
 )
 
 func HandleQuickStart(w http.ResponseWriter, r *http.Request) {
 	viewModel := &viewmodels.TopLevelViewModel{}
 	viewModel.QuickStart = &viewmodels.QuickStartViewModel{}
-	renderer := view.NewGuiRenderer(resources.CompiledTemplates, "main_gui.html")
+	renderer := view.NewGuiRenderer(resources.CompiledTemplates)
 	renderer.Render(w, viewModel)
 }
 
@@ -31,6 +31,6 @@ func HandlePlayground(w http.ResponseWriter, r *http.Request) {
 		.txt`))
 		viewModel.Playground = viewmodels.NewPlaygroundViewModelForExample(exampleInputText)
 	}
-	renderer := view.NewGuiRenderer(resources.CompiledTemplates, "main_gui.html")
+	renderer := view.NewGuiRenderer(resources.CompiledTemplates)
 	renderer.Render(w, viewModel)
 }

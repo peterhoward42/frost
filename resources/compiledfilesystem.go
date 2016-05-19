@@ -5,5 +5,4 @@ import (
 	"net/http"
 )
 
-var CompiledFileSystem http.FileSystem =
-		&assetfs.AssetFS{Asset: Asset, AssetDir: AssetDir, Prefix: ""}
+var CompiledFileSystem http.FileSystem = &assetfs.AssetFS{Asset: Asset, AssetDir: AssetDir}

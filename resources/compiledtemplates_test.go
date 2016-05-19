@@ -1,8 +1,8 @@
 package resources
 
 import (
-	"testing"
 	"strings"
+	"testing"
 )
 
 func TestCompiledTemplates(t *testing.T) {

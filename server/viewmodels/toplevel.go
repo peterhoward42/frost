@@ -1,7 +1,7 @@
 package viewmodels
 
 import (
-	"github.com/peterhoward42/frost/server/routing"
+	"github.com/peterhoward42/frost/server/urls"
 )
 
 type TopLevelViewModel struct {
@@ -16,7 +16,7 @@ type TopLevelViewModel struct {
 
 func NewTopLevelViewModel() *TopLevelViewModel {
 	return &TopLevelViewModel{
-		QuickStartURL: routing.URLQuickstart,
-		PlaygroundURL: routing.URLPlayground,
-		}
+		QuickStartURL: urls.URLQuickstart,
+		PlaygroundURL: urls.URLPlayground,
+	}
 }

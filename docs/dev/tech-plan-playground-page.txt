@@ -40,38 +40,19 @@ o  Next iter - start to design tdd of conversion
     *  Work the precedence bottom up
 
     o  tidy up web gui to show paul and carl etc
-        *  not happy with playground button layout
-        *  make textareas have h scrollbars
-        o  layout of panels and wrapping
-            o  add option to flip to tabbed view
-                *  Restart...
-                    *  Design cleaner paradigm
-                    *  Upgrade templating both visual and hidden to anticipate
-                       needs of model.
-                    *  Upgrade the model fields to match demands.
-                    *  Work out how to route urls and capture variants
-                    o  Introduce routing class
-                    o  Try providing template to handlers constructor or init?
-                    o  Before get burned, replace strings with consts
-                    o  Do model builder but shifted into model class
-                        *  Change args to hints string (url)
-                        *  Change names to NewXXX
-                        *  Move to models package
-                        *  Populate model builders
-                        *  Change field names to constants
-                        o  Unit tests for model view interaction?
-                            o  Start with playground view model tests
-                                *  How DI example content so can work in test
-                                   env?,
-                                   *  Cache existing file read code
-                                   *  Make model creator take input txt as arg
-                                      and work up
-                                o  Render unit tests
-                                    o  Time out (sep iter to go bindata route
-                                    o  Test render tests machinery using mock
-                                       model and template
-                                    o  But need a test for integ of real model
-                                       and real template
+        o  Unit tests for model view interaction?
+            *  Root landing page shows quick start page
+            o  Quick start page has right contents incl links to playground and
+               self
+                *  Time out to automate bindata comp
+                o  Finish quick start tests
+                    *  Refactor to have html content test helpers to 
+                       shorten test code
+                       *  Report errors with non flattened
+                    *  Finish quick start tests
+                    o  Refactor some more to make html sample util
+            o  Playground link takes to playground landing
+            o  Etc
                                    
                     o  Fix up real app to provide input text thru to model
                        builders
@@ -97,29 +78,9 @@ o  Next iter - start to design tdd of conversion
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
-
-	// Get the example input text from a file.
-	buf, _ := ioutil.ReadFile(PlaygroundExamplePath)
-	pg.InputText = string(buf)
-
 -----------------------------------------------------------------------------
 URL alternative
 -----------------------------------------------------------------------------
-URLs
-    playground/refresh/side-by-side
-    playground/refresh/input-tab
-    playground/refresh/output-tab
-
-    playground/example/space
-    playbround/example/csv
-    playbround/example/etc...
-
-o  Form action will be one of these depending on what sent the page, and
-   handles vanilla refresh
-o  Switch view button has custom action using one of the urls above
-o  Can all be routed to handler in common because handler can look in url for
-   hints
-
 -----------------------------------------------------------------------------
 Futures
 -----------------------------------------------------------------------------
