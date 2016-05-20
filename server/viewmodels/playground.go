@@ -28,13 +28,16 @@ const PlaygroundExamplePath = "static/examples/space_delim.txt"
 const PlaygroundRefreshSwitchToTabsLabel = "Tabbed view"
 const PlaygroundRefreshSideBySideLabel = "Side by side view"
 
-// The PlaygroundViewModel type provides state information for rendering the playground view.
+
+// The PlaygroundViewModel is the model for the playground sub view (in the MVC sense).
+// It is recommended that instances are created using the constructor functions.
 type PlaygroundViewModel struct {
 	// There is partly duplicated data in these fields. Which is regrettable for maintenance,
 	// but has been chosen to minimise the logic required downstream in the template that
 	// consumes the model. We provide the data in a form that makes the templates as simple as
 	// possible, preferring to carry the complexity in Go rather than in the templating
 	// language.
+	InputTextElementName string
 	InputText  string
 	OutputText string
 
@@ -59,6 +62,9 @@ func NewPlaygroundViewModelForRefresh(
 	urlPath string) *PlaygroundViewModel {
 
 	pg := &PlaygroundViewModel{}
+
+	// Set constant fields
+	pg.InputTextElementName = PlaygroundInputTextField
 
 	// Grab the input text and make the output text assuming a whitespace conversion
 	// is required.
@@ -102,18 +108,21 @@ func NewPlaygroundViewModelForRefresh(
 // is suitable for rendering the playground page pre-populated with the given input text.
 func NewPlaygroundViewModelForExample(exampleInputText string) *PlaygroundViewModel {
 
-	pg := &PlaygroundViewModel{}
+	mdl := &PlaygroundViewModel{}
 
-	pg.InputText = exampleInputText
-	pg.OutputText = pg.doWhiteSpaceConversionForNow(pg.InputText)
+	// Set constant fields
+	mdl.InputTextElementName = PlaygroundInputTextField
+
+	mdl.InputText = exampleInputText
+	mdl.OutputText = mdl.doWhiteSpaceConversionForNow(mdl.InputText)
 
 	// Show the example initially in side by side view
-	pg.FormAction = PlaygroundRefreshSides
-	pg.SwitchViewAction = PlaygroundRefreshInputTab
-	pg.SwitchViewLabel = PlaygroundRefreshSwitchToTabsLabel
-	pg.ShowSideBySide = true
+	mdl.FormAction = PlaygroundRefreshSides
+	mdl.SwitchViewAction = PlaygroundRefreshInputTab
+	mdl.SwitchViewLabel = PlaygroundRefreshSwitchToTabsLabel
+	mdl.ShowSideBySide = true
 
-	return pg
+	return mdl
 }
 
 func (pg *PlaygroundViewModel) doWhiteSpaceConversionForNow(inputText string) string {

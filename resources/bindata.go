@@ -30,11 +30,11 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"strings"
+	"os"
 	"time"
+	"io/ioutil"
+	"path/filepath"
 )
 
 func bindataRead(data []byte, name string) ([]byte, error) {
@@ -63,9 +63,9 @@ type asset struct {
 }
 
 type bindataFileInfo struct {
-	name    string
-	size    int64
-	mode    os.FileMode
+	name string
+	size int64
+	mode os.FileMode
 	modTime time.Time
 }
 
@@ -104,7 +104,7 @@ func staticCssBootstrapMinOrigCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min-orig.css", size: 122540, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -124,7 +124,7 @@ func staticCssBootstrapMinCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.css", size: 125695, mode: os.FileMode(438), modTime: time.Unix(1461422111, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -144,7 +144,7 @@ func staticCssBootstrapMinCyborgCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.cyborg.css", size: 125695, mode: os.FileMode(438), modTime: time.Unix(1461422101, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -164,7 +164,7 @@ func staticCssBootstrapMinFlatlyCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.flatly.css", size: 127393, mode: os.FileMode(438), modTime: time.Unix(1461421737, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -184,7 +184,7 @@ func staticCssFrostCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/frost.css", size: 90, mode: os.FileMode(438), modTime: time.Unix(1461792979, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -204,7 +204,7 @@ func staticExamplesCsvCsv() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/examples/csv.csv", size: 262, mode: os.FileMode(438), modTime: time.Unix(1461787112, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -224,7 +224,7 @@ func staticExamplesSpace_delimTxt() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/examples/space_delim.txt", size: 1320, mode: os.FileMode(438), modTime: time.Unix(1462203148, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -244,7 +244,7 @@ func staticFontsGlyphiconsHalflingsRegularEot() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.eot", size: 20127, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -264,7 +264,7 @@ func staticFontsGlyphiconsHalflingsRegularSvg() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.svg", size: 108738, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -284,7 +284,7 @@ func staticFontsGlyphiconsHalflingsRegularTtf() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.ttf", size: 45404, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -304,7 +304,7 @@ func staticFontsGlyphiconsHalflingsRegularWoff() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.woff", size: 23424, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -324,7 +324,7 @@ func staticFontsGlyphiconsHalflingsRegularWoff2() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.woff2", size: 18028, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -344,7 +344,7 @@ func staticJsBootstrapMinJs() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/js/bootstrap.min.js", size: 36816, mode: os.FileMode(438), modTime: time.Unix(1444516541, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -364,7 +364,7 @@ func staticJsJqueryMinJs() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/js/jquery.min.js", size: 84345, mode: os.FileMode(438), modTime: time.Unix(1444516979, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -384,7 +384,7 @@ func staticTemplatesCommonfooterHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/commonfooter.html", size: 145, mode: os.FileMode(438), modTime: time.Unix(1463593069, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -404,7 +404,7 @@ func staticTemplatesCommonheaderHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/commonheader.html", size: 1945, mode: os.FileMode(438), modTime: time.Unix(1463593058, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -424,11 +424,11 @@ func staticTemplatesMainguiHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/maingui.html", size: 218, mode: os.FileMode(438), modTime: time.Unix(1461511930, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
-var _staticTemplatesPlaygroundHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xcc\x56\x5f\x6f\xd3\x30\x10\x7f\x9f\xb4\xef\x70\x64\x12\x6f\x6e\x04\xaf\xa4\x91\xc6\x60\x12\xa8\x30\xb4\x6c\xc0\x1e\xdd\xf8\xda\x58\x72\x6c\xcb\x71\xd6\x45\x55\xbf\x3b\x97\xa4\xed\xd6\x2e\xe9\x68\x19\x03\x4b\x89\x12\xfb\x77\xe7\xfb\xdd\x1f\x9f\xa3\x57\x8c\xc1\x8f\xcc\x28\x04\x9f\x49\x3d\x05\x59\x80\xd4\xc0\x61\x62\x5c\x0e\x85\x81\x19\x42\xca\x35\x3d\xd6\x97\xae\x06\x21\xad\xdb\xd2\x83\xc7\x3b\x0f\xdc\x21\x87\xd4\x68\x8f\xda\x17\x03\x60\x2c\x3e\x3e\x8a\x1a\x51\x9e\x7a\x69\xf4\x30\x98\xcf\x07\xe7\xf4\x7f\xda\xfc\x2e\x16\x01\xe4\xe8\x33\x23\x86\x81\x35\x85\x0f\x08\x7e\x7c\x04\x34\x22\x21\x6f\x21\x55\xbc\x28\x86\x81\x33\xb3\x7a\x01\x96\xe3\xe1\x52\x6a\x14\x53\x53\xf6\x76\x63\x3d\x24\xc0\x1e\xf8\x06\x63\xe3\xa8\xb0\x35\xaf\x16\x37\x55\x95\xcd\x24\x11\x81\xf5\x17\x53\xb2\xf0\x8c\x2b\x32\x32\x0a\x6b\x6c\xfc\x1a\x75\x61\xdf\x7d\xbc\xe3\xb9\x25\x77\x9d\xb5\xac\xa3\xd0\xbe\x80\x2d\x13\xa3\x04\x3a\x66\x2c\xea\x2d\x73\xda\xd8\x7d\x90\x0e\x53\x6f\x5c\xd5\x6f\xce\xc6\xf7\xe1\xde\x6e\x30\xe3\xd2\x7b\xb3\x36\x78\xec\x35\xd0\xc3\x04\x4e\x78\xa9\xfc\x36\xba\x91\x78\x8a\x20\x11\x4b\xa5\xda\xe2\x76\x55\x59\x84\xc4\xd4\x19\x43\xa9\xb9\x65\x43\xd8\x1a\xf1\xa7\xce\x7f\x80\xa9\x39\x4c\x9d\x29\x6d\x27\x03\xde\x43\xb7\xc9\xf4\x5b\x0c\x1e\x8b\xd0\xc8\x1c\x4e\x9a\x1a\xf8\xa6\x78\x55\xeb\xd6\x62\x99\x3f\x89\xe5\x29\x26\x68\x47\x5c\x0b\x22\x77\x7d\x39\xa2\xe2\x88\x9b\x59\xa0\x69\xee\xb8\x47\x11\x85\xbc\xcb\x94\xa5\xfb\x05\xf7\x9c\x79\x33\x9d\x2a\x1c\x06\xc2\x19\x2b\xcc\x4c\x07\x7d\x66\xae\x00\x4b\x89\x95\xd9\x1d\xfa\x1f\x05\x2c\xa5\x32\xbf\x2f\x83\x0e\xcf\xaf\xa5\x4a\xb5\x92\x59\x6f\x97\xa3\x2e\x7b\x77\x51\x32\x26\xc7\x3e\x83\x97\xa2\x90\x54\xfd\xc6\x26\x96\x76\x60\x69\x71\x1b\xc4\x67\x26\xcf\xf9\x61\x4a\x4e\x82\x38\xf8\xa4\x25\x3b\x97\x0a\x03\x48\x7c\xa5\x70\x4f\xf1\x9b\xd3\x2f\xa3\x3d\x45\x3e\x27\x17\x5f\xf7\x14\xf9\xb9\x73\x93\x28\x2c\xd5\x76\x35\x6c\x57\xd0\x5f\xad\xa8\x27\x4e\x91\x2b\x57\xc1\x45\xe9\x60\x99\x0a\xbb\xd2\xee\x39\x0a\xe2\x3f\xaa\x84\x93\x0e\xf2\x7b\x05\xfe\xda\x2a\xc3\x05\xdc\x18\xd2\x70\x31\xd3\xff\x20\x09\x76\xc7\x16\x3c\x9d\xec\xc3\xa0\x28\xc7\xb9\x3c\xac\x5f\x10\x53\x87\x45\xb6\x0e\x05\x5c\xb6\x13\x7b\x35\x89\xd5\xf7\x21\x4d\xf1\xcd\x63\xce\x99\x7b\x99\x7d\x1e\x80\x6c\xa9\x14\x73\x72\x9a\x75\x7a\x31\x99\x49\x9f\x66\xe0\x4d\x6f\xc9\x74\xa7\x53\x3d\x7a\x22\xd7\x2f\xb0\x11\xd2\x7e\x58\x7d\x39\x5c\xde\x0d\xe9\xc0\x6f\x2d\xfc\x2e\x71\xb6\xba\x20\xf6\x64\xf8\x06\x76\xc4\xc7\xa8\x16\x8b\xae\x6c\xee\x2c\xc8\x5d\x19\xbd\x19\x9b\xf9\x5c\x4e\x60\x90\x64\x66\x96\x48\x81\xef\xab\xfa\xbd\x58\xd0\xb4\x47\x2a\x43\xea\x13\xd0\x74\x90\xb6\x47\x15\xb4\x38\xae\xea\xf7\x20\xf3\xb9\x0a\x60\xd0\x40\x51\x8b\x95\x6d\xf7\xea\xae\xf8\x78\x8c\xa2\x57\x95\x6f\x96\xbb\xd4\xd0\x7d\x3a\xac\x7d\x16\xff\x0a\x00\x00\xff\xff\x69\xa7\x73\xd7\xaa\x0b\x00\x00")
+var _staticTemplatesPlaygroundHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xcc\x56\x5d\x6f\x9c\x3a\x10\x7d\x8f\x94\xff\x30\xd7\x57\xba\x6f\x5e\x74\xef\xeb\x65\x91\xd2\xb4\x91\x5a\xa5\x8d\x54\xd2\x8f\x3c\x1a\x98\x05\x4b\xc6\xb6\x8c\x09\x41\xab\xfd\xef\x1d\xd8\x8f\x64\x77\x61\xd3\xdd\xb6\x69\x2d\x81\x00\x9f\xf1\xcc\x99\x39\x63\x1c\xfe\xc5\x39\x7c\x29\x8c\x42\xf0\x85\xd4\x39\xc8\x0a\xa4\x06\x01\x33\xe3\x4a\xa8\x0c\x34\x08\xa9\xd0\x74\x59\x5f\xbb\x0e\x84\x34\x6f\x6b\x0f\x1e\x1f\x3c\x08\x87\x02\x52\xa3\x3d\x6a\x5f\x4d\x80\xf3\xe8\xfc\x2c\xec\x4d\x45\xea\xa5\xd1\x53\x36\x9f\x4f\xae\xe8\xfd\xa2\x7f\x5d\x2c\x18\x94\xe8\x0b\x93\x4d\x99\x35\x95\x67\x04\x3f\x3f\x03\x1a\x61\x26\xef\x21\x55\xa2\xaa\xa6\xcc\x99\xa6\x9b\x80\xd5\x78\x3a\x95\x1a\xc5\x55\xce\xff\xdb\x9a\x0f\x08\x70\x04\xbe\xc7\xd8\x28\xac\x6c\xc7\x6b\x89\xcb\x55\x6b\x0b\x49\x44\x60\xf3\xc4\x95\xac\x3c\x17\x8a\x82\x0c\x83\x0e\x1b\xfd\x83\xba\xb2\xff\xbf\x79\x10\xa5\xa5\x74\x5d\x2e\x59\x87\x81\x7d\x81\x58\x66\x46\x65\xe8\xb8\xb1\xa8\x77\xc2\x59\xd6\xee\xb5\x74\x98\x7a\xe3\xda\xf1\x70\xb6\x9e\x4f\xcf\x76\x8f\x49\x6a\xef\xcd\x26\xe0\xc4\x6b\xa0\x8b\x67\x38\x13\xb5\xf2\xbb\xe8\xde\xe2\x39\x82\x44\x2c\x95\x6a\x87\xdb\x6d\x6b\x11\x62\xd3\x29\x86\xa4\xb9\x13\x43\xb0\x0c\xe2\x47\x93\xff\x04\xd3\x71\xc8\x9d\xa9\xed\x20\x03\x31\x42\xb7\x57\xfa\x3d\xb2\x7d\x13\x1a\x85\xc3\xd9\x94\xfd\xcd\xa2\xd8\x8a\x94\xb8\xa0\x15\x4e\x78\xcc\xc2\x40\x0c\xf9\x58\xe5\x35\x13\x5e\x70\x6f\xf2\x5c\xe1\x94\x65\xce\xd8\xcc\x34\x9a\x8d\xf9\x5f\x03\x56\x16\xeb\x78\x06\xd6\xdf\xab\x44\x4a\xfd\xfb\xa8\xef\x81\x94\x6e\xac\x6a\xb5\xb6\xd9\xb8\x2b\x51\xd7\xa3\x5e\x94\x8c\x28\x63\x87\xe8\x87\x01\x61\xbe\xc3\xda\x2a\xd1\xf2\xb4\xba\x67\xd1\xa5\x29\x4b\x71\xda\x22\x14\x02\x7b\xab\x25\xbf\x92\x0a\x19\xc4\xbe\x55\x78\xa4\xf9\xdd\xc5\xfb\xeb\x23\x4d\xde\xc5\x37\x1f\x8e\x34\xf9\x7a\xd0\x49\x18\xd4\x6a\x57\xbf\xbb\x9a\xff\xa5\x3d\xf0\x4c\xdf\xdf\xba\x16\x6e\x6a\x07\xab\x2d\xf2\x90\x9e\x7e\x86\xd2\xff\x2c\x89\xef\x91\x3f\xaa\xf0\x9f\xac\x32\x22\x83\x3b\x43\x2b\xdc\x34\xfa\x37\x88\xe0\x70\x6d\xc1\xd3\x5e\x3c\x65\x55\x9d\x94\xf2\xb4\x1d\x9e\x98\x3a\xac\x8a\x4d\x29\xe0\xe3\xf2\xc3\x51\xdb\xfa\xfa\xf9\x94\xdf\xd8\xbf\xfb\x9c\x0b\xf7\x32\x7e\x9e\x80\x6c\xad\x14\x77\x32\x2f\x06\xb3\x18\x37\xd2\xa7\x05\x78\x33\xda\x32\xc3\x72\xea\xc6\x48\xe5\xc6\x0d\xb6\x4a\x3a\x0e\xeb\x8e\x73\xab\xd3\x1c\x1d\xe6\x96\x11\x7e\x96\xd8\xac\x8f\x74\x23\x0a\xdf\xc2\x5e\x8b\x04\xd5\x62\x31\xa4\xe6\xc1\x86\x3c\xa4\xe8\xed\xda\xcc\xe7\x72\x06\x93\xb8\x30\x4d\x2c\x33\x7c\xd5\x76\xf7\xc5\x82\x3e\x7b\xa4\x36\xa4\xff\x04\xf4\x7f\x90\x6e\x4f\xd3\x59\x45\x93\x49\xdb\xdd\x27\x85\x2f\x15\x83\x49\x0f\x45\x9d\xad\x63\x7b\x5c\xee\x56\x24\x09\x66\xa3\x4b\xf9\x7e\x7a\x68\x19\x3a\x01\x07\x5d\xce\xa2\x6f\x01\x00\x00\xff\xff\x1f\x9b\x45\xc4\x5c\x0b\x00\x00")
 
 func staticTemplatesPlaygroundHtmlBytes() ([]byte, error) {
 	return bindataRead(
@@ -443,12 +443,12 @@ func staticTemplatesPlaygroundHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/templates/playground.html", size: 2986, mode: os.FileMode(438), modTime: time.Unix(1463269125, 0)}
-	a := &asset{bytes: bytes, info: info}
+	info := bindataFileInfo{name: "static/templates/playground.html", size: 2908, mode: os.FileMode(438), modTime: time.Unix(1463699329, 0)}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
-var _staticTemplatesPlaygroundsidebysideHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xa4\x50\xc1\xaa\x83\x30\x10\xbc\x0b\xfe\x43\xd8\xbb\xcf\xc3\xa3\x3d\xc5\x1c\x85\x5e\xda\x4b\x7f\x20\x68\x2c\x42\x74\x43\x8c\xb5\x20\xf9\xf7\x2e\x29\x69\x2d\x3d\x54\xec\x5e\x36\xec\xcc\xec\xcc\x26\x4d\x78\xdd\x5e\x59\xa5\xe5\x30\x14\x60\x71\x02\x91\x26\x8c\x6a\x39\xae\x50\x67\xfa\x92\xed\x23\x16\x70\x23\x0e\xbd\x19\x1d\xcf\x4d\x54\xe4\x24\x59\xaf\xe6\xaa\x13\xa5\xc5\x81\x36\xd0\xeb\x73\xcd\xb3\x6f\xcb\x17\x38\x4e\xdd\x9c\xb4\x4a\x46\x62\x83\xb6\xcb\x2a\xec\x9d\x45\xcd\x22\x48\x83\x5a\x01\x9b\xac\x34\x05\x60\xd3\x00\xeb\x65\xa7\x0a\x98\xe7\xbf\x70\xe1\x99\x78\x65\xab\x74\x7d\xa4\xb1\xf7\xf0\xee\xf1\x2a\x0a\x47\x16\xff\x3b\x10\x4b\xa5\xf7\x3c\x8f\x4e\x1b\x3e\xea\x87\x33\x56\xe5\x3c\x8d\xee\x7b\xd0\x47\xbf\x07\x00\x00\xff\xff\x5f\xe5\xa2\xef\x2b\x02\x00\x00")
+var _staticTemplatesPlaygroundsidebysideHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xa4\x50\xc1\xaa\xc2\x30\x10\xbc\x17\xfa\x0f\x61\xef\x7d\x3d\x3c\xde\x3b\xa5\xb9\x29\x78\xd1\x8b\x3f\x10\xda\x54\x84\x24\x1b\xd2\xd4\x0a\x25\xff\xee\x52\x89\x56\x3c\x58\xea\x5e\x36\xec\xcc\xec\xcc\x26\xcf\x78\x73\xbe\xb0\x5a\xcb\xae\xab\xc0\xe3\x00\x22\xcf\x18\xd5\x7c\x5c\xa3\x2e\xf4\xa9\xf8\x4f\xd8\x84\x3b\xb1\xb3\xae\x0f\xbc\x74\x49\x51\x92\x64\xb9\x9a\x2b\x23\xb6\x1e\x3b\xda\x40\xaf\xf7\x35\x8f\xbe\x2e\xdf\xc4\x09\xea\x1a\xa4\x57\x32\x11\x5b\xf4\xa6\xa8\xd1\x06\x8f\x9a\x25\x90\x06\x8d\x02\x36\x78\xe9\x2a\xc0\xb6\x05\x66\xa5\x51\x15\x8c\xe3\xcf\x74\xe1\x91\x78\x1b\xad\x8c\xb2\x61\x4f\x40\x8c\xf0\xea\xf2\x2c\x8a\x47\x26\xbf\x7f\x20\xe6\xda\x18\x79\x99\xbc\x56\x7c\xd5\x17\x87\x2c\xca\x79\xe8\xc3\xe7\xa0\xf7\x7e\x0b\x00\x00\xff\xff\x66\xa9\xa3\xad\x2d\x02\x00\x00")
 
 func staticTemplatesPlaygroundsidebysideHtmlBytes() ([]byte, error) {
 	return bindataRead(
@@ -463,12 +463,12 @@ func staticTemplatesPlaygroundsidebysideHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/templates/playgroundsidebyside.html", size: 555, mode: os.FileMode(438), modTime: time.Unix(1463269172, 0)}
-	a := &asset{bytes: bytes, info: info}
+	info := bindataFileInfo{name: "static/templates/playgroundsidebyside.html", size: 557, mode: os.FileMode(438), modTime: time.Unix(1463773797, 0)}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
-var _staticTemplatesPlaygroundtabbedHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xb4\x91\xcf\x6a\xc4\x20\x10\xc6\xef\x85\xbe\x83\x4c\xcf\x59\x69\x4b\x6f\xc6\xe3\x42\x2f\xed\xa1\x7d\x81\xd9\xa8\x8d\xe0\xea\x62\x4c\x52\x08\xbe\x7b\x87\x6c\xdd\xa4\xf4\x0f\xb9\x54\x08\xca\xf8\x7d\xf3\xcd\xcf\x88\xde\xb1\xc6\x61\xd7\xd5\xe0\x71\x60\xf4\x55\x09\x0f\x1d\xc8\xeb\x2b\x46\x4b\x38\xcb\xa6\xc9\x1a\xb6\x7b\x69\xc3\xf8\xe8\x4f\x7d\x7a\xc5\x43\xce\x9f\x16\x6c\x92\x1d\x34\x90\x44\x7b\x95\xb3\x14\xc8\xda\xa8\x4d\x0d\x37\x20\x67\xb1\xe0\x28\x05\x77\xf6\xc7\x76\xfb\x18\xba\xcd\xed\x66\xf1\xaa\x9d\xe0\xbd\xa3\x8d\x0e\xca\x0e\x05\x21\x86\xf1\x32\xf9\xaa\xdc\x04\x57\xb9\xb7\xea\xf6\xae\x5c\x5e\x04\x7f\x0c\xd3\x5a\xa5\xb4\x5f\x86\x59\x9c\xb3\x3b\xe9\xf7\x84\x51\x63\xc9\x30\x21\x1e\xab\x26\xf8\x14\x83\x63\xe5\x92\x0a\x8a\x78\xc6\x88\xa7\x1a\x82\x31\x40\x0f\x7c\xd4\x35\x4c\xd3\xee\xfc\x96\xa4\xdb\x5b\xed\xd4\x13\x95\x73\x86\xaf\x19\xcb\x22\x2e\x8a\xb8\x7f\x00\xb9\x76\xe6\x2c\x78\x49\x5a\x83\x71\x22\xfb\x1d\xf4\xdb\x4f\xfc\x17\xd0\x4d\x24\xcf\x7d\xda\x8e\x52\xce\xe7\xfd\x23\x00\x00\xff\xff\x25\x85\x32\xd8\xb8\x02\x00\x00")
+var _staticTemplatesPlaygroundtabbedHtml = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\xb4\x91\xcf\x4e\xc4\x20\x10\xc6\xef\x26\xbe\x03\x19\xcf\x5d\xa2\xc6\x1b\xe5\xa6\x89\x17\x3d\xe8\x0b\xcc\x16\x70\x49\x28\x6c\x28\x6d\x4d\x1a\xde\xdd\x49\x57\xb6\x35\xfe\x49\x2f\x92\x34\x10\xe6\xfb\xe6\x9b\x1f\x15\xbd\x63\x8d\xc3\xae\xab\xc1\xe3\xc0\xe8\xab\x12\xee\x3b\x90\x97\x17\x8c\x96\x70\x96\x4d\x93\x35\x6c\xf7\x72\x08\xe3\xa3\x3f\xf6\xe9\x15\xf7\x39\x7f\x5a\xb0\x49\x76\xd0\x40\x12\xed\x55\xce\x52\x20\x3b\x44\x6d\x6a\xb8\x02\x39\x8b\x05\x47\x29\xb8\xb3\x3f\xb6\x7b\x88\xa1\xdb\xdc\x6e\x16\xaf\xda\x09\xde\x3b\xda\xe8\xa0\xec\x50\x10\x62\x18\xcf\x93\xaf\xae\x9b\xe0\x2a\xf7\x56\x5d\xdf\x94\xe2\x59\xf0\xc7\x30\x07\xab\x94\xf6\xcb\x30\x8b\x73\x76\x27\xfd\x9e\x30\x6a\x2c\x19\x26\xc4\xb6\x6a\x82\x4f\x31\x38\x56\x8a\x74\xa1\x88\x67\x8c\x78\xac\x21\x18\x03\xf4\xc0\xad\xae\x61\x9a\x76\xa7\xb7\x24\xdd\xbd\xd3\xad\xf6\xe9\x89\x0a\x39\xc3\xd7\x94\x65\x11\x19\x85\xdc\xde\x81\x5c\x7b\x73\x16\xbc\x64\xad\xd1\x38\xb1\xfd\x8e\xfa\xed\x37\xfe\x0b\xea\x26\x92\xe7\x3e\x6d\x47\x29\xe7\xd3\xfe\x11\x00\x00\xff\xff\xbd\x90\x8d\xcb\xba\x02\x00\x00")
 
 func staticTemplatesPlaygroundtabbedHtmlBytes() ([]byte, error) {
 	return bindataRead(
@@ -483,8 +483,8 @@ func staticTemplatesPlaygroundtabbedHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/templates/playgroundtabbed.html", size: 696, mode: os.FileMode(438), modTime: time.Unix(1463269194, 0)}
-	a := &asset{bytes: bytes, info: info}
+	info := bindataFileInfo{name: "static/templates/playgroundtabbed.html", size: 698, mode: os.FileMode(438), modTime: time.Unix(1463773818, 0)}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -504,7 +504,7 @@ func staticTemplatesQuickstartHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/quickstart.html", size: 1580, mode: os.FileMode(438), modTime: time.Unix(1463088429, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -527,7 +527,7 @@ func Asset(name string) ([]byte, error) {
 // It simplifies safe initialization of global variables.
 func MustAsset(name string) []byte {
 	a, err := Asset(name)
-	if err != nil {
+	if (err != nil) {
 		panic("asset: Asset(" + name + "): " + err.Error())
 	}
 
@@ -560,27 +560,27 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"static/css/bootstrap.min-orig.css":               staticCssBootstrapMinOrigCss,
-	"static/css/bootstrap.min.css":                    staticCssBootstrapMinCss,
-	"static/css/bootstrap.min.cyborg.css":             staticCssBootstrapMinCyborgCss,
-	"static/css/bootstrap.min.flatly.css":             staticCssBootstrapMinFlatlyCss,
-	"static/css/frost.css":                            staticCssFrostCss,
-	"static/examples/csv.csv":                         staticExamplesCsvCsv,
-	"static/examples/space_delim.txt":                 staticExamplesSpace_delimTxt,
-	"static/fonts/glyphicons-halflings-regular.eot":   staticFontsGlyphiconsHalflingsRegularEot,
-	"static/fonts/glyphicons-halflings-regular.svg":   staticFontsGlyphiconsHalflingsRegularSvg,
-	"static/fonts/glyphicons-halflings-regular.ttf":   staticFontsGlyphiconsHalflingsRegularTtf,
-	"static/fonts/glyphicons-halflings-regular.woff":  staticFontsGlyphiconsHalflingsRegularWoff,
+	"static/css/bootstrap.min-orig.css": staticCssBootstrapMinOrigCss,
+	"static/css/bootstrap.min.css": staticCssBootstrapMinCss,
+	"static/css/bootstrap.min.cyborg.css": staticCssBootstrapMinCyborgCss,
+	"static/css/bootstrap.min.flatly.css": staticCssBootstrapMinFlatlyCss,
+	"static/css/frost.css": staticCssFrostCss,
+	"static/examples/csv.csv": staticExamplesCsvCsv,
+	"static/examples/space_delim.txt": staticExamplesSpace_delimTxt,
+	"static/fonts/glyphicons-halflings-regular.eot": staticFontsGlyphiconsHalflingsRegularEot,
+	"static/fonts/glyphicons-halflings-regular.svg": staticFontsGlyphiconsHalflingsRegularSvg,
+	"static/fonts/glyphicons-halflings-regular.ttf": staticFontsGlyphiconsHalflingsRegularTtf,
+	"static/fonts/glyphicons-halflings-regular.woff": staticFontsGlyphiconsHalflingsRegularWoff,
 	"static/fonts/glyphicons-halflings-regular.woff2": staticFontsGlyphiconsHalflingsRegularWoff2,
-	"static/js/bootstrap.min.js":                      staticJsBootstrapMinJs,
-	"static/js/jquery.min.js":                         staticJsJqueryMinJs,
-	"static/templates/commonfooter.html":              staticTemplatesCommonfooterHtml,
-	"static/templates/commonheader.html":              staticTemplatesCommonheaderHtml,
-	"static/templates/maingui.html":                   staticTemplatesMainguiHtml,
-	"static/templates/playground.html":                staticTemplatesPlaygroundHtml,
-	"static/templates/playgroundsidebyside.html":      staticTemplatesPlaygroundsidebysideHtml,
-	"static/templates/playgroundtabbed.html":          staticTemplatesPlaygroundtabbedHtml,
-	"static/templates/quickstart.html":                staticTemplatesQuickstartHtml,
+	"static/js/bootstrap.min.js": staticJsBootstrapMinJs,
+	"static/js/jquery.min.js": staticJsJqueryMinJs,
+	"static/templates/commonfooter.html": staticTemplatesCommonfooterHtml,
+	"static/templates/commonheader.html": staticTemplatesCommonheaderHtml,
+	"static/templates/maingui.html": staticTemplatesMainguiHtml,
+	"static/templates/playground.html": staticTemplatesPlaygroundHtml,
+	"static/templates/playgroundsidebyside.html": staticTemplatesPlaygroundsidebysideHtml,
+	"static/templates/playgroundtabbed.html": staticTemplatesPlaygroundtabbedHtml,
+	"static/templates/quickstart.html": staticTemplatesQuickstartHtml,
 }
 
 // AssetDir returns the file names below a certain
@@ -619,89 +619,110 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type bintree struct {
-	Func     func() (*asset, error)
+	Func func() (*asset, error)
 	Children map[string]*bintree
 }
-
 var _bintree = &bintree{nil, map[string]*bintree{
 	"static": &bintree{nil, map[string]*bintree{
 		"css": &bintree{nil, map[string]*bintree{
-			"bootstrap.min-orig.css":   &bintree{staticCssBootstrapMinOrigCss, map[string]*bintree{}},
-			"bootstrap.min.css":        &bintree{staticCssBootstrapMinCss, map[string]*bintree{}},
-			"bootstrap.min.cyborg.css": &bintree{staticCssBootstrapMinCyborgCss, map[string]*bintree{}},
-			"bootstrap.min.flatly.css": &bintree{staticCssBootstrapMinFlatlyCss, map[string]*bintree{}},
-			"frost.css":                &bintree{staticCssFrostCss, map[string]*bintree{}},
+			"bootstrap.min-orig.css": &bintree{staticCssBootstrapMinOrigCss, map[string]*bintree{
+			}},
+			"bootstrap.min.css": &bintree{staticCssBootstrapMinCss, map[string]*bintree{
+			}},
+			"bootstrap.min.cyborg.css": &bintree{staticCssBootstrapMinCyborgCss, map[string]*bintree{
+			}},
+			"bootstrap.min.flatly.css": &bintree{staticCssBootstrapMinFlatlyCss, map[string]*bintree{
+			}},
+			"frost.css": &bintree{staticCssFrostCss, map[string]*bintree{
+			}},
 		}},
 		"examples": &bintree{nil, map[string]*bintree{
-			"csv.csv":         &bintree{staticExamplesCsvCsv, map[string]*bintree{}},
-			"space_delim.txt": &bintree{staticExamplesSpace_delimTxt, map[string]*bintree{}},
+			"csv.csv": &bintree{staticExamplesCsvCsv, map[string]*bintree{
+			}},
+			"space_delim.txt": &bintree{staticExamplesSpace_delimTxt, map[string]*bintree{
+			}},
 		}},
 		"fonts": &bintree{nil, map[string]*bintree{
-			"glyphicons-halflings-regular.eot":   &bintree{staticFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{}},
-			"glyphicons-halflings-regular.svg":   &bintree{staticFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{}},
-			"glyphicons-halflings-regular.ttf":   &bintree{staticFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{}},
-			"glyphicons-halflings-regular.woff":  &bintree{staticFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{}},
-			"glyphicons-halflings-regular.woff2": &bintree{staticFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{}},
+			"glyphicons-halflings-regular.eot": &bintree{staticFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{
+			}},
+			"glyphicons-halflings-regular.svg": &bintree{staticFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{
+			}},
+			"glyphicons-halflings-regular.ttf": &bintree{staticFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{
+			}},
+			"glyphicons-halflings-regular.woff": &bintree{staticFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{
+			}},
+			"glyphicons-halflings-regular.woff2": &bintree{staticFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{
+			}},
 		}},
 		"js": &bintree{nil, map[string]*bintree{
-			"bootstrap.min.js": &bintree{staticJsBootstrapMinJs, map[string]*bintree{}},
-			"jquery.min.js":    &bintree{staticJsJqueryMinJs, map[string]*bintree{}},
+			"bootstrap.min.js": &bintree{staticJsBootstrapMinJs, map[string]*bintree{
+			}},
+			"jquery.min.js": &bintree{staticJsJqueryMinJs, map[string]*bintree{
+			}},
 		}},
 		"templates": &bintree{nil, map[string]*bintree{
-			"commonfooter.html":         &bintree{staticTemplatesCommonfooterHtml, map[string]*bintree{}},
-			"commonheader.html":         &bintree{staticTemplatesCommonheaderHtml, map[string]*bintree{}},
-			"maingui.html":              &bintree{staticTemplatesMainguiHtml, map[string]*bintree{}},
-			"playground.html":           &bintree{staticTemplatesPlaygroundHtml, map[string]*bintree{}},
-			"playgroundsidebyside.html": &bintree{staticTemplatesPlaygroundsidebysideHtml, map[string]*bintree{}},
-			"playgroundtabbed.html":     &bintree{staticTemplatesPlaygroundtabbedHtml, map[string]*bintree{}},
-			"quickstart.html":           &bintree{staticTemplatesQuickstartHtml, map[string]*bintree{}},
+			"commonfooter.html": &bintree{staticTemplatesCommonfooterHtml, map[string]*bintree{
+			}},
+			"commonheader.html": &bintree{staticTemplatesCommonheaderHtml, map[string]*bintree{
+			}},
+			"maingui.html": &bintree{staticTemplatesMainguiHtml, map[string]*bintree{
+			}},
+			"playground.html": &bintree{staticTemplatesPlaygroundHtml, map[string]*bintree{
+			}},
+			"playgroundsidebyside.html": &bintree{staticTemplatesPlaygroundsidebysideHtml, map[string]*bintree{
+			}},
+			"playgroundtabbed.html": &bintree{staticTemplatesPlaygroundtabbedHtml, map[string]*bintree{
+			}},
+			"quickstart.html": &bintree{staticTemplatesQuickstartHtml, map[string]*bintree{
+			}},
 		}},
 	}},
 }}
 
 // RestoreAsset restores an asset under the given directory
 func RestoreAsset(dir, name string) error {
-	data, err := Asset(name)
-	if err != nil {
-		return err
-	}
-	info, err := AssetInfo(name)
-	if err != nil {
-		return err
-	}
-	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
-	if err != nil {
-		return err
-	}
-	err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
-	if err != nil {
-		return err
-	}
-	return nil
+        data, err := Asset(name)
+        if err != nil {
+                return err
+        }
+        info, err := AssetInfo(name)
+        if err != nil {
+                return err
+        }
+        err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
+        if err != nil {
+                return err
+        }
+        err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
+        if err != nil {
+                return err
+        }
+        err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
+        if err != nil {
+                return err
+        }
+        return nil
 }
 
 // RestoreAssets restores an asset under the given directory recursively
 func RestoreAssets(dir, name string) error {
-	children, err := AssetDir(name)
-	// File
-	if err != nil {
-		return RestoreAsset(dir, name)
-	}
-	// Dir
-	for _, child := range children {
-		err = RestoreAssets(dir, filepath.Join(name, child))
-		if err != nil {
-			return err
-		}
-	}
-	return nil
+        children, err := AssetDir(name)
+        // File
+        if err != nil {
+                return RestoreAsset(dir, name)
+        }
+        // Dir
+        for _, child := range children {
+                err = RestoreAssets(dir, filepath.Join(name, child))
+                if err != nil {
+                        return err
+                }
+        }
+        return nil
 }
 
 func _filePath(dir, name string) string {
-	cannonicalName := strings.Replace(name, "\\", "/", -1)
-	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
+        cannonicalName := strings.Replace(name, "\\", "/", -1)
+        return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+

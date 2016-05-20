@@ -12,7 +12,7 @@ import (
 // This is a smoke-test sample of the html produced to render the landing (quickstart) page.
 func TestRenderingOfQuickStartPage(t *testing.T) {
 	viewModel := viewmodels.NewTopLevelViewModel()
-	viewModel.QuickStart = &viewmodels.QuickStartViewModel{}
+	viewModel.QuickStart = viewmodels.NewQuickStartViewModel()
 	renderer := NewGuiRenderer(resources.CompiledTemplates)
 	var recorder bytes.Buffer
 	renderer.Render(&recorder, viewModel)

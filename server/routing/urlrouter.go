@@ -13,7 +13,7 @@ func SetUpRouting() {
 
 	http.HandleFunc(urls.URLHomePage, handlers.HandleQuickStart)
 
-	http.HandleFunc(urls.URLPlayground, handlers.HandlePlayground)
+	http.HandleFunc(urls.URLPlaygroundStub, handlers.HandlePlayground)
 	http.HandleFunc(urls.URLQuickstart, handlers.HandleQuickStart)
 
 }

@@ -42,46 +42,59 @@ o  Next iter - start to design tdd of conversion
     o  tidy up web gui to show paul and carl etc
         o  Unit tests for model view interaction?
             *  Root landing page shows quick start page
-            o  Quick start page has right contents incl links to playground and
+            *  Quick start page has right contents incl links to playground and
                self
                 *  Time out to automate bindata comp
-                o  Finish quick start tests
+                *  Finish quick start tests
                     *  Refactor to have html content test helpers to 
                        shorten test code
                        *  Report errors with non flattened
                     *  Finish quick start tests
-                    o  Refactor some more to make html sample util
-            o  Playground link takes to playground landing
-            o  Etc
-                                   
-                    o  Fix up real app to provide input text thru to model
-                       builders
-                    o  Get example entry point working with refresh and edit
-                       cycle
-                    o  Make sure can switch view and persists on refresh or
-                       edit
-                    o  Make sure can change current tab and persists on refresh
-                       or edit
-                    o  Make sure link from landing to playground works
-                    o  What unit tests should there be
+                    *  Refactor some more to make html sample util
+                    *  Playground link takes to playground landing
+            o  Playground landing/example page unit testing
+                *  Landing page content and mode ok
+                    *  sample header
+                    *  nav bar links active and not active right
+                    *  main form refresh
+                    *  switch to label and action
+                    *  is showing side by side content
+                    *  side by side panels have right content
+            o  Playground refresh
+                *  Get interactive to show something
+                    *  Routing to send URLPlaygroundStub to playground handler
+                        *  Change and interactive test and regression unit test
+                o  Work up unit test for side by side mode
+                    o  Starter
+                    o  Work thru working page source
+                        *  Header
+                        *  Input URL is echoed
+                        o  Playground should be active but not space delim button
+                            o  Needs upgrade to playground template and model
 
-            o  strings in main should be constants
-            o  model builders in main should go into models
-            o  make sure no unused handlers left behind
-            o  does this mean the other playground choices should follow?
+
+
+
+                o  Tests that show refresh works from this starting point
+                o  Tests that show you can switch to tabbed mode and it displays right
+                o  Tests that show, that tabbed mode is preserved by refresh
+                o  Tests that show, that choice of tabs is preserved by refresh
+                o  You can edit the input text and press refresh and it works cyclicly
+                o  The type something entry point works and supports refresh
+                o  CSV entry point
+        o  Manual exercise of playground gui and going back and forth to quickstart
+
 
         o  unfinished links do something more sensible
-        o  edit/refresh cycle should work
-        o  try something should work
 
 
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
+
 -----------------------------------------------------------------------------
 URL alternative
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 Futures
 -----------------------------------------------------------------------------
-
