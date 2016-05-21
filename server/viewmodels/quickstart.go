@@ -4,7 +4,6 @@ package viewmodels
 type QuickStartViewModel struct {
 }
 
-
 // The NewPlaygroundViewModelForExample function creates a new QuickStartViewModel instance that
 // is suitable for rendering the quickstart  page.
 func NewQuickStartViewModel() *QuickStartViewModel {

@@ -1,76 +1,25 @@
-*  Anticipate urls for landing page and for playground landing
-*  code the current html thus
-*  Update handlers so both produce same page but indi
-*  Make default handler also go to quickstart/python
-*  Refactor template parsing to in common
-*  Make active nav show if in quickstart or playground
-*  Design how to split off and delegate rendering of these two pages
-*  Get playground to look the part with static content
-    *  The header blocks
-    *  Some icons
-    *  Text Editor in left half
-*  Sync
-
-
-*  Make rendering from model populate both text areas from model using fixed
-   models
-*  Have refresh post content of lhs
-*  Make only chosen urls work others barf
-*  Have refresh handler copy input back to input and something based thereon
-*  Refactor main / handlers in common?
-*  Have refresh handler launch chain to build new display model that echos
-   input text and includes some trivial output text
-*  Should now have enter-refresh-render cycle
-
-*  Cause the example button selections to stimulate a refresh, parameterised
-   with the type of example required.
-   *  Link works and handler puts in foo bar with spaces and does refresh
-   *  How make default btn send href uri?
-   *  How organise differentiation of example type required?
-    *  Make space sep handler get content from resource
-    *  Add another to refactor commonality in handler
-
-*  Stuff to Paul
-
-o  Next iter - start to design tdd of conversion
-    *  Put in more realistic input file
-    *  Satisfy up conversion interface
-    *  Refactor processors to filereaders
-    *  Put the first bit of processing into the whitespace converter
-    *  Work the precedence bottom up
-
     o  tidy up web gui to show paul and carl etc
         o  Unit tests for model view interaction?
-            *  Root landing page shows quick start page
-            *  Quick start page has right contents incl links to playground and
-               self
-                *  Time out to automate bindata comp
-                *  Finish quick start tests
-                    *  Refactor to have html content test helpers to 
-                       shorten test code
-                       *  Report errors with non flattened
-                    *  Finish quick start tests
-                    *  Refactor some more to make html sample util
-                    *  Playground link takes to playground landing
-            o  Playground landing/example page unit testing
-                *  Landing page content and mode ok
-                    *  sample header
-                    *  nav bar links active and not active right
-                    *  main form refresh
-                    *  switch to label and action
-                    *  is showing side by side content
-                    *  side by side panels have right content
-            o  Playground refresh
-                *  Get interactive to show something
-                    *  Routing to send URLPlaygroundStub to playground handler
-                        *  Change and interactive test and regression unit test
-                o  Work up unit test for side by side mode
-                    o  Starter
-                    o  Work thru working page source
-                        *  Header
-                        *  Input URL is echoed
-                        o  Playground should be active but not space delim button
-                            o  Needs upgrade to playground template and model
+            *  Quick start url
+            *  Playground canned example rendering incl default side by side mode
+            *  Playground refresh in side by side mode
+                *  main form action is copied from incoming url
+                *  input panel shows input from form
+                *  output panel shows converted input
+                *  switch to says tabbed
+                *  switch to form action is to tabbed
+            o  Playground refresh in tabbed mode input in front
+                *  switch to gives label and action to go to side by side
+                *  The input tab is active vs output
+                *  if we asked for input in front, it is visible and active
+                o  The hrefs on both tabs are refreshes with the right tab in front
+                    *  Experiment making the <LI> in the tabs a btn (not allowed)
+                    *  How else organise these two button side by side
+                    o  If works DI stuff that should be
+                    o  If works, fix up regression tests
+                    o  Then revert to checking each btn has corect url
+                o  if we asked for output in front it is visible and active
+            o  Playground refresh in tabbed mode output in front
 
 
 
@@ -91,6 +40,13 @@ o  Next iter - start to design tdd of conversion
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
+<button
+                        class="btn btn-default"
+                        type="submit"
+                        formaction=/playground/refresh/input-tab>
+                    Tabbed view
+                </button>
+
 
 -----------------------------------------------------------------------------
 URL alternative

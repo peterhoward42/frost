@@ -1,11 +1,19 @@
-<ul class="nav nav-tabs">
-    <li {{if .ShowInputTab}}class="active" {{end}}><a href="#">Input</a></li>
-    <li {{if .ShowFrostTab}}class="active" {{end}}><a href="#">Frost</a></li>
-</ul>
+<button
+        class="btn btn-default {{if .ShowInputTab}}active{{end}}"
+        type="submit"
+        formaction="/playground/refresh/input-tab">
+    Input
+</button>
+<button
+        class="btn btn-default {{if .ShowOutputTab}}active{{end}}"
+        type="submit"
+        formaction="/playground/refresh/output-tab">
+    Frost
+</button>
 
 <div class="row">
     <div class="col-lg-12">
-        <div {{if .ShowFrostTab}}class="hidden" {{end}}>
+        <div {{if .ShowOutputTab}}class="hidden" {{end}}>
             <textarea class="form-control textarea-code" wrap="off" name="{{.InputTextElementName}}"
                       rows="35">{{.InputText}}</textarea>
         </div>

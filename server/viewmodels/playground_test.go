@@ -6,6 +6,46 @@ import (
 	"testing"
 )
 
+
+// First a series of tests for the canned example buttons in the playground.
+
+func TestExamplePrePopulatesInputPanel(t *testing.T) {
+	inputText := "foo\nbar"
+	spaceSeparatedButtonActiveString := "active"
+	mdl := NewPlaygroundViewModelForExample(inputText, spaceSeparatedButtonActiveString)
+	if mdl.InputText != inputText {
+		t.Errorf("Unexpected input panel text: %v", mdl.InputText)
+	}
+}
+
+func TestExamplePopulatesOutputPanel(t *testing.T) {
+	inputText := "foo\nbar"
+	spaceSeparatedButtonActiveString := "active"
+	mdl := NewPlaygroundViewModelForExample(inputText, spaceSeparatedButtonActiveString)
+	expected := `"Value": "foo"`
+	if strings.Contains(mdl.OutputText, expected) == false {
+		t.Errorf("Unexpected output panel text: %v", mdl.OutputText)
+	}
+}
+
+func TestExampleSetsUpSideBySideViewOptions(t *testing.T) {
+	inputText := "irrelevant"
+	spaceSeparatedButtonActiveString := "active"
+	mdl := NewPlaygroundViewModelForExample(inputText, spaceSeparatedButtonActiveString)
+	if mdl.FormAction != "/playground/refresh/side-by-side" {
+		t.Errorf("Unexpected form action: %v", mdl.FormAction)
+	}
+	if mdl.SwitchViewAction != "/playground/refresh/input-tab" {
+		t.Errorf("Unexpected switch view action: %v", mdl.SwitchViewAction)
+	}
+	if mdl.SwitchViewLabel != "Tabbed view" {
+		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
+	}
+	if mdl.ShowSideBySide != true {
+		t.Errorf("Unexpected show side by side: %v", mdl.ShowSideBySide)
+	}
+}
+
 // First a series of tests for the refresh URL
 
 func TestRefreshProducesOutputPanelContents(t *testing.T) {
@@ -74,38 +114,3 @@ func TestRefreshSetsStateRightForOutputTabbedMode(t *testing.T) {
 	}
 }
 
-// Now a series of tests for the set of example button action URLs
-
-func TestExamplePrePopulatesInputPanel(t *testing.T) {
-	inputText := "foo\nbar"
-	mdl := NewPlaygroundViewModelForExample(inputText)
-	if mdl.InputText != inputText {
-		t.Errorf("Unexpected input panel text: %v", mdl.InputText)
-	}
-}
-
-func TestExamplePopulatesOutputPanel(t *testing.T) {
-	inputText := "foo\nbar"
-	mdl := NewPlaygroundViewModelForExample(inputText)
-	expected := `"Value": "foo"`
-	if strings.Contains(mdl.OutputText, expected) == false {
-		t.Errorf("Unexpected output panel text: %v", mdl.OutputText)
-	}
-}
-
-func TestExampleSetsUpSideBySideViewOptions(t *testing.T) {
-	inputText := "irrelevant"
-	mdl := NewPlaygroundViewModelForExample(inputText)
-	if mdl.FormAction != "/playground/refresh/side-by-side" {
-		t.Errorf("Unexpected form action: %v", mdl.FormAction)
-	}
-	if mdl.SwitchViewAction != "/playground/refresh/input-tab" {
-		t.Errorf("Unexpected switch view action: %v", mdl.SwitchViewAction)
-	}
-	if mdl.SwitchViewLabel != "Tabbed view" {
-		t.Errorf("Unexpected switch view label: %v", mdl.SwitchViewLabel)
-	}
-	if mdl.ShowSideBySide != true {
-		t.Errorf("Unexpected show side by side: %v", mdl.ShowSideBySide)
-	}
-}

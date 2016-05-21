@@ -28,7 +28,9 @@ func HandlePlayground(w http.ResponseWriter, r *http.Request) {
 			r.Form, r.URL.Path)
 	case strings.Contains(r.URL.Path, "example"):
 		exampleInputText := string(resources.MustAsset(`static/examples/space_delim.txt`))
-		viewModel.Playground = viewmodels.NewPlaygroundViewModelForExample(exampleInputText)
+		spaceSeparatedButtonActiveString := "active"
+		viewModel.Playground = viewmodels.NewPlaygroundViewModelForExample(
+			exampleInputText, spaceSeparatedButtonActiveString)
 	default:
 		panic(fmt.Sprintf("URL that reached HandlePlayground contains neither refresh"+
 			"or example variant hint: %v", r.URL.Path))

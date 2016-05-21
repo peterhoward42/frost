@@ -28,7 +28,6 @@ const PlaygroundExamplePath = "static/examples/space_delim.txt"
 const PlaygroundRefreshSwitchToTabsLabel = "Tabbed view"
 const PlaygroundRefreshSideBySideLabel = "Side by side view"
 
-
 // The PlaygroundViewModel is the model for the playground sub view (in the MVC sense).
 // It is recommended that instances are created using the constructor functions.
 type PlaygroundViewModel struct {
@@ -37,19 +36,51 @@ type PlaygroundViewModel struct {
 	// consumes the model. We provide the data in a form that makes the templates as simple as
 	// possible, preferring to carry the complexity in Go rather than in the templating
 	// language.
-	InputTextElementName string
-	InputText  string
-	OutputText string
+	InputTextElementName string // Use this as the name for the input text TextArea.
+	InputText            string // Set the text of the input text TextArea to this.
+	OutputText           string // Set the text of the output TextArea to this.
 
-	FormAction       string
-	SwitchViewAction string
-	SwitchViewLabel  string
+	// Use this as the active attribute on the space separated example button. I.e. "active"
+	// or empty string.
+	SpaceSepActiveMode string
 
-	ShowTabbed     bool
-	ShowSideBySide bool
+	FormAction       string // Use this as the URL in the form's action attribute.
+	SwitchViewAction string // Use this as the form-action attribute on the switch view button.
+	SwitchViewLabel  string // Use this text label on the switch view button.
 
-	ShowInputTab  bool
-	ShowOutputTab bool
+	ShowTabbed     bool // Should the view be in tabbed mode?
+	ShowSideBySide bool // should the view be in side by side mode?
+
+	ShowInputTab  bool // When in tabbed mode, should the input tab be on top?
+	ShowOutputTab bool // When in tabbed mode, should the output tab be on top?
+}
+
+// The NewPlaygroundViewModelForExample function creates a new PlaygroundViewModel instance that
+// is suitable for rendering the playground page pre-populated with the given input text.
+func NewPlaygroundViewModelForExample(
+	exampleInputText string,
+	spaceSeparatedButtonActiveString string) *PlaygroundViewModel {
+
+	mdl := &PlaygroundViewModel{}
+
+	// Set constant fields
+	mdl.InputTextElementName = PlaygroundInputTextField
+
+	mdl.InputText = exampleInputText
+	mdl.OutputText = mdl.doWhiteSpaceConversionForNow(mdl.InputText)
+
+	// When we are rendering a user's request to see an example, we might want to show
+	// the space separate example button as active - we require the caller of this function
+	// to inject this decision.
+	mdl.SpaceSepActiveMode = spaceSeparatedButtonActiveString
+
+	// Show the example initially in side by side view
+	mdl.FormAction = PlaygroundRefreshSides
+	mdl.SwitchViewAction = PlaygroundRefreshInputTab
+	mdl.SwitchViewLabel = PlaygroundRefreshSwitchToTabsLabel
+	mdl.ShowSideBySide = true
+
+	return mdl
 }
 
 // The NewPlaygroundViewModelForRefresh function creates a new PlaygroundViewModel instance that
@@ -73,6 +104,10 @@ func NewPlaygroundViewModelForRefresh(
 
 	// For a refresh action we reflect back the incoming URL
 	pg.FormAction = urlPath
+
+	// For a refresh action we do not want the space-separated example button to show up
+	// as being active.
+	pg.SpaceSepActiveMode = ""
 
 	// Set up model fields to suit either side by side mode or tabbed mode.
 	// (Exploits the zero value of the structure)
@@ -102,27 +137,6 @@ func NewPlaygroundViewModelForRefresh(
 	}
 
 	return pg
-}
-
-// The NewPlaygroundViewModelForExample function creates a new PlaygroundViewModel instance that
-// is suitable for rendering the playground page pre-populated with the given input text.
-func NewPlaygroundViewModelForExample(exampleInputText string) *PlaygroundViewModel {
-
-	mdl := &PlaygroundViewModel{}
-
-	// Set constant fields
-	mdl.InputTextElementName = PlaygroundInputTextField
-
-	mdl.InputText = exampleInputText
-	mdl.OutputText = mdl.doWhiteSpaceConversionForNow(mdl.InputText)
-
-	// Show the example initially in side by side view
-	mdl.FormAction = PlaygroundRefreshSides
-	mdl.SwitchViewAction = PlaygroundRefreshInputTab
-	mdl.SwitchViewLabel = PlaygroundRefreshSwitchToTabsLabel
-	mdl.ShowSideBySide = true
-
-	return mdl
 }
 
 func (pg *PlaygroundViewModel) doWhiteSpaceConversionForNow(inputText string) string {
