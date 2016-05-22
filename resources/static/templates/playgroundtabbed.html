@@ -1,13 +1,13 @@
 <button
         class="btn btn-default {{if .ShowInputTab}}active{{end}}"
         type="submit"
-        formaction="/playground/refresh/input-tab">
+        formaction="{{.FormActionForInputTab}}">
     Input
 </button>
 <button
         class="btn btn-default {{if .ShowOutputTab}}active{{end}}"
         type="submit"
-        formaction="/playground/refresh/output-tab">
+        formaction="{{.FormActionForOutputTab}}">
     Frost
 </button>
 

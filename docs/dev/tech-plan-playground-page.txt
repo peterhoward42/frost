@@ -1,53 +1,12 @@
     o  tidy up web gui to show paul and carl etc
-        o  Unit tests for model view interaction?
-            *  Quick start url
-            *  Playground canned example rendering incl default side by side mode
-            *  Playground refresh in side by side mode
-                *  main form action is copied from incoming url
-                *  input panel shows input from form
-                *  output panel shows converted input
-                *  switch to says tabbed
-                *  switch to form action is to tabbed
-            o  Playground refresh in tabbed mode input in front
-                *  switch to gives label and action to go to side by side
-                *  The input tab is active vs output
-                *  if we asked for input in front, it is visible and active
-                o  The hrefs on both tabs are refreshes with the right tab in front
-                    *  Experiment making the <LI> in the tabs a btn (not allowed)
-                    *  How else organise these two button side by side
-                    o  If works DI stuff that should be
-                    o  If works, fix up regression tests
-                    o  Then revert to checking each btn has corect url
-                o  if we asked for output in front it is visible and active
-            o  Playground refresh in tabbed mode output in front
-
-
-
-
-                o  Tests that show refresh works from this starting point
-                o  Tests that show you can switch to tabbed mode and it displays right
-                o  Tests that show, that tabbed mode is preserved by refresh
-                o  Tests that show, that choice of tabs is preserved by refresh
-                o  You can edit the input text and press refresh and it works cyclicly
-                o  The type something entry point works and supports refresh
-                o  CSV entry point
-        o  Manual exercise of playground gui and going back and forth to quickstart
-
-
+        *  Unit tests for model view interaction?
+        *  Manual exercise of playground gui and going back and forth to quickstart
         o  unfinished links do something more sensible
 
 
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
-<button
-                        class="btn btn-default"
-                        type="submit"
-                        formaction=/playground/refresh/input-tab>
-                    Tabbed view
-                </button>
-
-
 -----------------------------------------------------------------------------
 URL alternative
 -----------------------------------------------------------------------------

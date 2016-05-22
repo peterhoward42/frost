@@ -51,8 +51,10 @@ type PlaygroundViewModel struct {
 	ShowTabbed     bool // Should the view be in tabbed mode?
 	ShowSideBySide bool // should the view be in side by side mode?
 
-	ShowInputTab  bool // When in tabbed mode, should the input tab be on top?
-	ShowOutputTab bool // When in tabbed mode, should the output tab be on top?
+	ShowInputTab           bool   // When in tabbed mode, should the input tab be on top?
+	ShowOutputTab          bool   // When in tabbed mode, should the output tab be on top?
+	FormActionForInputTab  string // URL to post form to when you press the Input Tab
+	FormActionForOutputTab string // URL to post form to when you press the Input Tab
 }
 
 // The NewPlaygroundViewModelForExample function creates a new PlaygroundViewModel instance that
@@ -62,9 +64,7 @@ func NewPlaygroundViewModelForExample(
 	spaceSeparatedButtonActiveString string) *PlaygroundViewModel {
 
 	mdl := &PlaygroundViewModel{}
-
-	// Set constant fields
-	mdl.InputTextElementName = PlaygroundInputTextField
+	mdl.setConstantFields()
 
 	mdl.InputText = exampleInputText
 	mdl.OutputText = mdl.doWhiteSpaceConversionForNow(mdl.InputText)
@@ -93,9 +93,7 @@ func NewPlaygroundViewModelForRefresh(
 	urlPath string) *PlaygroundViewModel {
 
 	pg := &PlaygroundViewModel{}
-
-	// Set constant fields
-	pg.InputTextElementName = PlaygroundInputTextField
+	pg.setConstantFields()
 
 	// Grab the input text and make the output text assuming a whitespace conversion
 	// is required.
@@ -137,6 +135,12 @@ func NewPlaygroundViewModelForRefresh(
 	}
 
 	return pg
+}
+
+func (pg *PlaygroundViewModel) setConstantFields() {
+	pg.InputTextElementName = PlaygroundInputTextField
+	pg.FormActionForInputTab = PlaygroundRefreshInputTab
+	pg.FormActionForOutputTab = PlaygroundRefreshOutputTab
 }
 
 func (pg *PlaygroundViewModel) doWhiteSpaceConversionForNow(inputText string) string {

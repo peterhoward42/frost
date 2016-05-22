@@ -105,7 +105,7 @@ func TestRenderingOfPlayGroundRefreshSideBySide(t *testing.T) {
 	// fmt.Printf("The page under test is:\n%v", rendered)
 }
 
-func TestRenderingOfPlayGroundRefreshInTabbedMode(t *testing.T) {
+func TestRenderingPlayGroundRefreshTabbedMode(t *testing.T) {
 	viewModel := viewmodels.NewTopLevelViewModel()
 	formValues := url.Values{}
 	formValues.Set(viewmodels.PlaygroundInputTextField, "fibble")
@@ -129,19 +129,63 @@ func TestRenderingOfPlayGroundRefreshInTabbedMode(t *testing.T) {
 		`Switch to.*formaction=/playground/refresh/side-by-side>.*Side by side view`,
 		`Switch to button offers side by side view and has side by side URL as the action`})
 	assertions = append(assertions, &testutils.MatchAssertion{
-		`<li class="active" ><a href="#">Input`,
+		`<button[\s]*class="btn btn-default active".*input-tab">[\s]*Input`,
 		`Input tab is active`})
 	assertions = append(assertions, &testutils.MatchAssertion{
-		`<li ><a href="#">Frost</a></li>`,
+		`class="btn btn-default ".*resh/output-tab">`,
 		`Output tab is not active`})
 	assertions = append(assertions, &testutils.MatchAssertion{
 		`<textarea.*name="input-text".*<div class="hidden" >.*<textarea`,
 		`Input tab is visible`})
 	assertions = append(assertions, &testutils.MatchAssertion{
-		`<textarea.*name="input-text".*<div class="hidden" >.*<textarea`,
-		`hrefs are correct on both tabs`})
+		`type="submit"[\s]*formaction="/playground/refresh/input-tab">[\s]*Input`,
+		`Href is correct on input tab`})
 
 	testutils.AssertPageContainsSamples(t, flattened, assertions)
 
 	// fmt.Printf("The page under test is:\n%v", rendered)
+
+}
+func TestRenderingPlayGroundRefreshTabbedModeVariantsWhenOutputTabSelected(t *testing.T) {
+	viewModel := viewmodels.NewTopLevelViewModel()
+	formValues := url.Values{}
+	formValues.Set(viewmodels.PlaygroundInputTextField, "fibble")
+
+	// Use arbitrary URL that includes the tag that stimulates tabbed mode with the
+	// input tab in front.
+	incumbentURL := "xxx-output-tab-xxx"
+	viewModel.Playground = viewmodels.NewPlaygroundViewModelForRefresh(formValues, incumbentURL)
+	renderer := NewGuiRenderer(resources.CompiledTemplates)
+	var recorder bytes.Buffer
+	renderer.Render(&recorder, viewModel)
+	rendered := recorder.String()
+	flattened := strings.Replace(rendered, "\n", " ", -1)
+
+	assertions := []*testutils.MatchAssertion{}
+
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`Use less code to read`,
+		`Smoke test of standard header.`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`Switch to.*formaction=/playground/refresh/side-by-side>.*Side by side view`,
+		`Switch to button offers side by side view and has side by side URL as the action`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`<button[\s]*class="btn btn-default active".*output-tab">[\s]*Frost`,
+		`Output tab is active`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`class="btn btn-default ".*resh/output-tab">`,
+		`Input tab is not active`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`class="hidden".*input-text".*<div >.*\[`,
+		`Output tab is visible`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`type="submit"[\s]*formaction="/playground/refresh/output-tab">[\s]*Frost`,
+		`Href is correct on output tab`})
+
+	testutils.AssertPageContainsSamples(t, flattened, assertions)
+
+	// fmt.Printf("The page under test is:\n%v", rendered)
+
+
+
 }
