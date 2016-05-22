@@ -13,7 +13,7 @@ import (
 // Simple smoke test for playground rendering for a given input text content.
 func TestRenderingOfCannedExample(t *testing.T) {
 	viewModel := viewmodels.NewTopLevelViewModel()
-	exampleInputText := string(resources.MustAsset(`static/examples/space_delim.txt`))
+	exampleInputText := resources.GetExampleFileContents(resources.SpaceDelimitedExample)
 	spaceSeparatedButtonActiveString := "active"
 	viewModel.Playground = viewmodels.NewPlaygroundViewModelForExample(
 		exampleInputText, spaceSeparatedButtonActiveString)

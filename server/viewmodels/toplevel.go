@@ -19,6 +19,6 @@ type TopLevelViewModel struct {
 func NewTopLevelViewModel() *TopLevelViewModel {
 	return &TopLevelViewModel{
 		QuickStartURL: urls.URLQuickstart,
-		PlaygroundURL: urls.URLPlaygroundExample,
+		PlaygroundURL: urls.URLPlaygroundExampleSpaceDelim,
 	}
 }

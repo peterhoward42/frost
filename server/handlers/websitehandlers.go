@@ -7,6 +7,7 @@ import (
 	"github.com/peterhoward42/frost/server/viewmodels"
 	"net/http"
 	"strings"
+	"github.com/peterhoward42/frost/server/urls"
 )
 
 func HandleQuickStart(w http.ResponseWriter, r *http.Request) {
@@ -23,11 +24,14 @@ func HandlePlayground(w http.ResponseWriter, r *http.Request) {
 	}
 	viewModel := viewmodels.NewTopLevelViewModel()
 	switch {
-	case strings.Contains(r.URL.Path, "refresh"):
+	// There are a set of playground refresh URLs, but they all share the root we
+	// are looking for below. The tail end of the URL that comes afterwards encodes some
+	// viewing modes - like tabbed or side by side.
+	case strings.Contains(r.URL.Path, urls.URLPlaygroundRefreshStub):
 		viewModel.Playground = viewmodels.NewPlaygroundViewModelForRefresh(
 			r.Form, r.URL.Path)
-	case strings.Contains(r.URL.Path, "example"):
-		exampleInputText := string(resources.MustAsset(`static/examples/space_delim.txt`))
+	case strings.Contains(r.URL.Path, urls.URLPlaygroundExampleSpaceDelim):
+		exampleInputText :=resources.GetExampleFileContents(resources.SpaceDelimitedExample)
 		spaceSeparatedButtonActiveString := "active"
 		viewModel.Playground = viewmodels.NewPlaygroundViewModelForExample(
 			exampleInputText, spaceSeparatedButtonActiveString)

@@ -18,11 +18,8 @@ const PlaygroundRefreshTabUrlSubStr = "-tab"
 
 // Full URLs
 const PlaygroundRefreshSides = "/playground/refresh/" + PlaygroundSideBySideUrlFragment
-const PlaygroundRefreshInputTab = "/playground/refresh/input-tab"
-const PlaygroundRefreshOutputTab = "/playground/refresh/output-tab"
-
-// File system paths
-const PlaygroundExamplePath = "static/examples/space_delim.txt"
+const PlaygroundRefreshInputTab = "/playground/refresh/" + PlaygroundInputTabUrlFragment
+const PlaygroundRefreshOutputTab = "/playground/refresh/" + PlaygroundOutputTabUrlFragment
 
 // Labels for humans
 const PlaygroundRefreshSwitchToTabsLabel = "Tabbed view"
