@@ -5,6 +5,7 @@ import (
 	"github.com/peterhoward42/frost/filereaders"
 	"net/url"
 	"strings"
+	"github.com/peterhoward42/frost/server/urls"
 )
 
 // Form element names
@@ -40,6 +41,8 @@ type PlaygroundViewModel struct {
 	// Use this as the active attribute on the space separated example button. I.e. "active"
 	// or empty string.
 	SpaceSepActiveMode string
+
+	SpaceSepExampleURL string // Use this as the URL for the space-separated example button
 
 	FormAction       string // Use this as the URL in the form's action attribute.
 	SwitchViewAction string // Use this as the form-action attribute on the switch view button.
@@ -138,6 +141,7 @@ func (pg *PlaygroundViewModel) setConstantFields() {
 	pg.InputTextElementName = PlaygroundInputTextField
 	pg.FormActionForInputTab = PlaygroundRefreshInputTab
 	pg.FormActionForOutputTab = PlaygroundRefreshOutputTab
+	pg.SpaceSepExampleURL = urls.URLPlaygroundExampleSpaceDelim
 }
 
 func (pg *PlaygroundViewModel) doWhiteSpaceConversionForNow(inputText string) string {

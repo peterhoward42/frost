@@ -37,6 +37,12 @@ func TestRenderingOfCannedExample(t *testing.T) {
 		`<a class="btn btn-default active".*href=.*Space Separated`,
 		`The space separated example button is active.`})
 	assertions = append(assertions, &testutils.MatchAssertion{
+		`href="/playground/example/space-delim">Space Separated`,
+		`The space separated example shortuct button had the right URL`})
+	assertions = append(assertions, &testutils.MatchAssertion{
+		`<li><a href="/playground/example/space-delim">Space Separated</a></li>`,
+		`The space separated example dropdown button had the right URL`})
+	assertions = append(assertions, &testutils.MatchAssertion{
 		`Switch to.*<button.*type="submit".*formaction=/playground/refresh/input-tab>.*Tabbed view`,
 		`Switch to button offers tabbed view and has tabbed URL as the action`})
 	assertions = append(assertions, &testutils.MatchAssertion{
@@ -88,7 +94,7 @@ func TestRenderingOfPlayGroundRefreshSideBySide(t *testing.T) {
 	// We test that none of the playground buttons is active by sampling the
 	// one that is active for the landing page - ie the space delim text button.
 	assertions = append(assertions, &testutils.MatchAssertion{
-		`<div class="btn-group">.*<a class="btn btn-default[\s]*"[\s]*href="#">Space`,
+		`<div class="btn-group">.*<a class="btn btn-default[\s]*"[\s]*href=.*>Space`,
 		`None of the playground buttons should be active`})
 	assertions = append(assertions, &testutils.MatchAssertion{
 		`name="input-text.*fibble`,

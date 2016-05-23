@@ -11,6 +11,7 @@ type TopLevelViewModel struct {
 	// well as addressing the sub model for that mode.
 	QuickStart *QuickStartViewModel
 	Playground *PlaygroundViewModel
+	ComingSoon *ComingSoonViewModel // not really a model, but keeps things symmetrical
 
 	QuickStartURL string
 	PlaygroundURL string
@@ -20,5 +21,6 @@ func NewTopLevelViewModel() *TopLevelViewModel {
 	return &TopLevelViewModel{
 		QuickStartURL: urls.URLQuickstart,
 		PlaygroundURL: urls.URLPlaygroundExampleSpaceDelim,
+		ComingSoon: nil,
 	}
 }

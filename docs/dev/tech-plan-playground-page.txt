@@ -1,21 +1,41 @@
     o  tidy up web gui to show paul and carl etc
         *  Unit tests for model view interaction?
         *  Manual exercise of playground gui and going back and forth to quickstart
-        o  Space separated summary example button press
+        *  Space separated summary example button press
             *  First rename URLPlaygroundExample to be URLPlaygroundExampleSpaceDelim, and
                improve comments around all usages.
                *  Code
                *  Regression and manual test.
             *  Give resources an example getter with enums
             *  Replace direct use of static/examples/space_delim.txt with call to getter
-            o  Note template in common header to playgroun space delim
-            o  Implies needs dupe field in playgroun model - so set it up in consts part
-            o  Modify template for playground to give btn this url
-            o  Make it work interactively
-            o  Augment existing playground entry unit test
-        o  Now also do the inline space sep menu item
-        o  unfinished links do something more sensible
+            *  Note template in common header to playgroun space delim
+            *  Implies needs dupe field in playgroun model - so set it up in consts part
+            *  Modify template for playground to give btn this url
+            *  Make it work interactively
+            *  Augment existing playground entry unit test
+        *  Now also do the inline space sep menu item
+        *  unfinished links do something more sensible
+            *  add a ref to a new not done template in top level template booled
+            *  add and init the bool to the model constructors
+            *  make a catchall handler that sets up model to the not done content
+            *  see if works inter
+                *  explicit not exist url
+                *  just # = no
+            *  how unit test?
+            *  style the template
+            *  regression tests
         o  check issues on github for what else to do before showing
+        o  add security?
+        o  more of a pitch
+        o  biz proposition link
+        o  what conversion rules
+        o  ditch community and get source?
+        o  platform support
+        o  read ALL files in directory
+        o  external links (e.g. github), maby docs dir?
+        o  which links to furnish content for, or temp content
+        o  is panic right for gae?
+        o  close source?
 
 
 -----------------------------------------------------------------------------
