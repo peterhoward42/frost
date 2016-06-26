@@ -8,7 +8,7 @@ import (
 
 func main() {
 	routing.SetUpRouting()
-	port := ":47066"
+	port := ":47067"
 	fmt.Printf("Serving on port %v", port)
 	http.ListenAndServe(port, nil)
 }

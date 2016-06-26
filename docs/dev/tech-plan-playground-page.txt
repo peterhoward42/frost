@@ -24,6 +24,8 @@
             *  how unit test?
             *  style the template
             *  regression tests
+        *  resurrect gae version (no - needs memcache or db)
+        *  fix problems caused by updating assetfs
         o  check issues on github for what else to do before showing
         o  add security?
         o  more of a pitch
@@ -35,6 +37,7 @@
         o  external links (e.g. github), maby docs dir?
         o  which links to furnish content for, or temp content
         o  is panic right for gae?
+        o  decide how to host = both azure and aws for cf
         o  close source?
 
 

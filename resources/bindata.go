@@ -31,11 +31,11 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"strings"
-	"os"
-	"time"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"strings"
+	"time"
 )
 
 func bindataRead(data []byte, name string) ([]byte, error) {
@@ -64,9 +64,9 @@ type asset struct {
 }
 
 type bindataFileInfo struct {
-	name string
-	size int64
-	mode os.FileMode
+	name    string
+	size    int64
+	mode    os.FileMode
 	modTime time.Time
 }
 
@@ -105,7 +105,7 @@ func staticCssBootstrapMinOrigCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min-orig.css", size: 122540, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -125,7 +125,7 @@ func staticCssBootstrapMinCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.css", size: 125695, mode: os.FileMode(438), modTime: time.Unix(1461422111, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -145,7 +145,7 @@ func staticCssBootstrapMinCyborgCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.cyborg.css", size: 125695, mode: os.FileMode(438), modTime: time.Unix(1461422101, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -165,7 +165,7 @@ func staticCssBootstrapMinFlatlyCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/bootstrap.min.flatly.css", size: 127393, mode: os.FileMode(438), modTime: time.Unix(1461421737, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -185,7 +185,7 @@ func staticCssFrostCss() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/css/frost.css", size: 90, mode: os.FileMode(438), modTime: time.Unix(1461792979, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -205,7 +205,7 @@ func staticExamplesCsvCsv() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/examples/csv.csv", size: 262, mode: os.FileMode(438), modTime: time.Unix(1461787112, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -225,7 +225,7 @@ func staticExamplesSpace_delimTxt() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/examples/space_delim.txt", size: 1320, mode: os.FileMode(438), modTime: time.Unix(1462203148, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -245,7 +245,7 @@ func staticFontsGlyphiconsHalflingsRegularEot() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.eot", size: 20127, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -265,7 +265,7 @@ func staticFontsGlyphiconsHalflingsRegularSvg() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.svg", size: 108738, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -285,7 +285,7 @@ func staticFontsGlyphiconsHalflingsRegularTtf() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.ttf", size: 45404, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -305,7 +305,7 @@ func staticFontsGlyphiconsHalflingsRegularWoff() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.woff", size: 23424, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -325,7 +325,7 @@ func staticFontsGlyphiconsHalflingsRegularWoff2() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/fonts/glyphicons-halflings-regular.woff2", size: 18028, mode: os.FileMode(438), modTime: time.Unix(1444516540, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -345,7 +345,7 @@ func staticJsBootstrapMinJs() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/js/bootstrap.min.js", size: 36816, mode: os.FileMode(438), modTime: time.Unix(1444516541, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -365,7 +365,7 @@ func staticJsJqueryMinJs() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/js/jquery.min.js", size: 84345, mode: os.FileMode(438), modTime: time.Unix(1444516979, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -385,7 +385,7 @@ func staticTemplatesComingsoonHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/comingsoon.html", size: 174, mode: os.FileMode(438), modTime: time.Unix(1464038895, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -405,7 +405,7 @@ func staticTemplatesCommonfooterHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/commonfooter.html", size: 145, mode: os.FileMode(438), modTime: time.Unix(1463593069, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -425,7 +425,7 @@ func staticTemplatesCommonheaderHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/commonheader.html", size: 1985, mode: os.FileMode(438), modTime: time.Unix(1464038063, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -445,7 +445,7 @@ func staticTemplatesMainguiHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/maingui.html", size: 289, mode: os.FileMode(438), modTime: time.Unix(1464034635, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -465,7 +465,7 @@ func staticTemplatesPlaygroundHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/playground.html", size: 3050, mode: os.FileMode(438), modTime: time.Unix(1464039474, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -485,7 +485,7 @@ func staticTemplatesPlaygroundsidebysideHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/playgroundsidebyside.html", size: 557, mode: os.FileMode(438), modTime: time.Unix(1463773797, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -505,7 +505,7 @@ func staticTemplatesPlaygroundtabbedHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/playgroundtabbed.html", size: 851, mode: os.FileMode(438), modTime: time.Unix(1463910681, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -525,7 +525,7 @@ func staticTemplatesQuickstartHtml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "static/templates/quickstart.html", size: 1640, mode: os.FileMode(438), modTime: time.Unix(1464038063, 0)}
-	a := &asset{bytes: bytes, info:  info}
+	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
@@ -548,7 +548,7 @@ func Asset(name string) ([]byte, error) {
 // It simplifies safe initialization of global variables.
 func MustAsset(name string) []byte {
 	a, err := Asset(name)
-	if (err != nil) {
+	if err != nil {
 		panic("asset: Asset(" + name + "): " + err.Error())
 	}
 
@@ -641,112 +641,90 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type bintree struct {
-	Func func() (*asset, error)
+	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
 var _bintree = &bintree{nil, map[string]*bintree{
 	"static": &bintree{nil, map[string]*bintree{
 		"css": &bintree{nil, map[string]*bintree{
-			"bootstrap.min-orig.css": &bintree{staticCssBootstrapMinOrigCss, map[string]*bintree{
-			}},
-			"bootstrap.min.css": &bintree{staticCssBootstrapMinCss, map[string]*bintree{
-			}},
-			"bootstrap.min.cyborg.css": &bintree{staticCssBootstrapMinCyborgCss, map[string]*bintree{
-			}},
-			"bootstrap.min.flatly.css": &bintree{staticCssBootstrapMinFlatlyCss, map[string]*bintree{
-			}},
-			"frost.css": &bintree{staticCssFrostCss, map[string]*bintree{
-			}},
+			"bootstrap.min-orig.css": &bintree{staticCssBootstrapMinOrigCss, map[string]*bintree{}},
+			"bootstrap.min.css": &bintree{staticCssBootstrapMinCss, map[string]*bintree{}},
+			"bootstrap.min.cyborg.css": &bintree{staticCssBootstrapMinCyborgCss, map[string]*bintree{}},
+			"bootstrap.min.flatly.css": &bintree{staticCssBootstrapMinFlatlyCss, map[string]*bintree{}},
+			"frost.css": &bintree{staticCssFrostCss, map[string]*bintree{}},
 		}},
 		"examples": &bintree{nil, map[string]*bintree{
-			"csv.csv": &bintree{staticExamplesCsvCsv, map[string]*bintree{
-			}},
-			"space_delim.txt": &bintree{staticExamplesSpace_delimTxt, map[string]*bintree{
-			}},
+			"csv.csv": &bintree{staticExamplesCsvCsv, map[string]*bintree{}},
+			"space_delim.txt": &bintree{staticExamplesSpace_delimTxt, map[string]*bintree{}},
 		}},
 		"fonts": &bintree{nil, map[string]*bintree{
-			"glyphicons-halflings-regular.eot": &bintree{staticFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.svg": &bintree{staticFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.ttf": &bintree{staticFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.woff": &bintree{staticFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{
-			}},
-			"glyphicons-halflings-regular.woff2": &bintree{staticFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{
-			}},
+			"glyphicons-halflings-regular.eot": &bintree{staticFontsGlyphiconsHalflingsRegularEot, map[string]*bintree{}},
+			"glyphicons-halflings-regular.svg": &bintree{staticFontsGlyphiconsHalflingsRegularSvg, map[string]*bintree{}},
+			"glyphicons-halflings-regular.ttf": &bintree{staticFontsGlyphiconsHalflingsRegularTtf, map[string]*bintree{}},
+			"glyphicons-halflings-regular.woff": &bintree{staticFontsGlyphiconsHalflingsRegularWoff, map[string]*bintree{}},
+			"glyphicons-halflings-regular.woff2": &bintree{staticFontsGlyphiconsHalflingsRegularWoff2, map[string]*bintree{}},
 		}},
 		"js": &bintree{nil, map[string]*bintree{
-			"bootstrap.min.js": &bintree{staticJsBootstrapMinJs, map[string]*bintree{
-			}},
-			"jquery.min.js": &bintree{staticJsJqueryMinJs, map[string]*bintree{
-			}},
+			"bootstrap.min.js": &bintree{staticJsBootstrapMinJs, map[string]*bintree{}},
+			"jquery.min.js": &bintree{staticJsJqueryMinJs, map[string]*bintree{}},
 		}},
 		"templates": &bintree{nil, map[string]*bintree{
-			"comingsoon.html": &bintree{staticTemplatesComingsoonHtml, map[string]*bintree{
-			}},
-			"commonfooter.html": &bintree{staticTemplatesCommonfooterHtml, map[string]*bintree{
-			}},
-			"commonheader.html": &bintree{staticTemplatesCommonheaderHtml, map[string]*bintree{
-			}},
-			"maingui.html": &bintree{staticTemplatesMainguiHtml, map[string]*bintree{
-			}},
-			"playground.html": &bintree{staticTemplatesPlaygroundHtml, map[string]*bintree{
-			}},
-			"playgroundsidebyside.html": &bintree{staticTemplatesPlaygroundsidebysideHtml, map[string]*bintree{
-			}},
-			"playgroundtabbed.html": &bintree{staticTemplatesPlaygroundtabbedHtml, map[string]*bintree{
-			}},
-			"quickstart.html": &bintree{staticTemplatesQuickstartHtml, map[string]*bintree{
-			}},
+			"comingsoon.html": &bintree{staticTemplatesComingsoonHtml, map[string]*bintree{}},
+			"commonfooter.html": &bintree{staticTemplatesCommonfooterHtml, map[string]*bintree{}},
+			"commonheader.html": &bintree{staticTemplatesCommonheaderHtml, map[string]*bintree{}},
+			"maingui.html": &bintree{staticTemplatesMainguiHtml, map[string]*bintree{}},
+			"playground.html": &bintree{staticTemplatesPlaygroundHtml, map[string]*bintree{}},
+			"playgroundsidebyside.html": &bintree{staticTemplatesPlaygroundsidebysideHtml, map[string]*bintree{}},
+			"playgroundtabbed.html": &bintree{staticTemplatesPlaygroundtabbedHtml, map[string]*bintree{}},
+			"quickstart.html": &bintree{staticTemplatesQuickstartHtml, map[string]*bintree{}},
 		}},
 	}},
 }}
 
 // RestoreAsset restores an asset under the given directory
 func RestoreAsset(dir, name string) error {
-        data, err := Asset(name)
-        if err != nil {
-                return err
-        }
-        info, err := AssetInfo(name)
-        if err != nil {
-                return err
-        }
-        err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
-        if err != nil {
-                return err
-        }
-        err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
-        if err != nil {
-                return err
-        }
-        err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
-        if err != nil {
-                return err
-        }
-        return nil
+	data, err := Asset(name)
+	if err != nil {
+		return err
+	}
+	info, err := AssetInfo(name)
+	if err != nil {
+		return err
+	}
+	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
+	if err != nil {
+		return err
+	}
+	err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // RestoreAssets restores an asset under the given directory recursively
 func RestoreAssets(dir, name string) error {
-        children, err := AssetDir(name)
-        // File
-        if err != nil {
-                return RestoreAsset(dir, name)
-        }
-        // Dir
-        for _, child := range children {
-                err = RestoreAssets(dir, filepath.Join(name, child))
-                if err != nil {
-                        return err
-                }
-        }
-        return nil
+	children, err := AssetDir(name)
+	// File
+	if err != nil {
+		return RestoreAsset(dir, name)
+	}
+	// Dir
+	for _, child := range children {
+		err = RestoreAssets(dir, filepath.Join(name, child))
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func _filePath(dir, name string) string {
-        cannonicalName := strings.Replace(name, "\\", "/", -1)
-        return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
+	cannonicalName := strings.Replace(name, "\\", "/", -1)
+	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
 
