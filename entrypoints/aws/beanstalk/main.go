@@ -16,7 +16,7 @@ func main() {
 		port = "5000"
 	}
 	port = ":" + port
-	
+
 	fmt.Printf("Serving on port %v", port)
 	http.ListenAndServe(port, nil)
 }

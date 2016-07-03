@@ -26,6 +26,31 @@
             *  regression tests
         *  resurrect gae version (no - needs memcache or db)
         *  fix problems caused by updating assetfs
+        o  have another go at gae in knowledge of init() behaviour
+            o  design
+                *  re-read go definition of init behaviour
+                *  re-read go gae tutorial - wrt initialisation
+                    *  entry point package is not that - simply some package that
+                       registers handlers with http.HandleFunc() - so GAE must instantiate and spin
+                       up a server itself.
+                *  so what must have init behaviour?
+                    *  only the psuedo entry point to call set up routing
+                *  how does gae resolve third party package dependencies like assetfs?
+                    *  it uploads the packages from your gopath tree
+                *  make psuedo entry point file to set up routing in init fn
+                *  reduce app.yaml to omit static stuff
+            *  try locally
+                *  first ensure builds with gae
+                *  first ensure gae tests run and pass
+                *  then gae serve
+            *  now deploy?
+            *  can we see logs on gae?
+            o  when work check in
+                o  work up commit note
+
+
+        o  reflect on messyness of model view variants coupling
+            o  cookies vs form variables?
         o  check issues on github for what else to do before showing
         o  add security?
         o  more of a pitch
@@ -45,7 +70,11 @@
 Scratch
 -------------------------------------------------------------------------
 -----------------------------------------------------------------------------
-URL alternative
+Go initialisation behaviour
+    o  package vars are initted in smart (dependency) order
+    o  but not across packages
+    o  plus also init() is called - optionally several per package / even per file
+    o  if a package has imports, then the imported package gets initialised before
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 Futures

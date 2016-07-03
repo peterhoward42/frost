@@ -9,7 +9,7 @@ import (
 
 const templateEntryPointName = "maingui.html"
 
-// The GuiRenderer type combines a template and a corresponding view model to generate the html
+// The GuiRenderer combines a template and a corresponding view model to generate the html
 // that renders the Gui.
 type GuiRenderer struct {
 	guiTemplate *template.Template

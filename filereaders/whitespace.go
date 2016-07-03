@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-// The type WhitespaceConverter is a file reader for whitespace delimited files that can convert the
-// content into a JSON representation, using FROSTS conversion rules. It is bound to a constant
+// WhitespaceConverter is a file reader for whitespace delimited files that can convert the
+// content into a JSON representation, using FROST's conversion rules. It is bound to a constant
 // chunk of input text to avoid the complexity of reinitialising state.
 type WhitespaceConverter struct {
 	/* The jsonData field is the root node container for a sequence of tree-like data
-	structure, which is suitable to be converted to json automatically by go's json package. We
+	structure, which is suitable to be converted to json automatically by Go's json package. We
 	populate it as we parse and convert the input file, using object types like RowOfValues,
-	(and others) from frost's contract package.
+	(and others) from Frost's contract package.
 	*/
 	jsonData []interface{}
 
@@ -30,7 +30,7 @@ type WhitespaceConverter struct {
 }
 
 // The function NewWhitespaceConverter() is the way to instantiate a Whitespace structure and binds this
-// instance permanently to a particular file contents, and a single http request instance.
+// instance permanently to a particular file contents.
 func NewWhitespaceConverter(inputText string) *WhitespaceConverter {
 	return &WhitespaceConverter{
 		inputText: inputText,
@@ -61,8 +61,8 @@ func (ws *WhitespaceConverter) processLine(lineIndex int) {
 	line := ws.lines[lineIndex]      // Just shorthand
 	fields := ws.isolateFields(line) // Includes quoted string magic.
 
-	// This expresses our wish to accept the first of these that succeeds, and then to
-	// stop.
+	// This special usage of a switch statment, expresses our wish to accept the first of
+	// these that succeeds, and then to stop.
 
 	// The first two cases are about detecting the start, the continuation and falling off
 	// the end of a table. They come first in the order that they do, as part of managing and
