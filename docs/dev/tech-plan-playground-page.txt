@@ -1,81 +1,95 @@
-    o  tidy up web gui to show paul and carl etc
-        *  Unit tests for model view interaction?
-        *  Manual exercise of playground gui and going back and forth to quickstart
-        *  Space separated summary example button press
-            *  First rename URLPlaygroundExample to be URLPlaygroundExampleSpaceDelim, and
-               improve comments around all usages.
-               *  Code
-               *  Regression and manual test.
-            *  Give resources an example getter with enums
-            *  Replace direct use of static/examples/space_delim.txt with call to getter
-            *  Note template in common header to playgroun space delim
-            *  Implies needs dupe field in playgroun model - so set it up in consts part
-            *  Modify template for playground to give btn this url
-            *  Make it work interactively
-            *  Augment existing playground entry unit test
-        *  Now also do the inline space sep menu item
-        *  unfinished links do something more sensible
-            *  add a ref to a new not done template in top level template booled
-            *  add and init the bool to the model constructors
-            *  make a catchall handler that sets up model to the not done content
-            *  see if works inter
-                *  explicit not exist url
-                *  just # = no
-            *  how unit test?
-            *  style the template
-            *  regression tests
-        *  resurrect gae version (no - needs memcache or db)
-        *  fix problems caused by updating assetfs
-        o  have another go at gae in knowledge of init() behaviour
-            o  design
-                *  re-read go definition of init behaviour
-                *  re-read go gae tutorial - wrt initialisation
-                    *  entry point package is not that - simply some package that
-                       registers handlers with http.HandleFunc() - so GAE must instantiate and spin
-                       up a server itself.
-                *  so what must have init behaviour?
-                    *  only the psuedo entry point to call set up routing
-                *  how does gae resolve third party package dependencies like assetfs?
-                    *  it uploads the packages from your gopath tree
-                *  make psuedo entry point file to set up routing in init fn
-                *  reduce app.yaml to omit static stuff
-            *  try locally
-                *  first ensure builds with gae
-                *  first ensure gae tests run and pass
-                *  then gae serve
-            *  now deploy?
-            *  can we see logs on gae?
-            o  when work check in
-                o  work up commit note
-
-
-        o  reflect on messyness of model view variants coupling
-            o  cookies vs form variables?
-        o  check issues on github for what else to do before showing
-        o  add security?
-        o  more of a pitch
-        o  biz proposition link
-        o  what conversion rules
-        o  ditch community and get source?
-        o  platform support
-        o  read ALL files in directory
-        o  external links (e.g. github), maby docs dir?
-        o  which links to furnish content for, or temp content
-        o  is panic right for gae?
-        o  decide how to host = both azure and aws for cf
-        o  close source?
+o  is mv getting too snarled?
+    *  stream of conc
+    o  re-consult templates capabilities for inspiration
+    o  decide on the bigger change decisions
+    o  decide on sequence and keep-alive feasibility
+    o  off we go doing it
+o  the "type something" makes a great eating it use case
+o  should panic err handling be preserved - partic wrt platform diversity
+o  resource/examplefilegetter() misleading name
+o  move on to next iteration plan
 
 
 -----------------------------------------------------------------------------
 Scratch
 -------------------------------------------------------------------------
 -----------------------------------------------------------------------------
-Go initialisation behaviour
-    o  package vars are initted in smart (dependency) order
-    o  but not across packages
-    o  plus also init() is called - optionally several per package / even per file
-    o  if a package has imports, then the imported package gets initialised before
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
-Futures
+mv too snarled?
 -----------------------------------------------------------------------------
+    o  what code is coupled?
+    o  what code is lacking coherence?
+    o  what just feels too long?
+    o  what just feels fragile?
+    o  what are the responsibilities here?
+
+-----------------------------------------------------------------------------
+what is involved?
+-----------------------------------------------------------------------------
+From tree nav down recursively
+
+o  compiledtemplates.go         looks v simple, but hides monolith?
+
+o  examplefilegetter.go         change to being something that publishes a 
+                                set of symbolic names for the canned examples
+                                and serves them.
+
+o  websitehandlers.go           A little bit long?.
+                                Seven imports
+                                Split into one handler module per page.
+                                Why is playground handler mussy cf quickstart?
+                                o  Has for parse form.
+                                o  Boiler plate top level mdl instan.
+                                o  Refresh or canned example specialism when
+                                   it comes to building model.
+                                o  Rendering orchestration is in common.
+                                o  And there will be more.
+                                
+o  viewmodels/playground.go     o  too long
+                                o  has lots of constants
+                                o  setconstantfields() is ludicruous
+                                o  there is needless duplication of interest
+                                   in constants like InputTextElementName. How
+                                   can we reduce these to single constants that
+                                   are available to both the template and the
+                                   view model behaviour code?
+                                o  the model conflates several concepts:
+                                    o  constants
+                                    o  rendering state (like active)
+                                    o  rendering state (like URLs and actions)
+
+                                o  should model be split into smaller pieces
+                                   and composed? (incl .elementNames and 
+                                   .urls for example)?
+                                o  and controls sub model
+                                o  input pane sub model
+                                o  output pane sub model
+                                o  should model types and model factories be
+                                   separated?
+
+                                o  which things should be "active" or "hidden"
+                                   etc. should be a map, despite added
+                                   complexity in template.
+
+                                o  volte face on earlier decision to keep
+                                   template as simple as possible?
+                                   Need to re-read and assimilate possibilities
+                                   to work out how far to take this and the
+                                   trade offs.
+
+                                o  data required by the template should be
+                                   isolated
+                                o  and behaviour of what state should be should
+                                   be elsewhere
+                                o  constants consumed by rendering should be on
+                                   their own.
+                                o  Constants consumed by model state
+                                   intelligence maybe coupled only to model and
+                                   hidden from rendering.
+
+                                o  does mvvc help? or a new pattern?
+
+o  toplevel.go                  o  middle pages are mutex, so why not have
+                                   interface type and instantiate only the
+                                   right one! (doh!)

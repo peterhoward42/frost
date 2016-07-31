@@ -11,7 +11,7 @@ func SetUpRouting() {
 
 	// Special cases first...
 
-	// Static links like css, fonts and .js go to a psuedo static file server
+	// Static links like css, fonts and .js go to a pseudo static file server
 	http.Handle("/static/", http.FileServer(resources.CompiledFileSystem))
 
 	// Home page is a special case

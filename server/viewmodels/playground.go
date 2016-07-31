@@ -111,7 +111,7 @@ func NewPlaygroundViewModelForRefresh(
 	// (Exploits the zero value of the structure)
 	switch {
 	// Using side by side view?
-	case strings.Contains(urlPath, PlaygroundSideBySideUrlFragment):
+	case strings.Contains(urlPath, PlaygroundSideBySideUrlFragmenbt):
 		pg.SwitchViewAction = PlaygroundRefreshInputTab
 		pg.SwitchViewLabel = PlaygroundRefreshSwitchToTabsLabel
 		pg.ShowSideBySide = true
